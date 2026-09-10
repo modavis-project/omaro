@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://w3id.org/modavis/omaro/schema/concept_scheme.schema.json",
+  "title": "Governed concept scheme",
+  "type": "object", "additionalProperties": false,
+  "required": ["uri", "label", "scheme_type", "version", "version_uri", "publisher_agent_uri", "perspective_uri", "source_record_uri", "governance_uri", "rights_uri", "status", "scope_note"],
+  "properties": {
+    "uri": {"type": "string", "format": "uri"},
+    "label": {"type": "string", "minLength": 1},
+    "scheme_type": {"enum": ["classification", "thesaurus", "community", "research", "historical", "facet", "other"]},
+    "version": {"type": ["string", "null"]},
+    "version_uri": {"type": ["string", "null"], "format": "uri"},
+    "publisher_agent_uri": {"type": "string", "format": "uri"},
+    "perspective_uri": {"type": "string", "format": "uri"},
+    "source_record_uri": {"type": ["string", "null"], "format": "uri"},
+    "governance_uri": {"type": ["string", "null"], "format": "uri"},
+    "rights_uri": {"type": "string", "format": "uri"},
+    "status": {"enum": ["draft", "active", "historical", "deprecated"]},
+    "scope_note": {"type": "string", "minLength": 1}
+  }
+}

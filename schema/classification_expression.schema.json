@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://w3id.org/modavis/omaro/schema/classification_expression.schema.json",
+  "title": "Compound classification expression",
+  "description": "An ordered and round-trippable expression that combines classification members without treating the combination as an OWL intersection or automatically propagating component classes to a whole instrument. Dataset validation keeps a linked whole assertion, this expression, and any linked member assertions coherent in perspective, scheme version, applicability scope, classification scheme, target topology, and component role.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "uri", "source_concept_uri", "notation_literal", "notation_grammar_uri",
+    "expression_scheme_version_uri", "combination_operator", "members",
+    "shared_suffix_notation", "parse_status", "perspective_uri",
+    "applicability_scope_uris", "source_record_uri", "evidence",
+    "authority_assignment_uris", "protocol_application_uris", "rights_uri"
+  ],
+  "properties": {
+    "uri": {"type": "string", "format": "uri"},
+    "source_concept_uri": {"type": ["string", "null"], "format": "uri"},
+    "notation_literal": {"type": "string", "minLength": 1},
+    "notation_grammar_uri": {"type": "string", "format": "uri"},
+    "expression_scheme_version_uri": {"type": ["string", "null"], "format": "uri"},
+    "combination_operator": {"enum": ["joint", "alternative", "broader-plus-refinement", "source-unspecified"]},
+    "members": {"type": "array", "minItems": 2, "items": {"$ref": "#/$defs/member"}},
+    "shared_suffix_notation": {"type": ["string", "null"]},
+    "parse_status": {"enum": ["tokenized-uninterpreted", "expert-interpreted"]},
+    "perspective_uri": {"type": "string", "format": "uri"},
+    "applicability_scope_uris": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "format": "uri"}},
+    "source_record_uri": {"type": "string", "format": "uri"},
+    "evidence": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/evidence"}},
+    "authority_assignment_uris": {"$ref": "#/$defs/uriArray"},
+    "protocol_application_uris": {"$ref": "#/$defs/uriArray"},
+    "rights_uri": {"type": "string", "format": "uri"}
+  },
+  "$defs": {
+    "uriArray": {"type": "array", "uniqueItems": true, "items": {"type": "string", "format": "uri"}},
+    "evidence": {
+      "type": "object", "additionalProperties": false,
+      "required": ["citation", "evidence_type", "relation", "resource_uri", "note"],
+      "properties": {
+        "citation": {"type": "string", "minLength": 1},
+        "evidence_type": {"enum": ["source-record", "fieldwork", "community-decision", "linguistic-analysis", "scholarly-publication", "rights-protocol", "observation", "reasoning"]},
+        "relation": {"enum": ["supports", "opposes", "qualifies", "documents"]},
+        "resource_uri": {"type": ["string", "null"], "format": "uri"},
+        "note": {"type": ["string", "null"]}
+      }
+    },
+    "member": {
+      "type": "object", "additionalProperties": false,
+      "required": ["sequence_index", "member_notation", "classification_uri", "member_assertion_uri", "member_target_uri", "component_role_uri", "local_suffix_notation"],
+      "properties": {
+        "sequence_index": {"type": "integer", "minimum": 1},
+        "member_notation": {"type": "string", "minLength": 1},
+        "classification_uri": {"type": ["string", "null"], "format": "uri"},
+        "member_assertion_uri": {"type": ["string", "null"], "format": "uri", "description": "Optional qualified assertion for this member. When present, classification_uri and member_target_uri are mandatory and must equal that assertion's class and target."},
+        "member_target_uri": {"type": ["string", "null"], "format": "uri"},
+        "component_role_uri": {"type": ["string", "null"], "format": "uri"},
+        "local_suffix_notation": {"type": ["string", "null"]}
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {"member_assertion_uri": {"type": "string"}},
+            "required": ["member_assertion_uri"]
+          },
+          "then": {
+            "properties": {
+              "classification_uri": {"type": "string", "format": "uri"},
+              "member_target_uri": {"type": "string", "format": "uri"}
+            }
+          }
+        }
+      ]
+    }
+  }
+}

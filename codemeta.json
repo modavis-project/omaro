@@ -1,0 +1,54 @@
+{
+  "@context": "https://doi.org/10.5063/schema/codemeta-2.0",
+  "@type": "Dataset",
+  "name": "OMARO Reference Dataset: Hornbostel–Sachs Classifications and Multilingual Musical Instrument Names",
+  "description": "The OMARO ontology, validation model, tooling, and a versioned MIMO-derived reference dataset for qualified, perspective-bearing organological assertions, auditable organological assessments, governed publication, and conservative linguistic profiles.",
+  "version": "0.1.0",
+  "identifier": "https://doi.org/10.5281/zenodo.21442777",
+  "url": "https://github.com/modavis-project/omaro",
+  "codeRepository": "https://github.com/modavis-project/omaro",
+  "issueTracker": "https://github.com/modavis-project/omaro/issues",
+  "dateModified": "2026-09-11",
+  "developmentStatus": "https://www.repostatus.org/#active",
+  "license": "https://spdx.org/licenses/CC0-1.0",
+  "author": {
+    "@type": "Person",
+    "@id": "https://orcid.org/0000-0002-7904-3892",
+    "givenName": "Dominik",
+    "familyName": "Ukolov",
+    "affiliation": [
+      {
+        "@type": "Organization",
+        "name": "Research Group DIGITAL ORGANOLOGY, Leipzig University"
+      },
+      {
+        "@type": "Organization",
+        "name": "Digital Humanities (Image/Object), Friedrich Schiller University Jena"
+      }
+    ]
+  },
+  "isBasedOn": [
+    "https://vocabulary.mimo-international.com/rest/v1/HornbostelAndSachs",
+    "https://vocabulary.mimo-international.com/rest/v1/InstrumentsKeywords"
+  ],
+  "isRelatedTo": [
+    "https://w3id.org/modavis/omaro/ontology/0.1.0",
+    "https://w3id.org/modavis/omaro/dataset/0.1.0",
+    "https://w3id.org/modavis/vao/0.4.0/",
+    "https://w3id.org/modavis/ontology/0.1.0"
+  ],
+  "programmingLanguage": "Python 3",
+  "keywords": [
+    "Hornbostel-Sachs",
+    "musical instruments",
+    "multilingual vocabulary",
+    "SKOS",
+    "linked data",
+    "digital organology",
+    "multiperspectivity",
+    "cultural governance",
+    "organological observation",
+    "VAO",
+    "MODAVIS"
+  ]
+}

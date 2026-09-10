@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://w3id.org/modavis/omaro/schema/concept.schema.json",
+  "title": "Concept in a named knowledge organization system",
+  "type": "object", "additionalProperties": false,
+  "required": ["uri", "scheme_uri", "kind", "local_id", "resolution_status"],
+  "properties": {
+    "uri": {"type": "string", "format": "uri"},
+    "scheme_uri": {"type": "string", "format": "uri"},
+    "kind": {"enum": ["classification", "instrument", "facet", "community-category"]},
+    "local_id": {"type": "string", "minLength": 1},
+    "mimo_id": {"type": ["string", "null"], "pattern": "^[0-9]+$"},
+    "notation": {"type": "string", "minLength": 1},
+    "definition": {"type": "string"},
+    "created": {"type": "string", "format": "date"},
+    "resolution_status": {"enum": ["resolved", "unresolved"]}
+  }
+}

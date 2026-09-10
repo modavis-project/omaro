@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://w3id.org/modavis/omaro/schema/label.schema.json",
+  "title": "Multilingual concept label",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["concept_uri", "language", "submitted_language", "label_type", "label"],
+  "properties": {
+    "concept_uri": {"type": "string", "format": "uri"},
+    "language": {"type": "string", "pattern": "^[A-Za-z0-9]+(-[A-Za-z0-9]+)*$"},
+    "submitted_language": {"type": "string", "minLength": 1},
+    "label_type": {"enum": ["preferred", "alternative", "hidden"]},
+    "label": {"type": "string", "minLength": 1}
+  }
+}

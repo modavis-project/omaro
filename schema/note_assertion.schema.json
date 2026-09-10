@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://w3id.org/modavis/omaro/schema/note_assertion.schema.json",
+  "title": "Qualified source note assertion",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "uri",
+    "concept_uri",
+    "predicate_uri",
+    "literal_form",
+    "normalized_form",
+    "language_tag",
+    "submitted_language_tag",
+    "language_tag_status",
+    "language_registry_uri",
+    "asserted_by_uri",
+    "source_record_uri",
+    "source_uri",
+    "assertion_origin",
+    "review_status",
+    "review_status_uri"
+  ],
+  "properties": {
+    "uri": {
+      "type": "string",
+      "format": "uri",
+      "pattern": "^https://w3id\\.org/modavis/omaro#note-[0-9a-f]{32}$"
+    },
+    "concept_uri": {"type": "string", "format": "uri"},
+    "predicate_uri": {
+      "enum": [
+        "http://www.w3.org/2004/02/skos/core#definition",
+        "http://www.w3.org/2004/02/skos/core#scopeNote",
+        "http://www.w3.org/2004/02/skos/core#historyNote",
+        "http://www.w3.org/2004/02/skos/core#editorialNote",
+        "http://www.w3.org/2004/02/skos/core#changeNote",
+        "http://www.w3.org/2004/02/skos/core#example"
+      ]
+    },
+    "literal_form": {"type": "string", "minLength": 1},
+    "normalized_form": {"type": "string", "minLength": 1},
+    "language_tag": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9]+(-[A-Za-z0-9]+)*$"
+    },
+    "submitted_language_tag": {"type": "string", "minLength": 1},
+    "language_tag_status": {
+      "enum": ["valid", "noncanonical", "deprecated", "invalid-source-normalized"]
+    },
+    "language_registry_uri": {"type": "string", "format": "uri"},
+    "asserted_by_uri": {"type": "string", "format": "uri"},
+    "source_record_uri": {"type": "string", "format": "uri"},
+    "source_uri": {"type": "string", "format": "uri"},
+    "assertion_origin": {"const": "source-asserted"},
+    "review_status": {
+      "enum": ["unreviewed", "accepted", "disputed", "rejected", "superseded"]
+    },
+    "review_status_uri": {"type": "string", "format": "uri"}
+  }
+}

@@ -1,0 +1,82 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://w3id.org/modavis/omaro/schema/label_profile.schema.json",
+  "title": "Conservative linguistic profile for an assertion-scoped label",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "uri", "label_resource_uri", "source_label_assertion_uri", "language_tag",
+    "primary_language_subtag", "explicit_script_subtag", "default_script_subtag",
+    "region_subtag", "variant_subtags", "extension_subtags", "private_use_subtags",
+    "language_variety_uri", "writing_system_uri", "observed_script_codes",
+    "has_common_or_inherited_characters", "script_observation_method",
+    "script_registry_uri", "transliteration_system_uri", "transcription_system_uri",
+    "pronunciations", "audio_uris", "term_roles", "translation_status", "applies_to",
+    "display_policy", "search_policy", "asserted_by_uri", "source_record_uri",
+    "assertion_origin", "review_status", "review_status_uri"
+  ],
+  "properties": {
+    "uri": {"type": "string", "format": "uri", "pattern": "#label-profile-[0-9a-f]{32}$"},
+    "label_resource_uri": {"type": "string", "format": "uri"},
+    "source_label_assertion_uri": {"type": "string", "format": "uri"},
+    "language_tag": {"type": "string", "minLength": 2},
+    "primary_language_subtag": {"type": "string", "pattern": "^[a-z]{2,8}$"},
+    "explicit_script_subtag": {"type": ["string", "null"], "pattern": "^[A-Z][a-z]{3}$"},
+    "default_script_subtag": {"type": ["string", "null"], "pattern": "^[A-Z][a-z]{3}$"},
+    "region_subtag": {"type": ["string", "null"], "pattern": "^([A-Z]{2}|[0-9]{3})$"},
+    "variant_subtags": {"$ref": "#/$defs/stringArray"},
+    "extension_subtags": {"$ref": "#/$defs/stringArray"},
+    "private_use_subtags": {"$ref": "#/$defs/stringArray"},
+    "language_variety_uri": {"$ref": "#/$defs/nullableUri"},
+    "writing_system_uri": {"$ref": "#/$defs/nullableUri"},
+    "observed_script_codes": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {"type": "string", "pattern": "^[A-Z][a-z]{3}$"}
+    },
+    "has_common_or_inherited_characters": {"type": "boolean"},
+    "script_observation_method": {"const": "unicode-script-property-17.0.0"},
+    "script_registry_uri": {"type": "string", "format": "uri"},
+    "transliteration_system_uri": {"$ref": "#/$defs/nullableUri"},
+    "transcription_system_uri": {"$ref": "#/$defs/nullableUri"},
+    "pronunciations": {"$ref": "#/$defs/stringArray"},
+    "audio_uris": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {"type": "string", "format": "uri"}
+    },
+    "term_roles": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "enum": ["endonym", "exonym", "loanword", "translation", "transliteration", "historical-name", "collector-term", "trade-name", "scholarly-name", "misspelling", "contested", "harmful-legacy-term"]
+      }
+    },
+    "translation_status": {
+      "enum": ["unverified", "borrowed-translingual", "machine-translated", "human-translated", "native-speaker-reviewed", "community-reviewed", "contested", "not-applicable"]
+    },
+    "applies_to": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["community_uris", "place_uris", "period_uris", "usage_domain_uris"],
+      "properties": {
+        "community_uris": {"$ref": "#/$defs/uriArray"},
+        "place_uris": {"$ref": "#/$defs/uriArray"},
+        "period_uris": {"$ref": "#/$defs/uriArray"},
+        "usage_domain_uris": {"$ref": "#/$defs/uriArray"}
+      }
+    },
+    "display_policy": {"enum": ["source-fallback", "preferred-when-context-matches", "suppress", "warning-only"]},
+    "search_policy": {"enum": ["include", "include-with-warning", "exclude"]},
+    "asserted_by_uri": {"type": "string", "format": "uri"},
+    "source_record_uri": {"type": "string", "format": "uri"},
+    "assertion_origin": {"const": "source-derived"},
+    "review_status": {"type": "string", "minLength": 1},
+    "review_status_uri": {"type": "string", "format": "uri"}
+  },
+  "$defs": {
+    "nullableUri": {"type": ["string", "null"], "format": "uri"},
+    "stringArray": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+    "uriArray": {"type": "array", "uniqueItems": true, "items": {"type": "string", "format": "uri"}}
+  }
+}

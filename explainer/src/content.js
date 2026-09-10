@@ -1,0 +1,78 @@
+export const classLabels = {
+  '321.322': 'Necked box lutes',
+  '321.322-5': 'Sounded by the bare fingers',
+  '321.322-71': 'Sounded by bowing with a bow',
+};
+
+export const useCases = [
+  {
+    id: 'catalogue', label: 'Catalogue a collection', number: '01', audience: 'FOR CATALOGUERS', title: 'Which classifications came with this name?',
+    intro: 'Keep a source’s different assignments together, without turning them into one supposedly definitive category.',
+    example: 'The MIMO-derived double-bass concept has three classification occurrences. Each retains its source, scheme, perspective and assignment identity.',
+    steps: ['Find a name, then choose its exact concept identifier.', 'Inspect every classification occurrence and its scope.', 'Cite the source claim and dataset version in the catalogue.'],
+    result: 'A catalogue entry whose source can be traced and whose uncertainty remains visible.',
+    limit: 'An instrument-name concept does not describe an inspected physical specimen.',
+    link: '#record-detail', action: 'Look inside the double-bass record', tag: 'REAL SOURCE EXAMPLE',
+    terms: 'Concept → ClassificationAssertion → ClassificationAssignment, with scheme, perspective, source and applicability scope.',
+  },
+  {
+    id: 'research', label: 'Compare instruments', number: '02', audience: 'FOR RESEARCHERS', title: 'What changes when my question changes?',
+    intro: 'Make your selected dimensions and method explicit, so a comparison can be interpreted and repeated.',
+    example: 'In the synthetic tambourine example, construction criteria favour comparison with a frame drum; sounding criteria favour a jingle ring. The targets keep their identities.',
+    steps: ['Identify the object, configuration or sounding realization being compared.', 'Record properties, procedures, results and unresolved assessments.', 'State the dimensions and comparison rule alongside the result.'],
+    result: 'A method-dependent comparison with a visible evidence trail.',
+    limit: 'Similarity is neither identity nor an automatic Hornbostel–Sachs assignment.',
+    link: '#comparison', action: 'Try two research questions', tag: 'SYNTHETIC TEACHING EXAMPLE',
+    terms: 'OrganologicalTarget → ObservationAssessment → ClassificationCriterion. The comparison is an external analytical result; any classification conclusion needs its own assignment.',
+  },
+  {
+    id: 'review', label: 'Review a claim', number: '03', audience: 'FOR REVIEWERS', title: 'Why is this claim not endorsed?',
+    intro: 'See the policy conditions and review decisions behind a projection, instead of relying on a single unexplained approval badge.',
+    example: 'The real double-bass claims are available for research, but lack the policy opt-in, eligible stance, scope and reviews required for direct endorsement.',
+    steps: ['Inspect the exact claim, target and evidence.', 'Check the reviewer’s mandate, dimension, scope and decision lifecycle.', 'Read the shared evaluator’s reasons and any active authorized veto.'],
+    result: 'An accountable explanation of why a claim enters or stays out of an endorsed view.',
+    limit: 'Passing a machine check supplies no human review or cultural approval.',
+    link: '#record-detail', action: 'Read the actual explanation', tag: 'REAL SOURCE EXAMPLE',
+    terms: 'ReviewEvent generates a distinct ReviewDecision. Dataset.explain_endorsement supplies the same result used by the Boolean evaluator; direct RDF and SQLite views share it.',
+  },
+  {
+    id: 'integrate', label: 'Connect collections', number: '04', audience: 'FOR DATA INTEGRATORS', title: 'How do I connect records without losing meaning?',
+    intro: 'Join by stable identifiers while preserving the statement’s provenance and the purpose of a vocabulary mapping.',
+    example: 'A synthetic museum mapping can be proposed for query expansion and scholarly comparison. That purpose does not also justify data transformation or display navigation.',
+    steps: ['Keep assertion and assignment identifiers separate in every join.', 'Preserve scheme versions, source relations and label occurrences.', 'Apply mappings only within their stated purpose and applicable use permissions.'],
+    result: 'Interoperable records with qualifications intact across JSONL, RDF and SQLite.',
+    limit: 'Equal labels and close concepts do not establish identity. Mapping suitability is not permission.',
+    link: '#developer-recipes', action: 'Open the SQL and SPARQL recipes', tag: 'SYNTHETIC MAPPING EXAMPLE',
+    terms: 'SKOS concepts, purpose-qualified ConceptRelationAssertion, and assertion-scoped SKOS-XL labels. A qualified mapping is not emitted as an unrestricted SKOS mapping triple.',
+  },
+  {
+    id: 'answers', label: 'Build research answers', number: '05', audience: 'FOR APPLICATION DEVELOPERS', title: 'What can my answer responsibly say?',
+    intro: 'Return attributed claims and their limitations, so a search result does not become an unsupported statement of fact.',
+    example: '“The MIMO-derived snapshot records three double-bass classification occurrences. Their applicability is source-silent, and they have no project endorsement.”',
+    steps: ['Retrieve the qualified occurrence, not just a name and category.', 'Carry source, assertion URI and version into the answer.', 'State scope and review limitations; keep synthetic examples out of empirical answers.'],
+    result: 'A source-attributed answer that a reader can inspect.',
+    limit: 'The reference snapshot does not supply unrecorded construction, performance, language or community facts.',
+    link: '#developer-recipes', action: 'Take the query into your application', tag: 'REAL SOURCE EXAMPLE',
+    terms: 'Use omaro query, rag-concepts.jsonl or a checked SQLite distribution. research_included is selection for inspection, not an endorsement or confidence score.',
+  },
+  {
+    id: 'govern', label: 'Govern a contribution', number: '06', audience: 'FOR COMMUNITY-GOVERNED PROJECTS', title: 'May this material be used in this way?',
+    intro: 'Keep scholarly acceptance separate from collective authority, legal rights, individual consent and action-specific permission.',
+    example: 'The synthetic governed-drum fixture grants display only for named targets, scope, purpose, audience and time. It grants no indexing or bulk export permission.',
+    steps: ['Document the real mandate and the applicable community-defined protocol.', 'Record the exact action, resources, purpose, audience, scope and time.', 'Verify the matching use decision before generating any public output.'],
+    result: 'An explicit use boundary that applications must respect.',
+    limit: 'The example grants no real community permission. Software cannot establish the legitimacy of a mandate.',
+    link: '#governance-detail', action: 'Explore the independent permission checks', tag: 'SYNTHETIC GOVERNANCE EXAMPLE',
+    terms: 'AuthorityAssignment + ProtocolApplication + UseDecision. Machine enforcement requires a matching verified local protocol artifact; an external attestation alone is insufficient.',
+  },
+];
+
+export const reasonLabels = {
+  'claim-not-in-policy': 'The claim did not opt into the endorsement policy.',
+  'ineligible-stance': 'The source-asserted stance is not eligible for this view.',
+  'scope-not-context-independent': 'Its scope is not explicitly context-independent.',
+  'required-review-missing': 'A required review dimension has no qualifying acceptance.',
+  'insufficient-independent-reviewers': 'There are too few independent qualifying reviewers.',
+  'active-review-veto': 'An active authorized review veto blocks this projection.',
+  'scope-not-matched': 'The supplied context does not establish the required scope match.',
+};

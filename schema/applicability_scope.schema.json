@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://w3id.org/modavis/omaro/schema/applicability_scope.schema.json",
+  "title": "Typed applicability scope",
+  "description": "Dimensions on one scope are conjunctive. Values within one dimension are alternatives. Multiple scope URIs on an assertion are alternative complete scopes.",
+  "type": "object", "additionalProperties": false,
+  "required": ["uri", "label", "scope_mode", "description", "community_uris", "place_uris", "period_uris", "usage_domain_uris", "playing_technique_uris", "instrument_configuration_uris", "language_variety_uris", "temporal_start", "temporal_end", "asserted_by_uri", "perspective_uri", "source_record_uri"],
+  "properties": {
+    "uri": {"type": "string", "format": "uri"},
+    "label": {"type": "string", "minLength": 1},
+    "scope_mode": {
+      "enum": [
+        "source-silent",
+        "not-yet-investigated",
+        "known-unknown",
+        "intentionally-unscoped",
+        "not-applicable",
+        "specified",
+        "context-independent"
+      ]
+    },
+    "description": {"type": "string", "minLength": 1},
+    "community_uris": {"$ref": "#/$defs/uriArray"}, "place_uris": {"$ref": "#/$defs/uriArray"},
+    "period_uris": {"$ref": "#/$defs/uriArray"}, "usage_domain_uris": {"$ref": "#/$defs/uriArray"},
+    "playing_technique_uris": {"$ref": "#/$defs/uriArray"}, "instrument_configuration_uris": {"$ref": "#/$defs/uriArray"},
+    "language_variety_uris": {"$ref": "#/$defs/uriArray"},
+    "temporal_start": {"type": ["string", "null"], "format": "date-time"},
+    "temporal_end": {"type": ["string", "null"], "format": "date-time"},
+    "asserted_by_uri": {"type": "string", "format": "uri"},
+    "perspective_uri": {"type": ["string", "null"], "format": "uri"},
+    "source_record_uri": {"type": ["string", "null"], "format": "uri"}
+  },
+  "$defs": {"uriArray": {"type": "array", "uniqueItems": true, "items": {"type": "string", "format": "uri"}}}
+}

@@ -1,0 +1,95 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://w3id.org/modavis/omaro/schema/metadata.schema.json",
+  "title": "Dataset release metadata",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name", "ontology_title", "preferred_namespace_prefix", "namespace_uri",
+    "ontology_uri", "ontology_version_iri", "dataset_uri", "repository_uri",
+    "dataset_version", "schema_version", "title", "generated_at", "source_retrieved_at",
+    "license", "doi", "creators", "contributors", "sources", "schemes", "counts",
+    "language_coverage", "label_type_counts", "unresolved_references", "canonical_checksums"
+  ],
+  "properties": {
+    "name": {"const": "OMARO"},
+    "ontology_title": {"const": "Ontology for Multiperspectivity, Assertions, and Review in Organology"},
+    "preferred_namespace_prefix": {"const": "omaro"},
+    "namespace_uri": {"const": "https://w3id.org/modavis/omaro#"},
+    "ontology_uri": {"const": "https://w3id.org/modavis/omaro/ontology"},
+    "ontology_version_iri": {"type": "string", "format": "uri"},
+    "dataset_uri": {"type": "string", "format": "uri"},
+    "repository_uri": {"const": "https://github.com/modavis-project/omaro"},
+    "dataset_version": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"},
+    "schema_version": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"},
+    "title": {"type": "string", "minLength": 1},
+    "generated_at": {"type": "string", "format": "date-time"},
+    "source_retrieved_at": {"type": "string", "format": "date-time"},
+    "license": {"const": "CC0-1.0"},
+    "doi": {"type": "string", "pattern": "^10\\.[0-9]{4,9}/[-._;()/:A-Za-z0-9]+$"},
+    "creators": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["name", "affiliations"],
+        "properties": {
+          "name": {"type": "string", "minLength": 1},
+          "affiliations": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {"type": "string", "minLength": 1}
+          }
+        }
+      }
+    },
+    "contributors": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["name", "role"],
+        "properties": {
+          "name": {"type": "string", "minLength": 1},
+          "role": {"type": "string", "minLength": 1}
+        }
+      }
+    },
+    "counts": {
+      "type": "object",
+      "additionalProperties": {"type": "integer", "minimum": 0}
+    },
+    "language_coverage": {
+      "type": "object",
+      "additionalProperties": {"type": "integer", "minimum": 0}
+    },
+    "label_type_counts": {
+      "type": "object",
+      "additionalProperties": {"type": "integer", "minimum": 0}
+    },
+    "unresolved_references": {
+      "type": "array",
+      "items": {"type": "string", "format": "uri"}
+    },
+    "canonical_checksums": {
+      "type": "object",
+      "additionalProperties": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+    },
+    "sources": {"type": "array", "minItems": 1, "items": {"type": "string", "format": "uri"}},
+    "schemes": {
+      "type": "array",
+      "minItems": 2,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["uri", "label"],
+        "properties": {
+          "uri": {"type": "string", "format": "uri"},
+          "label": {"type": "string", "minLength": 1}
+        }
+      }
+    }
+  }
+}

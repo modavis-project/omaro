@@ -1,0 +1,22 @@
+{
+  "ontology_version": "2.2.0",
+  "status": "historical compatibility document",
+  "source_snapshot_sha256": "f76681550454bd38f8950a33a241c1432e51d176078f793959c82a868c45ad7b",
+  "files": [
+    {
+      "path": "omaro.ttl",
+      "bytes": 71768,
+      "sha256": "ceb2b80765b266806c75e58b7b79e701f14ddbfd5247a72ea0365802ac331b66"
+    },
+    {
+      "path": "omaro.jsonld",
+      "bytes": 124172,
+      "sha256": "2344090df8935e88c35ad89a5606f9f56be9567cbfa869e4dd34f9bb177b0e57"
+    },
+    {
+      "path": "omaro.rdf",
+      "bytes": 182967,
+      "sha256": "939ef2e521a5da7d65f5f9ca2eddee7cb71b53fa5ad17de8f78c160665cf88fc"
+    }
+  ]
+}

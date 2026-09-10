@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://w3id.org/modavis/omaro/schema/source_record.schema.json",
+  "title": "Versioned assertion source record",
+  "type": "object", "additionalProperties": false,
+  "required": ["uri", "resource_uri", "title", "source_type", "scheme_uri", "publisher_agent_uri", "layer", "rights_uri", "retrieved_at"],
+  "properties": {
+    "uri": {"type": "string", "format": "uri"},
+    "resource_uri": {"type": "string", "format": "uri"},
+    "title": {"type": "string", "minLength": 1},
+    "source_type": {"type": "string", "minLength": 1},
+    "scheme_uri": {"type": "string", "format": "uri"},
+    "publisher_agent_uri": {"type": "string", "format": "uri"},
+    "layer": {"type": "string", "minLength": 1},
+    "rights_uri": {"type": "string", "format": "uri"},
+    "retrieved_at": {"type": "string", "format": "date-time"}
+  }
+}

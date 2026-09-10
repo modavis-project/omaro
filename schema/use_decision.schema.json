@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://w3id.org/modavis/omaro/schema/use_decision.schema.json",
+  "title": "Use and publication decision",
+  "description": "An action-, purpose-, audience-, and time-specific authorization decision. It does not imply factual endorsement, community validation, copyright ownership, or consent for another action.",
+  "type": "object", "additionalProperties": false,
+  "required": [
+    "uri", "target_resource_uris", "action_uris", "purpose_uris", "audience_uris",
+    "decision", "decided_by_agent_uri", "represented_community_uris",
+    "authority_assignment_uris", "protocol_application_uris",
+    "applicability_scope_uris", "decision_method_uri", "decided_at", "valid_until",
+    "status", "supersedes_decision_uri", "public_evidence_uri", "public_summary",
+    "legal_basis_uris", "legal_basis_status",
+    "legal_basis_assessed_by_agent_uri", "consent_record_uris",
+    "consent_status", "consent_assessed_by_agent_uri"
+  ],
+  "properties": {
+    "uri": {"type": "string", "format": "uri"},
+    "target_resource_uris": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "format": "uri"}},
+    "action_uris": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "format": "uri"}},
+    "purpose_uris": {"type": "array", "uniqueItems": true, "items": {"type": "string", "format": "uri"}},
+    "audience_uris": {"type": "array", "uniqueItems": true, "items": {"type": "string", "format": "uri"}},
+    "decision": {"enum": ["granted", "refused", "withheld", "withdrawn"]},
+    "decided_by_agent_uri": {"type": "string", "format": "uri"},
+    "represented_community_uris": {"type": "array", "uniqueItems": true, "items": {"type": "string", "format": "uri"}},
+    "authority_assignment_uris": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "format": "uri"}},
+    "protocol_application_uris": {"type": "array", "uniqueItems": true, "items": {"type": "string", "format": "uri"}},
+    "applicability_scope_uris": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "format": "uri"}},
+    "decision_method_uri": {"type": "string", "format": "uri"},
+    "decided_at": {"type": "string", "format": "date-time"},
+    "valid_until": {"type": ["string", "null"], "format": "date-time"},
+    "status": {"enum": ["active", "superseded", "expired"]},
+    "supersedes_decision_uri": {"type": ["string", "null"], "format": "uri"},
+    "public_evidence_uri": {"type": ["string", "null"], "format": "uri"},
+    "public_summary": {"type": ["string", "null"]},
+    "legal_basis_uris": {"type": "array", "uniqueItems": true, "items": {"type": "string", "format": "uri"}},
+    "legal_basis_status": {"enum": ["documented", "not-required", "unknown", "blocked"]},
+    "legal_basis_assessed_by_agent_uri": {"type": ["string", "null"], "format": "uri"},
+    "consent_record_uris": {"type": "array", "uniqueItems": true, "items": {"type": "string", "format": "uri"}},
+    "consent_status": {"enum": ["documented", "not-required", "unknown", "withheld", "withdrawn"]},
+    "consent_assessed_by_agent_uri": {"type": ["string", "null"], "format": "uri"}
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"decision": {"const": "granted"}}},
+      "then": {
+        "properties": {
+          "purpose_uris": {"minItems": 1},
+          "audience_uris": {"minItems": 1}
+        }
+      }
+    },
+    {
+      "if": {"properties": {"legal_basis_status": {"enum": ["documented", "not-required"]}}},
+      "then": {
+        "properties": {
+          "legal_basis_uris": {"minItems": 1},
+          "legal_basis_assessed_by_agent_uri": {"type": "string"}
+        }
+      }
+    },
+    {
+      "if": {"properties": {"consent_status": {"enum": ["documented", "not-required"]}}},
+      "then": {
+        "properties": {
+          "consent_record_uris": {"minItems": 1},
+          "consent_assessed_by_agent_uri": {"type": "string"}
+        }
+      }
+    }
+  ]
+}

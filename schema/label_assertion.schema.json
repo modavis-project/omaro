@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://w3id.org/modavis/omaro/schema/label_assertion.schema.json",
+  "title": "Qualified source label assertion",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "uri",
+    "concept_uri",
+    "predicate_uri",
+    "literal_form",
+    "normalized_form",
+    "language_tag",
+    "submitted_language_tag",
+    "language_tag_status",
+    "language_registry_uri",
+    "label_resource_uri",
+    "label_role",
+    "skos_projection_status",
+    "asserted_by_uri",
+    "source_record_uri",
+    "source_uri",
+    "assertion_origin",
+    "review_status",
+    "review_status_uri"
+  ],
+  "properties": {
+    "uri": {
+      "type": "string",
+      "format": "uri",
+      "pattern": "^https://w3id\\.org/modavis/omaro#label-[0-9a-f]{32}$"
+    },
+    "concept_uri": {"type": "string", "format": "uri"},
+    "predicate_uri": {
+      "enum": [
+        "http://www.w3.org/2004/02/skos/core#prefLabel",
+        "http://www.w3.org/2004/02/skos/core#altLabel",
+        "http://www.w3.org/2004/02/skos/core#hiddenLabel"
+      ]
+    },
+    "literal_form": {"type": "string", "minLength": 1},
+    "normalized_form": {"type": "string", "minLength": 1},
+    "language_tag": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9]+(-[A-Za-z0-9]+)*$"
+    },
+    "submitted_language_tag": {"type": "string", "minLength": 1},
+    "language_tag_status": {
+      "enum": ["valid", "noncanonical", "deprecated", "invalid-source-normalized"]
+    },
+    "language_registry_uri": {"type": "string", "format": "uri"},
+    "label_resource_uri": {
+      "type": "string",
+      "format": "uri",
+      "pattern": "^https://w3id\\.org/modavis/omaro#xl-label-[0-9a-f]{32}$"
+    },
+    "label_role": {"enum": ["preferred", "alternative", "hidden"]},
+    "skos_projection_status": {
+      "enum": ["projected", "suppressed-role-conflict"]
+    },
+    "asserted_by_uri": {"type": "string", "format": "uri"},
+    "source_record_uri": {"type": "string", "format": "uri"},
+    "source_uri": {"type": "string", "format": "uri"},
+    "assertion_origin": {"const": "source-asserted"},
+    "review_status": {
+      "enum": ["unreviewed", "accepted", "disputed", "rejected", "superseded"]
+    },
+    "review_status_uri": {"type": "string", "format": "uri"}
+  }
+}

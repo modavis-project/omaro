@@ -1,0 +1,4680 @@
+{
+  "@context": {
+    "brick": "https://brickschema.org/schema/Brick#",
+    "crm": "http://www.cidoc-crm.org/cidoc-crm/",
+    "crmsci": "http://www.cidoc-crm.org/extensions/crmsci/",
+    "csvw": "http://www.w3.org/ns/csvw#",
+    "dc": "http://purl.org/dc/elements/1.1/",
+    "dcam": "http://purl.org/dc/dcam/",
+    "dcat": "http://www.w3.org/ns/dcat#",
+    "dcmitype": "http://purl.org/dc/dcmitype/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "doap": "http://usefulinc.com/ns/doap#",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "geo": "http://www.opengis.net/ont/geosparql#",
+    "odrl": "http://www.w3.org/ns/odrl/2/",
+    "omaro": "https://w3id.org/modavis/omaro#",
+    "org": "http://www.w3.org/ns/org#",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "prof": "http://www.w3.org/ns/dx/prof/",
+    "prov": "http://www.w3.org/ns/prov#",
+    "qb": "http://purl.org/linked-data/cube#",
+    "qudt": "http://qudt.org/schema/qudt/",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "schema": "https://schema.org/",
+    "sh": "http://www.w3.org/ns/shacl#",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "skosxl": "http://www.w3.org/2008/05/skos-xl#",
+    "sosa": "http://www.w3.org/ns/sosa/",
+    "ssn": "http://www.w3.org/ns/ssn/",
+    "time": "http://www.w3.org/2006/time#",
+    "vann": "http://purl.org/vocab/vann/",
+    "void": "http://rdfs.org/ns/void#",
+    "wgs": "https://www.w3.org/2003/01/geo/wgs84_pos#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "@graph": [
+    {
+      "@id": "https://orcid.org/0000-0002-7904-3892",
+      "@type": "schema:Person",
+      "schema:affiliation": [
+        "Digital Humanities (Image/Object), Friedrich-Schiller-University Jena",
+        "Research Center DIGITAL ORGANOLOGY, Leipzig University"
+      ],
+      "schema:name": "Dominik Ukolov"
+    },
+    {
+      "@id": "https://w3id.org/modavis/omaro/ontology",
+      "@type": "owl:Ontology",
+      "dcterms:creator": {
+        "@id": "https://orcid.org/0000-0002-7904-3892"
+      },
+      "dcterms:description": {
+        "@language": "en",
+        "@value": "An ontology for representing contextualized organological assertions, their perspectives and applicability, supporting evidence, authority, review decisions, and governed projections without collapsing disagreement."
+      },
+      "dcterms:license": {
+        "@id": "https://creativecommons.org/publicdomain/zero/1.0/"
+      },
+      "dcterms:publisher": "MODAVIS Project",
+      "dcterms:relation": [
+        {
+          "@id": "https://w3id.org/modavis/ontology/0.1.0"
+        },
+        {
+          "@id": "https://w3id.org/modavis/vao/0.4.0/"
+        }
+      ],
+      "dcterms:title": {
+        "@language": "en",
+        "@value": "OMARO: Ontology for Multiperspectivity, Assertions, and Review in Organology"
+      },
+      "owl:versionIRI": {
+        "@id": "https://w3id.org/modavis/omaro/ontology/2.2.0"
+      },
+      "owl:versionInfo": "2.2.0",
+      "vann:preferredNamespacePrefix": "omaro",
+      "vann:preferredNamespaceUri": {
+        "@id": "omaro:"
+      }
+    },
+    {
+      "@id": "https://w3id.org/modavis/omaro/ontology/2.2.0",
+      "@type": "owl:Ontology",
+      "dcterms:isVersionOf": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "owl:versionInfo": "2.2.0"
+    },
+    {
+      "@id": "omaro:ApplicabilityScope",
+      "@type": [
+        "owl:Class",
+        "rdfs:Class"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "A resource stating whether and under which communities, places, periods, uses, techniques, configurations, languages, or times an assertion applies."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "applicability scope"
+      },
+      "rdfs:subClassOf": {
+        "@id": "prov:Entity"
+      }
+    },
+    {
+      "@id": "omaro:AuthorityAssignment",
+      "@type": [
+        "owl:Class",
+        "rdfs:Class"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "A time-bounded mandate connecting an agent to roles, subject matter, communities, and validation dimensions."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "authority assignment"
+      },
+      "rdfs:subClassOf": {
+        "@id": "prov:Entity"
+      }
+    },
+    {
+      "@id": "omaro:ClassificationAssertion",
+      "@type": [
+        "owl:Class",
+        "rdfs:Class"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "An occurrence-level claim that a named target is classified by a concept under a recorded perspective, scope, method, and provenance."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "classification assertion"
+      },
+      "rdfs:subClassOf": [
+        {
+          "@id": "prov:Entity"
+        },
+        {
+          "@id": "rdf:Statement"
+        }
+      ]
+    },
+    {
+      "@id": "omaro:ClassificationAssignment",
+      "@type": [
+        "owl:Class",
+        "rdfs:Class"
+      ],
+      "owl:disjointWith": [
+        {
+          "@id": "omaro:ClassificationAssertion"
+        },
+        {
+          "@id": "omaro:ConceptRelationAssertion"
+        },
+        {
+          "@id": "omaro:LabelAssertion"
+        },
+        {
+          "@id": "omaro:NoteAssertion"
+        },
+        {
+          "@id": "omaro:ReviewDecision"
+        }
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "The provenance-bearing activity that applies a named classification to a target and generates a distinct classification assertion entity."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "classification assignment"
+      },
+      "rdfs:subClassOf": [
+        {
+          "@id": "crm:E17_Type_Assignment"
+        },
+        {
+          "@id": "prov:Activity"
+        }
+      ]
+    },
+    {
+      "@id": "omaro:ClassificationCriterion",
+      "@type": [
+        "owl:Class",
+        "rdfs:Class"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "A governed description of an observable organological basis and any documented inference logic used by an assignment."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "classification criterion"
+      },
+      "rdfs:subClassOf": {
+        "@id": "prov:Plan"
+      }
+    },
+    {
+      "@id": "omaro:ClassificationExpression",
+      "@type": [
+        "owl:Class",
+        "rdfs:Class"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "An ordered compound classification expression whose component targets and suffix scope are explicit or explicitly unresolved."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "classification expression"
+      },
+      "rdfs:subClassOf": {
+        "@id": "prov:Entity"
+      }
+    },
+    {
+      "@id": "omaro:ClassificationExpressionMember",
+      "@type": [
+        "owl:Class",
+        "rdfs:Class"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "One ordered member of a compound classification expression."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "classification expression member"
+      },
+      "rdfs:subClassOf": {
+        "@id": "prov:Entity"
+      }
+    },
+    {
+      "@id": "omaro:ConceptRelationAssertion",
+      "@type": [
+        "owl:Class",
+        "rdfs:Class"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "A qualified structural relation or purpose-specific mapping claim between two concepts."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "concept relation assertion"
+      },
+      "rdfs:subClassOf": [
+        {
+          "@id": "prov:Entity"
+        },
+        {
+          "@id": "rdf:Statement"
+        }
+      ]
+    },
+    {
+      "@id": "omaro:ConditionState",
+      "@type": [
+        "owl:Class",
+        "rdfs:Class"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "A time-bounded condition of an object or component, kept distinct from the configuration it was intended to have."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "condition state"
+      },
+      "rdfs:subClassOf": {
+        "@id": "omaro:OrganologicalTarget"
+      }
+    },
+    {
+      "@id": "omaro:Evidence",
+      "@type": [
+        "owl:Class",
+        "rdfs:Class"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "A structured citation, resource, or note directionally related to an assertion, observation, criterion, or review decision."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "evidence record"
+      },
+      "rdfs:subClassOf": {
+        "@id": "prov:Entity"
+      }
+    },
+    {
+      "@id": "omaro:FunctionalModule",
+      "@type": [
+        "owl:Class",
+        "rdfs:Class"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "A functional subsystem or configurable module participating in sound production or control."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "functional module"
+      },
+      "rdfs:subClassOf": {
+        "@id": "omaro:OrganologicalTarget"
+      }
+    },
+    {
+      "@id": "omaro:InstrumentComponent",
+      "@type": [
+        "owl:Class",
+        "rdfs:Class"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "A physical component that can be observed or classified without propagating its class to the whole object."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "instrument component"
+      },
+      "rdfs:subClassOf": {
+        "@id": "omaro:OrganologicalTarget"
+      }
+    },
+    {
+      "@id": "omaro:InstrumentConfiguration",
+      "@type": [
+        "owl:Class",
+        "rdfs:Class"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "A time-bounded arrangement of an object, components, modules, accessories, or signal path that may receive its own classification."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "instrument configuration"
+      },
+      "rdfs:subClassOf": {
+        "@id": "omaro:OrganologicalTarget"
+      }
+    },
+    {
+      "@id": "omaro:LabelAssertion",
+      "@type": [
+        "owl:Class",
+        "rdfs:Class"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "A contextualized assertion that assigns a lexical label to a concept."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "label assertion"
+      },
+      "rdfs:subClassOf": [
+        {
+          "@id": "prov:Entity"
+        },
+        {
+          "@id": "rdf:Statement"
+        }
+      ]
+    },
+    {
+      "@id": "omaro:LabelProfile",
+      "@type": [
+        "owl:Class",
+        "rdfs:Class"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "A conservative linguistic and display profile attached to one assertion-scoped label resource."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "label linguistic profile"
+      },
+      "rdfs:subClassOf": {
+        "@id": "prov:Entity"
+      }
+    },
+    {
+      "@id": "omaro:NoteAssertion",
+      "@type": [
+        "owl:Class",
+        "rdfs:Class"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "A contextualized assertion that assigns a definition or other SKOS note to a concept."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "note assertion"
+      },
+      "rdfs:subClassOf": [
+        {
+          "@id": "prov:Entity"
+        },
+        {
+          "@id": "rdf:Statement"
+        }
+      ]
+    },
+    {
+      "@id": "omaro:ObservationAssessment",
+      "@type": [
+        "owl:Class",
+        "rdfs:Class"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "A record of whether an organological property was observed or applicable; it is not itself an observation activity when the status is non-observation or non-applicability."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "observation assessment"
+      }
+    },
+    {
+      "@id": "omaro:ObservationResult",
+      "@type": [
+        "owl:Class",
+        "rdfs:Class"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "A categorical, literal, quantity, or range result of an organological observation."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "observation result"
+      },
+      "rdfs:subClassOf": {
+        "@id": "prov:Entity"
+      }
+    },
+    {
+      "@id": "omaro:OrganologicalObservation",
+      "@type": [
+        "owl:Class",
+        "rdfs:Class"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "An observation or measurement of a target or part, recording property, result, procedure, observer, and time before classification inference."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "organological observation"
+      },
+      "rdfs:subClassOf": [
+        {
+          "@id": "crmsci:S27_Observation"
+        },
+        {
+          "@id": "omaro:ObservationAssessment"
+        },
+        {
+          "@id": "sosa:Observation"
+        }
+      ]
+    },
+    {
+      "@id": "omaro:OrganologicalTarget",
+      "@type": [
+        "owl:Class",
+        "rdfs:Class"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "A target whose physical identity, component structure, configuration, state, sounding realization, or performance role may be described independently."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "organological target"
+      }
+    },
+    {
+      "@id": "omaro:Perspective",
+      "@type": [
+        "owl:Class",
+        "rdfs:Class"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "An explicit source, institutional, scholarly, community, curatorial, historical, or technical standpoint from which an assertion is made or evaluated."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "named perspective"
+      },
+      "rdfs:subClassOf": {
+        "@id": "prov:Entity"
+      }
+    },
+    {
+      "@id": "omaro:ProjectionPolicy",
+      "@type": [
+        "owl:Class",
+        "rdfs:Class"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "A versioned rule set governing which qualified assertions may appear in a named graph or simplified direct view."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "projection policy"
+      },
+      "rdfs:subClassOf": {
+        "@id": "prov:Entity"
+      }
+    },
+    {
+      "@id": "omaro:ProtocolApplication",
+      "@type": [
+        "owl:Class",
+        "rdfs:Class"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "The application of an authoritative cultural or community protocol to specified resources, separate from legal rights and epistemic review."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "protocol application"
+      },
+      "rdfs:subClassOf": {
+        "@id": "prov:Entity"
+      }
+    },
+    {
+      "@id": "omaro:QualityFinding",
+      "@type": [
+        "owl:Class",
+        "rdfs:Class"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "An occurrence of a quality rule against a target assertion, retained as a review signal."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "quality finding"
+      },
+      "rdfs:subClassOf": {
+        "@id": "prov:Entity"
+      }
+    },
+    {
+      "@id": "omaro:QualityRule",
+      "@type": [
+        "owl:Class",
+        "rdfs:Class"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "A deterministic validation or review-signal rule that has no human review effect by itself."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "quality rule"
+      }
+    },
+    {
+      "@id": "omaro:ReviewDecision",
+      "@type": [
+        "owl:Class",
+        "rdfs:Class"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "The durable outcome entity generated by a review event; lifecycle links apply to decisions rather than to the activities that created them."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "review decision"
+      },
+      "rdfs:subClassOf": {
+        "@id": "prov:Entity"
+      }
+    },
+    {
+      "@id": "omaro:ReviewEvent",
+      "@type": [
+        "owl:Class",
+        "rdfs:Class"
+      ],
+      "owl:disjointWith": [
+        {
+          "@id": "omaro:ClassificationAssertion"
+        },
+        {
+          "@id": "omaro:ConceptRelationAssertion"
+        },
+        {
+          "@id": "omaro:LabelAssertion"
+        },
+        {
+          "@id": "omaro:NoteAssertion"
+        },
+        {
+          "@id": "omaro:ReviewDecision"
+        }
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "A provenance-bearing review activity that evaluates an assertion and generates a distinct review decision."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "review event"
+      },
+      "rdfs:subClassOf": {
+        "@id": "prov:Activity"
+      }
+    },
+    {
+      "@id": "omaro:ReviewRequirement",
+      "@type": [
+        "owl:Class",
+        "rdfs:Class"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "A minimum reviewer-authority, validation-dimension, outcome, and independence condition used by a projection policy."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "review requirement"
+      }
+    },
+    {
+      "@id": "omaro:ReviewStatus",
+      "@type": [
+        "owl:Class",
+        "rdfs:Class"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "A controlled lifecycle status used for assertions without collapsing separate review decisions."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "review status"
+      }
+    },
+    {
+      "@id": "omaro:SoundingRealization",
+      "@type": [
+        "owl:Class",
+        "rdfs:Class"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "A particular occurrence or configuration of sounding, distinct from a physical artefact realization in other music ontologies."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "sounding realization"
+      },
+      "rdfs:subClassOf": {
+        "@id": "omaro:OrganologicalTarget"
+      }
+    },
+    {
+      "@id": "omaro:UseDecision",
+      "@type": [
+        "owl:Class",
+        "rdfs:Class"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "An action-, purpose-, audience-, and time-specific authorization decision governing publication or reuse."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "use decision"
+      },
+      "rdfs:subClassOf": {
+        "@id": "prov:Entity"
+      }
+    },
+    {
+      "@id": "omaro:VetoRule",
+      "@type": [
+        "owl:Class",
+        "rdfs:Class"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "A policy rule identifying active review decisions that prevent an assertion from entering a projection."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "review veto rule"
+      }
+    },
+    {
+      "@id": "omaro:actualPlayingTechnique",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Identifies a playing technique observed in an actual sounding realization or performance."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "actual playing technique"
+      }
+    },
+    {
+      "@id": "omaro:appliedBy",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Identifies the agent that recorded or applied a protocol to the target resources."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "applied by"
+      },
+      "rdfs:range": {
+        "@id": "prov:Agent"
+      }
+    },
+    {
+      "@id": "omaro:appliesToCommunity",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Identifies a community for which the described scope or label profile applies."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "applies to community"
+      }
+    },
+    {
+      "@id": "omaro:appliesToInstrumentConfiguration",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Identifies an instrument configuration for which an assertion applies."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "applies to instrument configuration"
+      }
+    },
+    {
+      "@id": "omaro:appliesToLanguageVariety",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Identifies a language variety for which an assertion applies."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "applies to language variety"
+      }
+    },
+    {
+      "@id": "omaro:appliesToPeriod",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Identifies a historical or cultural period for which the described scope applies."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "applies to period"
+      }
+    },
+    {
+      "@id": "omaro:appliesToPlace",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Identifies a place for which the described scope or label profile applies."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "applies to place"
+      }
+    },
+    {
+      "@id": "omaro:appliesToPlayingTechnique",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Identifies a playing technique for which an assertion applies."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "applies to playing technique"
+      }
+    },
+    {
+      "@id": "omaro:appliesToUsageDomain",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Identifies a usage domain for which the described scope or label profile applies."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "applies to usage domain"
+      }
+    },
+    {
+      "@id": "omaro:assertionOrigin",
+      "@type": [
+        "owl:DatatypeProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "States whether a record is source-asserted, source-derived, or locally authored."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "assertion origin"
+      },
+      "rdfs:range": {
+        "@id": "xsd:string"
+      }
+    },
+    {
+      "@id": "omaro:assessmentAgent",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Identifies the agent responsible for an observation assessment record."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "assessment agent"
+      },
+      "rdfs:range": {
+        "@id": "prov:Agent"
+      }
+    },
+    {
+      "@id": "omaro:assessmentFeatureOfInterest",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Identifies the target considered by an observation assessment without claiming that an observation occurred."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "assessment feature of interest"
+      }
+    },
+    {
+      "@id": "omaro:assessmentPart",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Identifies the part or component considered by an assessment without claiming that an observation occurred."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "assessment part"
+      },
+      "rdfs:range": {
+        "@id": "omaro:OrganologicalTarget"
+      }
+    },
+    {
+      "@id": "omaro:assessmentProcedure",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Identifies the procedure attempted, planned, or assessed for applicability."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "assessment procedure"
+      }
+    },
+    {
+      "@id": "omaro:assessmentProperty",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Identifies the property considered by an observation assessment."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "assessment property"
+      }
+    },
+    {
+      "@id": "omaro:assessmentResult",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Links an observation assessment to its structured result when one exists."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "assessment result"
+      },
+      "rdfs:range": {
+        "@id": "omaro:ObservationResult"
+      }
+    },
+    {
+      "@id": "omaro:assessmentSensor",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Identifies the sensor used or considered by an observation assessment."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "assessment sensor"
+      }
+    },
+    {
+      "@id": "omaro:assessmentStatus",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Distinguishes detection, non-detection, indeterminacy, non-observation, and non-applicability."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "assessment status"
+      },
+      "rdfs:range": {
+        "@id": "skos:Concept"
+      }
+    },
+    {
+      "@id": "omaro:assessmentTime",
+      "@type": [
+        "owl:DatatypeProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Records when the observation result or non-observation assessment was produced."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "assessment time"
+      },
+      "rdfs:range": {
+        "@id": "xsd:dateTime"
+      }
+    },
+    {
+      "@id": "omaro:assignedBy",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Identifies the agent responsible for making an assignment occurrence."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "assigned by"
+      },
+      "rdfs:range": {
+        "@id": "prov:Agent"
+      }
+    },
+    {
+      "@id": "omaro:assignmentStatus",
+      "@type": [
+        "owl:DatatypeProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Records the lifecycle status of an authority assignment or perspective."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "assignment status"
+      },
+      "rdfs:range": {
+        "@id": "xsd:string"
+      }
+    },
+    {
+      "@id": "omaro:audio",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Links a label profile to an evidenced audio resource."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "audio"
+      }
+    },
+    {
+      "@id": "omaro:authorityAssignment",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Links a perspective, assertion, or review decision to the mandate that authorizes it."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "authority assignment"
+      },
+      "rdfs:range": {
+        "@id": "omaro:AuthorityAssignment"
+      }
+    },
+    {
+      "@id": "omaro:authorityBasis",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Links an authority assignment to the resource documenting its mandate."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "authority basis"
+      }
+    },
+    {
+      "@id": "omaro:authorityRole",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Records the controlled authority role granted by a mandate."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "authority role"
+      },
+      "rdfs:range": {
+        "@id": "skos:Concept"
+      }
+    },
+    {
+      "@id": "omaro:categoricalValue",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Links an observation result to a controlled categorical value."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "categorical value"
+      }
+    },
+    {
+      "@id": "omaro:classificationAssignment",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Links an assertion to the distinct assignment activity that generated it."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "classification assignment"
+      },
+      "rdfs:range": {
+        "@id": "omaro:ClassificationAssignment"
+      }
+    },
+    {
+      "@id": "omaro:classificationCriterion",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Identifies a governed criterion applied when producing a classification assertion."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "classification criterion"
+      },
+      "rdfs:range": {
+        "@id": "omaro:ClassificationCriterion"
+      }
+    },
+    {
+      "@id": "omaro:classificationExpression",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Links an assertion or source concept to an ordered compound classification expression."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "classification expression"
+      },
+      "rdfs:range": {
+        "@id": "omaro:ClassificationExpression"
+      }
+    },
+    {
+      "@id": "omaro:classificationMethod",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Records the method used to produce a classification or concept-relation assertion."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "classification method"
+      },
+      "rdfs:range": {
+        "@id": "skos:Concept"
+      }
+    },
+    {
+      "@id": "omaro:classificationScheme",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Identifies the concept scheme used by a classification assertion."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "classification scheme"
+      },
+      "rdfs:range": {
+        "@id": "skos:ConceptScheme"
+      }
+    },
+    {
+      "@id": "omaro:classifiedAs",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Links a classification assertion target to the classification concept asserted for it."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "classified as"
+      },
+      "rdfs:range": {
+        "@id": "skos:Concept"
+      }
+    },
+    {
+      "@id": "omaro:combinationOperator",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Identifies the controlled operator joining the members of a classification expression."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "combination operator"
+      },
+      "rdfs:range": {
+        "@id": "skos:Concept"
+      }
+    },
+    {
+      "@id": "omaro:componentOf",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Links a component to the target of which it is a physical or functional part."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "component of"
+      },
+      "rdfs:range": {
+        "@id": "omaro:OrganologicalTarget"
+      }
+    },
+    {
+      "@id": "omaro:componentRole",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Identifies the evidenced role of a component in a configuration."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "component role"
+      }
+    },
+    {
+      "@id": "omaro:conditionStateOf",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Links a condition state to the target whose condition it records."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "condition state of"
+      },
+      "rdfs:range": {
+        "@id": "omaro:OrganologicalTarget"
+      }
+    },
+    {
+      "@id": "omaro:conferredBy",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Identifies the agent that granted an authority assignment."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "conferred by"
+      },
+      "rdfs:range": {
+        "@id": "prov:Agent"
+      }
+    },
+    {
+      "@id": "omaro:configurationOf",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Links a configuration to the persistent target configured in that state."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "configuration of"
+      },
+      "rdfs:range": {
+        "@id": "omaro:OrganologicalTarget"
+      }
+    },
+    {
+      "@id": "omaro:consentAssessedBy",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Identifies the agent responsible for the separately recorded consent determination; it does not itself prove valid consent."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "consent assessed by"
+      },
+      "rdfs:range": {
+        "@id": "prov:Agent"
+      }
+    },
+    {
+      "@id": "omaro:consentRecord",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Links a use decision to a public-safe authorization reference for any required individual consent."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "consent record"
+      }
+    },
+    {
+      "@id": "omaro:consentStatus",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Records whether required individual consent is documented, not required, unknown, withheld, or withdrawn."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "consent status"
+      },
+      "rdfs:range": {
+        "@id": "skos:Concept"
+      }
+    },
+    {
+      "@id": "omaro:contextMatchRequired",
+      "@type": [
+        "owl:DatatypeProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "States whether a projection policy requires supplied context to match every applicable scope constraint."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "context match required"
+      },
+      "rdfs:range": {
+        "@id": "xsd:boolean"
+      }
+    },
+    {
+      "@id": "omaro:coveredAction",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Identifies a use action that an authority mandate explicitly empowers its holder to decide."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "covered action"
+      },
+      "rdfs:range": {
+        "@id": "skos:Concept"
+      }
+    },
+    {
+      "@id": "omaro:coveredValidationDimension",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Records a validation dimension covered by an authority assignment."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "covered validation dimension"
+      },
+      "rdfs:range": {
+        "@id": "skos:Concept"
+      }
+    },
+    {
+      "@id": "omaro:criterionStatus",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Identifies the controlled lifecycle status of a classification criterion."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "criterion status"
+      },
+      "rdfs:range": {
+        "@id": "skos:Concept"
+      }
+    },
+    {
+      "@id": "omaro:criterionType",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Identifies the organological facet addressed by a classification criterion."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "criterion type"
+      },
+      "rdfs:range": {
+        "@id": "skos:Concept"
+      }
+    },
+    {
+      "@id": "omaro:decidedBy",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Identifies the authorized agent responsible for a use decision."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "decided by"
+      },
+      "rdfs:range": {
+        "@id": "prov:Agent"
+      }
+    },
+    {
+      "@id": "omaro:decisionMethod",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Identifies the community- or authority-defined procedure by which a use decision was reached."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "decision method"
+      }
+    },
+    {
+      "@id": "omaro:decisionStatus",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Records whether a review decision is active, suspended, superseded, or otherwise lifecycle-limited."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "decision status"
+      },
+      "rdfs:range": {
+        "@id": "skos:Concept"
+      }
+    },
+    {
+      "@id": "omaro:defaultScriptSubtag",
+      "@type": [
+        "owl:DatatypeProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Records a registry-supported default script subtag without treating it as an observed script."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "default script subtag"
+      },
+      "rdfs:range": {
+        "@id": "xsd:string"
+      }
+    },
+    {
+      "@id": "omaro:delegationPermitted",
+      "@type": [
+        "owl:DatatypeProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "States whether an authority assignment permits the authorized agent to delegate its mandate."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "delegation permitted"
+      },
+      "rdfs:range": {
+        "@id": "xsd:boolean"
+      }
+    },
+    {
+      "@id": "omaro:directAssertion",
+      "@type": [
+        "owl:DatatypeProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "States whether a projection policy may emit simplified direct RDF assertions."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "direct assertion"
+      },
+      "rdfs:range": {
+        "@id": "xsd:boolean"
+      }
+    },
+    {
+      "@id": "omaro:displayPolicy",
+      "@type": [
+        "owl:DatatypeProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Records how a contextualized label may be displayed."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "display policy"
+      },
+      "rdfs:range": {
+        "@id": "xsd:string"
+      }
+    },
+    {
+      "@id": "omaro:eligibleReviewerAuthority",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Records a reviewer-authority code eligible to satisfy a requirement or veto rule."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "eligible reviewer authority"
+      },
+      "rdfs:range": {
+        "@id": "skos:Concept"
+      }
+    },
+    {
+      "@id": "omaro:eligibleStance",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Records a claim stance eligible for a projection policy."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "eligible stance"
+      },
+      "rdfs:range": {
+        "@id": "skos:Concept"
+      }
+    },
+    {
+      "@id": "omaro:enforcementMode",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Identifies whether a protocol is advisory, requires human decision, or has an authorized machine-enforceable rule."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "enforcement mode"
+      },
+      "rdfs:range": {
+        "@id": "skos:Concept"
+      }
+    },
+    {
+      "@id": "omaro:evidenceRelation",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Identifies whether evidence supports, opposes, qualifies, or documents a claim or decision."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "evidence relation"
+      },
+      "rdfs:range": {
+        "@id": "skos:Concept"
+      }
+    },
+    {
+      "@id": "omaro:evidenceType",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Records the controlled category of an evidence resource."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "evidence type"
+      },
+      "rdfs:range": {
+        "@id": "skos:Concept"
+      }
+    },
+    {
+      "@id": "omaro:explicitScriptSubtag",
+      "@type": [
+        "owl:DatatypeProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Records the explicit BCP 47 script subtag supplied with a label."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "explicit script subtag"
+      },
+      "rdfs:range": {
+        "@id": "xsd:string"
+      }
+    },
+    {
+      "@id": "omaro:extensionSubtag",
+      "@type": [
+        "owl:DatatypeProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Records one BCP 47 extension subtag supplied with a label."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "extension subtag"
+      },
+      "rdfs:range": {
+        "@id": "xsd:string"
+      }
+    },
+    {
+      "@id": "omaro:generatedAssertion",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Links an assignment activity to the assertion entity it generated."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "generated assertion"
+      },
+      "rdfs:range": {
+        "@id": "omaro:ClassificationAssertion"
+      }
+    },
+    {
+      "@id": "omaro:governance",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Links a concept scheme or perspective to its governance resource."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "governance"
+      }
+    },
+    {
+      "@id": "omaro:graphRole",
+      "@type": [
+        "owl:DatatypeProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Records the intended role of the graph produced by a projection policy."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "graph role"
+      },
+      "rdfs:range": {
+        "@id": "xsd:string"
+      }
+    },
+    {
+      "@id": "omaro:hasApplicabilityScope",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Links a qualified assertion, mandate, or review decision to an applicability scope."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "has applicability scope"
+      },
+      "rdfs:range": {
+        "@id": "omaro:ApplicabilityScope"
+      }
+    },
+    {
+      "@id": "omaro:hasCommonOrInheritedCharacters",
+      "@type": [
+        "owl:DatatypeProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "States whether a label contains Unicode Common or Inherited script characters."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "has common or inherited characters"
+      },
+      "rdfs:range": {
+        "@id": "xsd:boolean"
+      }
+    },
+    {
+      "@id": "omaro:hasComponent",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Links a target or configuration to one of its physical components."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "has component"
+      },
+      "rdfs:range": {
+        "@id": "omaro:OrganologicalTarget"
+      }
+    },
+    {
+      "@id": "omaro:hasEvidence",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Links an assertion or review decision to a structured evidence record."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "has evidence"
+      },
+      "rdfs:range": {
+        "@id": "omaro:Evidence"
+      }
+    },
+    {
+      "@id": "omaro:hasExpressionMember",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Links a compound classification expression to one ordered member."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "has expression member"
+      },
+      "rdfs:range": {
+        "@id": "omaro:ClassificationExpressionMember"
+      }
+    },
+    {
+      "@id": "omaro:hasFunctionalModule",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Links a target or configuration to a functional subsystem or module."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "has functional module"
+      },
+      "rdfs:range": {
+        "@id": "omaro:FunctionalModule"
+      }
+    },
+    {
+      "@id": "omaro:heldBy",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Identifies the agent responsible for a named perspective."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "held by"
+      },
+      "rdfs:range": {
+        "@id": "prov:Agent"
+      }
+    },
+    {
+      "@id": "omaro:includesSourceLayer",
+      "@type": [
+        "owl:DatatypeProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "States whether a projection policy includes preserved source statements."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "includes source layer"
+      },
+      "rdfs:range": {
+        "@id": "xsd:boolean"
+      }
+    },
+    {
+      "@id": "omaro:inferenceLogic",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Identifies the documented inference logic applied by a classification assignment."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "inference logic"
+      }
+    },
+    {
+      "@id": "omaro:integrityAttestation",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Links to a public-safe external attestation when protocol integrity was not recomputed from a bundled artifact."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "integrity attestation"
+      }
+    },
+    {
+      "@id": "omaro:integrityVerificationMethod",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Distinguishes locally recomputed SHA-256 verification from an identified external attestation or no verification."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "integrity verification method"
+      },
+      "rdfs:range": {
+        "@id": "skos:Concept"
+      }
+    },
+    {
+      "@id": "omaro:intendedPlayingTechnique",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Identifies an intended or prescribed technique without claiming that it occurred."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "intended playing technique"
+      }
+    },
+    {
+      "@id": "omaro:issuedBy",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Identifies the authority or community agent that issued an applied protocol."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "issued by"
+      },
+      "rdfs:range": {
+        "@id": "prov:Agent"
+      }
+    },
+    {
+      "@id": "omaro:labelProfile",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Links an assertion-scoped lexical resource to its conservative linguistic profile."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "label profile"
+      },
+      "rdfs:range": {
+        "@id": "omaro:LabelProfile"
+      }
+    },
+    {
+      "@id": "omaro:labelResource",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Links a label assertion or profile to its assertion-scoped SKOS-XL label resource."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "label resource"
+      },
+      "rdfs:range": {
+        "@id": "skosxl:Label"
+      }
+    },
+    {
+      "@id": "omaro:languageRegistry",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Identifies the versioned language registry used to validate a label tag."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "language registry"
+      },
+      "rdfs:range": {
+        "@id": "prov:Entity"
+      }
+    },
+    {
+      "@id": "omaro:languageTagStatus",
+      "@type": [
+        "owl:DatatypeProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Records the validation and canonicalization status of a submitted language tag."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "language tag status"
+      },
+      "rdfs:range": {
+        "@id": "xsd:string"
+      }
+    },
+    {
+      "@id": "omaro:languageVariety",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Identifies an evidenced language variety associated with a label profile."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "language variety"
+      }
+    },
+    {
+      "@id": "omaro:legalBasis",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Links a use decision to a public-safe reference documenting the independently assessed legal basis."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "legal basis"
+      }
+    },
+    {
+      "@id": "omaro:legalBasisAssessedBy",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Identifies the agent responsible for the separately recorded legal-basis determination; it does not itself prove legal compliance."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "legal basis assessed by"
+      },
+      "rdfs:range": {
+        "@id": "prov:Agent"
+      }
+    },
+    {
+      "@id": "omaro:legalBasisStatus",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Records whether the legal basis is documented, not required, unknown, or blocking publication."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "legal basis status"
+      },
+      "rdfs:range": {
+        "@id": "skos:Concept"
+      }
+    },
+    {
+      "@id": "omaro:localSuffixNotation",
+      "@type": [
+        "owl:DatatypeProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Preserves suffix notation explicitly scoped to one expression member."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "local suffix notation"
+      },
+      "rdfs:range": {
+        "@id": "xsd:string"
+      }
+    },
+    {
+      "@id": "omaro:mapping-purpose-data-transformation",
+      "@type": "skos:Concept",
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "skos:definition": {
+        "@language": "en",
+        "@value": "Suitability as an input to an explicitly reviewed data transformation; the declaration does not guarantee a lossless conversion."
+      },
+      "skos:inScheme": {
+        "@id": "omaro:vocabulary-mapping-purpose"
+      },
+      "skos:notation": "data-transformation",
+      "skos:prefLabel": {
+        "@language": "en",
+        "@value": "data transformation"
+      },
+      "skos:scopeNote": {
+        "@language": "en",
+        "@value": "A mapping-purpose declaration states intended operational suitability. It is not a licence, permission, cultural authorization, or substitute for an applicable OMARO use decision and protocol."
+      }
+    },
+    {
+      "@id": "omaro:mapping-purpose-display-navigation",
+      "@type": "skos:Concept",
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "skos:definition": {
+        "@language": "en",
+        "@value": "Suitability for presenting a human-readable navigation link between the mapped concepts under the assertion's stated qualifications."
+      },
+      "skos:inScheme": {
+        "@id": "omaro:vocabulary-mapping-purpose"
+      },
+      "skos:notation": "display-navigation",
+      "skos:prefLabel": {
+        "@language": "en",
+        "@value": "display navigation"
+      },
+      "skos:scopeNote": {
+        "@language": "en",
+        "@value": "A mapping-purpose declaration states intended operational suitability. It is not a licence, permission, cultural authorization, or substitute for an applicable OMARO use decision and protocol."
+      }
+    },
+    {
+      "@id": "omaro:mapping-purpose-query-expansion",
+      "@type": "skos:Concept",
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "skos:definition": {
+        "@language": "en",
+        "@value": "Suitability for expanding a retrieval query across the mapped concepts under the assertion's stated qualifications."
+      },
+      "skos:inScheme": {
+        "@id": "omaro:vocabulary-mapping-purpose"
+      },
+      "skos:notation": "query-expansion",
+      "skos:prefLabel": {
+        "@language": "en",
+        "@value": "query expansion"
+      },
+      "skos:scopeNote": {
+        "@language": "en",
+        "@value": "A mapping-purpose declaration states intended operational suitability. It is not a licence, permission, cultural authorization, or substitute for an applicable OMARO use decision and protocol."
+      }
+    },
+    {
+      "@id": "omaro:mapping-purpose-scholarly-comparison",
+      "@type": "skos:Concept",
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "skos:definition": {
+        "@language": "en",
+        "@value": "Suitability for comparative research across the mapped concepts or classification systems under the assertion's stated qualifications."
+      },
+      "skos:inScheme": {
+        "@id": "omaro:vocabulary-mapping-purpose"
+      },
+      "skos:notation": "scholarly-comparison",
+      "skos:prefLabel": {
+        "@language": "en",
+        "@value": "scholarly comparison"
+      },
+      "skos:scopeNote": {
+        "@language": "en",
+        "@value": "A mapping-purpose declaration states intended operational suitability. It is not a licence, permission, cultural authorization, or substitute for an applicable OMARO use decision and protocol."
+      }
+    },
+    {
+      "@id": "omaro:mappingPurpose",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Identifies an operation for which a qualified SKOS mapping is stated to be suitable; it does not grant permission or establish cultural authorization."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "mapping purpose"
+      },
+      "rdfs:range": {
+        "@id": "skos:Concept"
+      }
+    },
+    {
+      "@id": "omaro:maximumValue",
+      "@type": [
+        "owl:DatatypeProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Records the maximum numeric value of a range observation result."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "maximum value"
+      },
+      "rdfs:range": {
+        "@id": "xsd:string"
+      }
+    },
+    {
+      "@id": "omaro:memberAssertion",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Links an expression member to the qualified assertion it groups."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "member assertion"
+      },
+      "rdfs:range": {
+        "@id": "omaro:ClassificationAssertion"
+      }
+    },
+    {
+      "@id": "omaro:memberClassification",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Links an expression member to its classification concept."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "member classification"
+      },
+      "rdfs:range": {
+        "@id": "skos:Concept"
+      }
+    },
+    {
+      "@id": "omaro:memberNotation",
+      "@type": [
+        "owl:DatatypeProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Preserves the source notation of one expression member."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "member notation"
+      },
+      "rdfs:range": {
+        "@id": "xsd:string"
+      }
+    },
+    {
+      "@id": "omaro:memberTarget",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Links an expression member to the component, configuration, or event it classifies."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "member target"
+      },
+      "rdfs:range": {
+        "@id": "omaro:OrganologicalTarget"
+      }
+    },
+    {
+      "@id": "omaro:minimumIndependentReviewers",
+      "@type": [
+        "owl:DatatypeProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "States the minimum number of independent authorized reviewers required by a policy or review requirement."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "minimum independent reviewers"
+      },
+      "rdfs:range": {
+        "@id": "xsd:integer"
+      }
+    },
+    {
+      "@id": "omaro:minimumValue",
+      "@type": [
+        "owl:DatatypeProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Records the minimum numeric value of a range observation result."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "minimum value"
+      },
+      "rdfs:range": {
+        "@id": "xsd:string"
+      }
+    },
+    {
+      "@id": "omaro:normalizedForm",
+      "@type": [
+        "owl:DatatypeProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Records the project-normalized lexical form while preserving the submitted form separately."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "normalized form"
+      },
+      "rdfs:range": {
+        "@id": "xsd:string"
+      }
+    },
+    {
+      "@id": "omaro:notationGrammar",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Identifies the versioned grammar used to parse a classification expression."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "notation grammar"
+      }
+    },
+    {
+      "@id": "omaro:notationLiteral",
+      "@type": [
+        "owl:DatatypeProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Preserves a complete classification expression exactly as supplied by its source."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "notation literal"
+      },
+      "rdfs:range": {
+        "@id": "xsd:string"
+      }
+    },
+    {
+      "@id": "omaro:numericValue",
+      "@type": [
+        "owl:DatatypeProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Records the numeric value of a quantity observation result."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "numeric value"
+      },
+      "rdfs:range": {
+        "@id": "xsd:string"
+      }
+    },
+    {
+      "@id": "omaro:observableProperty",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Identifies a property that a classification criterion expects to be observed."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "observable property"
+      }
+    },
+    {
+      "@id": "omaro:observedScript",
+      "@type": [
+        "owl:DatatypeProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Records a Unicode Script code observed in the characters of a label."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "observed script"
+      },
+      "rdfs:range": {
+        "@id": "xsd:string"
+      }
+    },
+    {
+      "@id": "omaro:parseStatus",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Identifies whether expression structure is merely tokenized or expert interpreted."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "parse status"
+      },
+      "rdfs:range": {
+        "@id": "skos:Concept"
+      }
+    },
+    {
+      "@id": "omaro:performanceEvent",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Links a sounding realization or configured target to its performance event."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "performance event"
+      },
+      "rdfs:range": {
+        "@id": "omaro:OrganologicalTarget"
+      }
+    },
+    {
+      "@id": "omaro:perspective",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Links an assertion, scope, or review decision to the perspective under which it is expressed."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "perspective"
+      },
+      "rdfs:range": {
+        "@id": "omaro:Perspective"
+      }
+    },
+    {
+      "@id": "omaro:perspectiveType",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Records the controlled category of a named perspective."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "perspective type"
+      },
+      "rdfs:range": {
+        "@id": "skos:Concept"
+      }
+    },
+    {
+      "@id": "omaro:policyVersion",
+      "@type": [
+        "owl:DatatypeProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Records the semantic version of a projection policy."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "policy version"
+      },
+      "rdfs:range": {
+        "@id": "xsd:string"
+      }
+    },
+    {
+      "@id": "omaro:primaryLanguageSubtag",
+      "@type": [
+        "owl:DatatypeProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Records the primary language subtag parsed from a submitted language tag."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "primary language subtag"
+      },
+      "rdfs:range": {
+        "@id": "xsd:string"
+      }
+    },
+    {
+      "@id": "omaro:privateUseSubtag",
+      "@type": [
+        "owl:DatatypeProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Records one BCP 47 private-use subtag supplied with a label."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "private use subtag"
+      },
+      "rdfs:range": {
+        "@id": "xsd:string"
+      }
+    },
+    {
+      "@id": "omaro:pronunciation",
+      "@type": [
+        "owl:DatatypeProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Records an evidenced textual pronunciation associated with a label profile."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "pronunciation"
+      },
+      "rdfs:range": {
+        "@id": "xsd:string"
+      }
+    },
+    {
+      "@id": "omaro:protocol",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Links a protocol application to the authoritative external or community protocol resource."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "protocol"
+      }
+    },
+    {
+      "@id": "omaro:protocolApplication",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Links a governed resource or use decision to an applicable protocol record."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "protocol application"
+      },
+      "rdfs:range": {
+        "@id": "omaro:ProtocolApplication"
+      }
+    },
+    {
+      "@id": "omaro:protocolArtifactPath",
+      "@type": [
+        "owl:DatatypeProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Records the safe dataset-relative path of a bundled protocol representation whose SHA-256 digest was recomputed."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "protocol artifact path"
+      },
+      "rdfs:range": {
+        "@id": "xsd:string"
+      }
+    },
+    {
+      "@id": "omaro:protocolIntegritySha256",
+      "@type": [
+        "owl:DatatypeProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Records the lowercase SHA-256 digest used to verify the resolved protocol representation."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "protocol integrity sha256"
+      },
+      "rdfs:range": {
+        "@id": "xsd:string"
+      }
+    },
+    {
+      "@id": "omaro:protocolResolutionStatus",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Records whether the referenced protocol was resolved and integrity-verified for this application."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "protocol resolution status"
+      },
+      "rdfs:range": {
+        "@id": "skos:Concept"
+      }
+    },
+    {
+      "@id": "omaro:protocolStatus",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Identifies the controlled lifecycle status of a protocol application."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "protocol status"
+      },
+      "rdfs:range": {
+        "@id": "skos:Concept"
+      }
+    },
+    {
+      "@id": "omaro:protocolType",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Identifies the externally governed type of a cultural protocol without locally imitating it."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "protocol type"
+      }
+    },
+    {
+      "@id": "omaro:qualityRule",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Links a quality finding to the deterministic rule that produced it."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "quality rule"
+      },
+      "rdfs:range": {
+        "@id": "omaro:QualityRule"
+      }
+    },
+    {
+      "@id": "omaro:rationale",
+      "@type": [
+        "owl:DatatypeProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Records the explanatory rationale supplied with a review decision."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "rationale"
+      },
+      "rdfs:range": {
+        "@id": "xsd:string"
+      }
+    },
+    {
+      "@id": "omaro:realizesInstrumentConcept",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Links a physical or configured target to an instrument concept it realizes in context."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "realizes instrument concept"
+      },
+      "rdfs:range": {
+        "@id": "skos:Concept"
+      }
+    },
+    {
+      "@id": "omaro:regionSubtag",
+      "@type": [
+        "owl:DatatypeProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Records the region subtag parsed from a submitted language tag."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "region subtag"
+      },
+      "rdfs:range": {
+        "@id": "xsd:string"
+      }
+    },
+    {
+      "@id": "omaro:reinstatesDecision",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Links a review event to a suspended decision it explicitly restores."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "reinstates decision"
+      },
+      "rdfs:range": {
+        "@id": "omaro:ReviewDecision"
+      }
+    },
+    {
+      "@id": "omaro:representsCommunity",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Identifies a community explicitly represented by a perspective, mandate, or review decision."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "represents community"
+      },
+      "rdfs:range": {
+        "@id": "prov:Agent"
+      }
+    },
+    {
+      "@id": "omaro:requiredReviewOutcome",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Records an outcome that can satisfy a projection-policy review requirement."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "required review outcome"
+      },
+      "rdfs:range": {
+        "@id": "skos:Concept"
+      }
+    },
+    {
+      "@id": "omaro:resultKind",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Records whether an observation result is categorical, literal, quantitative, or a range."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "result kind"
+      },
+      "rdfs:range": {
+        "@id": "skos:Concept"
+      }
+    },
+    {
+      "@id": "omaro:reviewDecision",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Links a review event to the durable decision entity it generated."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "review decision"
+      },
+      "rdfs:range": {
+        "@id": "omaro:ReviewDecision"
+      }
+    },
+    {
+      "@id": "omaro:reviewEffect",
+      "@type": [
+        "owl:DatatypeProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Records whether a quality signal changes review state; automated OMARO findings use none."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "review effect"
+      },
+      "rdfs:range": {
+        "@id": "xsd:string"
+      }
+    },
+    {
+      "@id": "omaro:reviewMethod",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Records the method used to reach one review decision."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "review method"
+      },
+      "rdfs:range": {
+        "@id": "skos:Concept"
+      }
+    },
+    {
+      "@id": "omaro:reviewOutcome",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Records the non-collapsed outcome of one review event."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "review outcome"
+      },
+      "rdfs:range": {
+        "@id": "skos:Concept"
+      }
+    },
+    {
+      "@id": "omaro:reviewRequirement",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Links a projection policy to a declarative review requirement."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "review requirement"
+      },
+      "rdfs:range": {
+        "@id": "omaro:ReviewRequirement"
+      }
+    },
+    {
+      "@id": "omaro:reviewStatus",
+      "@type": [
+        "owl:DatatypeProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Records a compatibility code for the lifecycle status of an assertion."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "review status"
+      },
+      "rdfs:range": {
+        "@id": "xsd:string"
+      }
+    },
+    {
+      "@id": "omaro:reviewStatusResource",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Links an assertion to its controlled review-status resource."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "review status resource"
+      },
+      "rdfs:range": {
+        "@id": "omaro:ReviewStatus"
+      }
+    },
+    {
+      "@id": "omaro:reviewerAuthority",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Records the authority role under which a reviewer made a decision."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "reviewer authority"
+      },
+      "rdfs:range": {
+        "@id": "skos:Concept"
+      }
+    },
+    {
+      "@id": "omaro:revocationEffect",
+      "@type": [
+        "owl:DatatypeProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Records whether revocation of a mandate is prospective or retroactive."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "revocation effect"
+      },
+      "rdfs:range": {
+        "@id": "xsd:string"
+      }
+    },
+    {
+      "@id": "omaro:revocationEvent",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Links an authority assignment to the resource documenting its revocation."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "revocation event"
+      }
+    },
+    {
+      "@id": "omaro:schemePerspective",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Links a concept scheme to the perspective under which it is maintained or presented."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "scheme perspective"
+      },
+      "rdfs:range": {
+        "@id": "omaro:Perspective"
+      }
+    },
+    {
+      "@id": "omaro:schemeStatus",
+      "@type": [
+        "owl:DatatypeProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Records the lifecycle status of a registered concept scheme."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "scheme status"
+      },
+      "rdfs:range": {
+        "@id": "xsd:string"
+      }
+    },
+    {
+      "@id": "omaro:schemeType",
+      "@type": [
+        "owl:DatatypeProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Records the controlled category of a registered concept scheme."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "scheme type"
+      },
+      "rdfs:range": {
+        "@id": "xsd:string"
+      }
+    },
+    {
+      "@id": "omaro:schemeVersion",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Identifies the version of a concept scheme used by an assertion."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "scheme version"
+      }
+    },
+    {
+      "@id": "omaro:scopeMode",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "States the epistemic mode of an applicability scope, including explicit applicability and documented uncertainty."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "scope mode"
+      },
+      "rdfs:range": {
+        "@id": "skos:Concept"
+      }
+    },
+    {
+      "@id": "omaro:scriptObservationMethod",
+      "@type": [
+        "owl:DatatypeProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Records the versioned method used to observe Unicode Script values."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "script observation method"
+      },
+      "rdfs:range": {
+        "@id": "xsd:string"
+      }
+    },
+    {
+      "@id": "omaro:scriptRegistry",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Identifies the versioned Unicode Script registry used by a label profile."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "script registry"
+      },
+      "rdfs:range": {
+        "@id": "prov:Entity"
+      }
+    },
+    {
+      "@id": "omaro:searchPolicy",
+      "@type": [
+        "owl:DatatypeProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Records whether and with what warning a contextualized label may be indexed."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "search policy"
+      },
+      "rdfs:range": {
+        "@id": "xsd:string"
+      }
+    },
+    {
+      "@id": "omaro:sequenceIndex",
+      "@type": [
+        "owl:DatatypeProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Records the one-based order of a member in a classification expression."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "sequence index"
+      },
+      "rdfs:range": {
+        "@id": "xsd:string"
+      }
+    },
+    {
+      "@id": "omaro:sharedSuffixNotation",
+      "@type": [
+        "owl:DatatypeProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Preserves suffix notation explicitly documented as applying to several expression members."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "shared suffix notation"
+      },
+      "rdfs:range": {
+        "@id": "xsd:string"
+      }
+    },
+    {
+      "@id": "omaro:skosProjectionStatus",
+      "@type": [
+        "owl:DatatypeProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Records whether a label assertion is projected to direct SKOS and SKOS-XL links."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "skos projection status"
+      },
+      "rdfs:range": {
+        "@id": "xsd:string"
+      }
+    },
+    {
+      "@id": "omaro:sourceLabelAssertion",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Links a label profile to the source-qualified label assertion from which it was derived."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "source label assertion"
+      },
+      "rdfs:range": {
+        "@id": "omaro:LabelAssertion"
+      }
+    },
+    {
+      "@id": "omaro:sourceLayer",
+      "@type": [
+        "owl:DatatypeProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Records the named provenance layer to which a source record belongs."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "source layer"
+      },
+      "rdfs:range": {
+        "@id": "xsd:string"
+      }
+    },
+    {
+      "@id": "omaro:sourcePredicate",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Records the predicate used by a preserved source statement before qualified projection."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "source predicate"
+      },
+      "rdfs:range": {
+        "@id": "rdf:Property"
+      }
+    },
+    {
+      "@id": "omaro:sourceRecord",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Links a project record to the versioned source snapshot from which it was asserted or derived."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "source record"
+      },
+      "rdfs:range": {
+        "@id": "prov:Entity"
+      }
+    },
+    {
+      "@id": "omaro:stance",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Records the asserted, proposed, disputed, rejected, or superseded position of a claim."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "stance"
+      },
+      "rdfs:range": {
+        "@id": "skos:Concept"
+      }
+    },
+    {
+      "@id": "omaro:subjectMatter",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Identifies exact subject matter covered by an authority assignment."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "subject matter"
+      }
+    },
+    {
+      "@id": "omaro:submittedLanguageTag",
+      "@type": [
+        "owl:DatatypeProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Records the language tag exactly as supplied by the source."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "submitted language tag"
+      },
+      "rdfs:range": {
+        "@id": "xsd:string"
+      }
+    },
+    {
+      "@id": "omaro:supersedesDecision",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Links a review event to a decision it permanently supersedes."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "supersedes decision"
+      },
+      "rdfs:range": {
+        "@id": "omaro:ReviewDecision"
+      }
+    },
+    {
+      "@id": "omaro:supersedesProtocolApplication",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Links a protocol application to the earlier application that it replaces."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "supersedes protocol application"
+      },
+      "rdfs:range": {
+        "@id": "omaro:ProtocolApplication"
+      }
+    },
+    {
+      "@id": "omaro:supersedesUseDecision",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Links a use decision to the earlier use decision that it replaces."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "supersedes use decision"
+      },
+      "rdfs:range": {
+        "@id": "omaro:UseDecision"
+      }
+    },
+    {
+      "@id": "omaro:supportsClassification",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Links a criterion to a classification concept that it can support under its documented inference logic."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "supports classification"
+      },
+      "rdfs:range": {
+        "@id": "skos:Concept"
+      }
+    },
+    {
+      "@id": "omaro:suspendsDecision",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Links a review event to a decision it temporarily suspends."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "suspends decision"
+      },
+      "rdfs:range": {
+        "@id": "omaro:ReviewDecision"
+      }
+    },
+    {
+      "@id": "omaro:targetAssertion",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Identifies the assertion evaluated by a finding or review event."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "target assertion"
+      }
+    },
+    {
+      "@id": "omaro:targetKind",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Identifies the controlled kind of an organological target."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "target kind"
+      },
+      "rdfs:range": {
+        "@id": "skos:Concept"
+      }
+    },
+    {
+      "@id": "omaro:targetResource",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Identifies a resource governed by a protocol application or use decision."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "target resource"
+      }
+    },
+    {
+      "@id": "omaro:targetType",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Records the ontological level of the target described by a classification assertion."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "target type"
+      },
+      "rdfs:range": {
+        "@id": "skos:Concept"
+      }
+    },
+    {
+      "@id": "omaro:temporalEnd",
+      "@type": [
+        "owl:DatatypeProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Records the end of subject-matter applicability as an instant."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "temporal end"
+      },
+      "rdfs:range": {
+        "@id": "xsd:dateTime"
+      }
+    },
+    {
+      "@id": "omaro:temporalStart",
+      "@type": [
+        "owl:DatatypeProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Records the start of subject-matter applicability as an instant."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "temporal start"
+      },
+      "rdfs:range": {
+        "@id": "xsd:dateTime"
+      }
+    },
+    {
+      "@id": "omaro:termRole",
+      "@type": [
+        "owl:DatatypeProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Records an evidenced controlled lexical role such as endonym, exonym, or historical name."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "term role"
+      },
+      "rdfs:range": {
+        "@id": "xsd:string"
+      }
+    },
+    {
+      "@id": "omaro:tolerance",
+      "@type": [
+        "owl:DatatypeProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Records the stated tolerance associated with a quantitative result."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "tolerance"
+      },
+      "rdfs:range": {
+        "@id": "xsd:string"
+      }
+    },
+    {
+      "@id": "omaro:transcriptionSystem",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Identifies an evidenced transcription system used for a label."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "transcription system"
+      }
+    },
+    {
+      "@id": "omaro:translationStatus",
+      "@type": [
+        "owl:DatatypeProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Records the evidence status of a label as a translation or translingual form."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "translation status"
+      },
+      "rdfs:range": {
+        "@id": "xsd:string"
+      }
+    },
+    {
+      "@id": "omaro:transliterationSystem",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Identifies an evidenced transliteration system used for a label."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "transliteration system"
+      }
+    },
+    {
+      "@id": "omaro:uncertainty",
+      "@type": [
+        "owl:DatatypeProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Records measurement or observational uncertainty without treating it as epistemic or cultural authority."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "uncertainty"
+      },
+      "rdfs:range": {
+        "@id": "xsd:string"
+      }
+    },
+    {
+      "@id": "omaro:underProjectionPolicy",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Links an assertion to a projection policy in which it may be evaluated."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "under projection policy"
+      },
+      "rdfs:range": {
+        "@id": "omaro:ProjectionPolicy"
+      }
+    },
+    {
+      "@id": "omaro:unit",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Links a quantitative result to a unit resource, normally from QUDT."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "unit"
+      }
+    },
+    {
+      "@id": "omaro:unknownScopeBehavior",
+      "@type": [
+        "owl:DatatypeProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "States whether a projection includes, excludes, or warns about assertions whose applicability is unresolved."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "unknown scope behavior"
+      },
+      "rdfs:range": {
+        "@id": "xsd:string"
+      }
+    },
+    {
+      "@id": "omaro:useAction",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Identifies an action such as display, index, export, train, or commercialize governed by a use decision."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "use action"
+      },
+      "rdfs:range": {
+        "@id": "skos:Concept"
+      }
+    },
+    {
+      "@id": "omaro:useAudience",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Identifies an audience to which a use decision applies."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "use audience"
+      }
+    },
+    {
+      "@id": "omaro:useDecision",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Identifies the granted, refused, withheld, or withdrawn state of a use decision."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "use decision"
+      },
+      "rdfs:range": {
+        "@id": "skos:Concept"
+      }
+    },
+    {
+      "@id": "omaro:useDecisionStatus",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Identifies the controlled lifecycle status of a use decision record."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "use decision status"
+      },
+      "rdfs:range": {
+        "@id": "skos:Concept"
+      }
+    },
+    {
+      "@id": "omaro:usePurpose",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Identifies a purpose to which a use decision applies."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "use purpose"
+      }
+    },
+    {
+      "@id": "omaro:usedAssessment",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Links a classification assignment to an observation assessment used as a premise, including an explicit non-observation or non-applicability assessment."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "used assessment"
+      },
+      "rdfs:range": {
+        "@id": "omaro:ObservationAssessment"
+      }
+    },
+    {
+      "@id": "omaro:usedObservation",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Links a classification assignment to an observation used as a premise."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "used observation"
+      },
+      "rdfs:range": {
+        "@id": "omaro:OrganologicalObservation"
+      }
+    },
+    {
+      "@id": "omaro:usedProcedure",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Identifies the procedure used by an observation or prescribed by a criterion."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "used procedure"
+      }
+    },
+    {
+      "@id": "omaro:validFrom",
+      "@type": [
+        "owl:DatatypeProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Records the start instant of a claim, perspective, mandate, or decision lifecycle."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "valid from"
+      },
+      "rdfs:range": {
+        "@id": "xsd:dateTime"
+      }
+    },
+    {
+      "@id": "omaro:validUntil",
+      "@type": [
+        "owl:DatatypeProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Records the end instant of a claim, perspective, mandate, or decision lifecycle."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "valid until"
+      },
+      "rdfs:range": {
+        "@id": "xsd:dateTime"
+      }
+    },
+    {
+      "@id": "omaro:validationDimension",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Records the referential, linguistic, community, historical, scholarly, ethical, or rights dimension addressed."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "validation dimension"
+      },
+      "rdfs:range": {
+        "@id": "skos:Concept"
+      }
+    },
+    {
+      "@id": "omaro:variantSubtag",
+      "@type": [
+        "owl:DatatypeProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Records one BCP 47 variant subtag supplied with a label."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "variant subtag"
+      },
+      "rdfs:range": {
+        "@id": "xsd:string"
+      }
+    },
+    {
+      "@id": "omaro:vetoOutcome",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Records a review outcome that triggers a projection-policy veto rule."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "veto outcome"
+      },
+      "rdfs:range": {
+        "@id": "skos:Concept"
+      }
+    },
+    {
+      "@id": "omaro:vetoRule",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Links a projection policy to a declarative veto rule."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "veto rule"
+      },
+      "rdfs:range": {
+        "@id": "omaro:VetoRule"
+      }
+    },
+    {
+      "@id": "omaro:vocabulary-mapping-purpose",
+      "@type": "skos:ConceptScheme",
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "skos:prefLabel": {
+        "@language": "en",
+        "@value": "mapping purpose vocabulary"
+      }
+    },
+    {
+      "@id": "omaro:writingSystem",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Identifies an evidenced writing-system resource associated with a label profile."
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/modavis/omaro/ontology"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "writing system"
+      }
+    }
+  ]
+}

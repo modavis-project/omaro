@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Explore the OMARO reference dataset: contextualized Hornbostel–Sachs classifications and multilingual MIMO instrument names.">
+  <title>OMARO · Organological assertions and perspectives</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to search</a>
+  <header>
+    <div>
+      <p class="eyebrow">MODAVIS Project · Dataset v<span id="version">0.1.0</span></p>
+      <h1>OMARO</h1>
+      <p>Ontology for Multiperspectivity, Assertions, and Review in Organology.<br>Browse instrument names, classifications and their sources.</p>
+    </div>
+    <a class="doi" id="doi" href="https://doi.org/10.5281/zenodo.21442777">10.5281/zenodo.21442777 <span>reserved</span></a>
+  </header>
+
+  <main id="main">
+    <div class="resource-links" aria-label="OMARO resources"><a href="ontology/0.1.0/">Ontology</a><a href="dataset/0.1.0/">Dataset &amp; downloads</a><a href="https://github.com/modavis-project/omaro/blob/main/USE_CASES.md">Research examples</a><a href="https://github.com/modavis-project/omaro">Source &amp; documentation</a></div>
+    <p class="source-note">A reference dataset derived from MIMO. Classifications and names describe source concepts; they do not classify individual museum objects. DOI reserved · publication pending.</p>
+    <section class="controls" aria-label="Dataset search">
+      <label for="search">Search preferred and alternative labels</label>
+      <div class="search-row">
+        <input id="search" type="search" placeholder="e.g. guitar, Gitarre, 기타…" autocomplete="off">
+        <select id="language" aria-label="Display language"></select>
+      </div>
+      <p id="summary" class="summary" aria-live="polite">Loading dataset…</p>
+    </section>
+
+    <div class="workspace">
+      <nav aria-label="Hornbostel–Sachs hierarchy">
+        <h2>Classification</h2>
+        <div id="tree" class="tree"></div>
+      </nav>
+      <section id="results" aria-label="Search results" hidden>
+        <h2>Search results</h2>
+        <div id="result-list" class="result-list"></div>
+      </section>
+      <article id="detail" aria-live="polite">
+        <h2>Choose a classification or instrument</h2>
+        <p>Browse the hierarchy or search the multilingual vocabulary.</p>
+      </article>
+    </div>
+  </main>
+
+  <footer>
+    <p>Derived from MIMO linked open data. Download:
+      <a href="ontology/0.1.0/">ontology documentation</a>,
+      <a href="dataset/0.1.0/omaro.ttl">OWL/SKOS Turtle</a>,
+      <a href="dataset/0.1.0/omaro.jsonld">JSON-LD</a>,
+      <a href="csv/concepts.csv">CSV</a>,
+      <a href="csv/classification-assignments.csv">assignment CSV</a>, or
+      <a href="sqlite/omaro.sqlite">SQLite</a>.
+    </p>
+  </footer>
+  <script src="app.js" defer></script>
+</body>
+</html>

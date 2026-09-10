@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://w3id.org/modavis/omaro/schema/language_registry.schema.json",
+  "title": "Pinned IANA Language Subtag Registry profile",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["uri", "registry_type", "file_date", "source_uri", "artifact_path", "sha256", "profile_uri", "normalization_overrides"],
+  "properties": {
+    "uri": {"type": "string", "format": "uri"},
+    "registry_type": {"const": "IANA Language Subtag Registry"},
+    "file_date": {"type": "string", "format": "date"},
+    "source_uri": {"const": "https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry"},
+    "artifact_path": {"const": "registries/iana-language-subtag-registry.json"},
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "profile_uri": {"const": "https://www.rfc-editor.org/rfc/rfc5646"},
+    "normalization_overrides": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["dk"],
+      "properties": {"dk": {"const": "da"}}
+    }
+  }
+}

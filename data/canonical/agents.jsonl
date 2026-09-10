@@ -1,0 +1,2 @@
+{"agent_type":"organization","name":"Musical Instrument Museums Online (MIMO)","resource_uri":"https://mimo-international.com/","uri":"https://w3id.org/modavis/omaro#agent-mimo"}
+{"agent_type":"software","name":"omaro build pipeline","resource_uri":"https://github.com/modavis-project/omaro","uri":"https://w3id.org/modavis/omaro#agent-omaro"}

@@ -1,0 +1,33 @@
+cff-version: 1.2.0
+message: "Please cite the version-specific Zenodo DOI after publication."
+title: "OMARO Reference Dataset: Hornbostel–Sachs Classifications and Multilingual Musical Instrument Names"
+type: dataset
+version: 0.1.0
+date-released: 2026-09-11
+doi: 10.5281/zenodo.21442777
+url: "https://w3id.org/modavis/omaro/dataset/0.1.0"
+abstract: "OMARO provides an OWL ontology and a MIMO-derived reference dataset for contextualized, evidenced, and reviewable organological classification assertions, auditable assessment activities, compound classification expressions, and governed publication without collapsing multiple perspectives into one universal classification."
+authors:
+  - family-names: Ukolov
+    given-names: Dominik
+    orcid: "https://orcid.org/0000-0002-7904-3892"
+    affiliation: "Digital Humanities (Image/Object), Friedrich Schiller University Jena; Research Group DIGITAL ORGANOLOGY, Leipzig University"
+repository-code: "https://github.com/modavis-project/omaro"
+license: CC0-1.0
+keywords:
+  - Hornbostel-Sachs
+  - musical instruments
+  - multilingual vocabulary
+  - SKOS
+  - SKOS-XL
+  - PROV-O
+  - SOSA/SSN
+  - linked data
+  - digital organology
+  - multiperspectivity
+  - cultural governance
+  - ontology
+  - Open Knowledge Format
+  - retrieval-augmented generation
+  - Virtual Acoustic Object
+  - MODAVIS ontology

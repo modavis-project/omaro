@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://w3id.org/modavis/omaro/schema/source_relation.schema.json",
+  "title": "MIMO source SKOS relation",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["subject_uri", "predicate_uri", "object_uri", "source_uri"],
+  "properties": {
+    "subject_uri": {"type": "string", "format": "uri"},
+    "predicate_uri": {
+      "enum": [
+        "http://www.w3.org/2004/02/skos/core#broader",
+        "http://www.w3.org/2004/02/skos/core#exactMatch"
+      ]
+    },
+    "object_uri": {"type": "string", "format": "uri"},
+    "source_uri": {"type": "string", "format": "uri"}
+  }
+}

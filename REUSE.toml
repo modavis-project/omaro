@@ -1,0 +1,9 @@
+version = 1
+SPDX-PackageName = "OMARO"
+SPDX-PackageDownloadLocation = "https://github.com/modavis-project/omaro"
+
+[[annotations]]
+path = ["**"]
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2026 Dominik Ukolov and contributors"
+SPDX-License-Identifier = "CC0-1.0"

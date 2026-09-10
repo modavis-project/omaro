@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://w3id.org/modavis/omaro/schema/script_registry.schema.json",
+  "title": "Unicode Script registry snapshot",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["uri", "registry_type", "unicode_version", "source_uris", "artifact_path", "sha256", "profile_uri"],
+  "properties": {
+    "uri": {"type": "string", "format": "uri"},
+    "registry_type": {"const": "Unicode Script Property"},
+    "unicode_version": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"},
+    "source_uris": {
+      "type": "array",
+      "minItems": 2,
+      "uniqueItems": true,
+      "items": {"type": "string", "format": "uri"}
+    },
+    "artifact_path": {"const": "registries/unicode-script-registry.json"},
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "profile_uri": {"type": "string", "format": "uri"}
+  }
+}

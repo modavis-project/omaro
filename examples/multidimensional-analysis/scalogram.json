@@ -1,0 +1,210 @@
+{
+  "format": "omaro-multidimensional-comparison",
+  "format_version": "1.0.0",
+  "status": "synthetic-illustrative",
+  "title": "Two criterion selections over the same three organological targets",
+  "research_question": "How does the nearest comparison target for one tambourine configuration change when structural morphology is replaced by performed-sounding criteria?",
+  "targets": [
+    {
+      "uri": "https://example.org/omaro-scalogram/target/frame-drum-configuration",
+      "label": "Synthetic frame-drum configuration",
+      "target_kind": "instrument-configuration"
+    },
+    {
+      "uri": "https://example.org/omaro-scalogram/target/tambourine-configuration",
+      "label": "Synthetic tambourine configuration",
+      "target_kind": "instrument-configuration"
+    },
+    {
+      "uri": "https://example.org/omaro-scalogram/target/jingle-ring-configuration",
+      "label": "Synthetic jingle-ring configuration",
+      "target_kind": "instrument-configuration"
+    }
+  ],
+  "dimensions": [
+    {
+      "uri": "https://example.org/omaro-scalogram/criterion/membrane-present",
+      "label": "Membrane present",
+      "criterion_type": "primary-vibrator",
+      "assessed_property_uri": "https://example.org/omaro-scalogram/property/membrane-presence",
+      "procedure_uri": "https://example.org/omaro-scalogram/procedure/structural-inspection",
+      "value_encoding": "binary-detection"
+    },
+    {
+      "uri": "https://example.org/omaro-scalogram/criterion/frame-membrane-construction",
+      "label": "Frame supports a membrane",
+      "criterion_type": "construction",
+      "assessed_property_uri": "https://example.org/omaro-scalogram/property/frame-membrane-construction",
+      "procedure_uri": "https://example.org/omaro-scalogram/procedure/structural-inspection",
+      "value_encoding": "binary-detection"
+    },
+    {
+      "uri": "https://example.org/omaro-scalogram/criterion/single-tensioned-membrane",
+      "label": "One tightly stretched membrane",
+      "criterion_type": "construction",
+      "assessed_property_uri": "https://example.org/omaro-scalogram/property/single-tensioned-membrane",
+      "procedure_uri": "https://example.org/omaro-scalogram/procedure/structural-inspection",
+      "value_encoding": "binary-detection"
+    },
+    {
+      "uri": "https://example.org/omaro-scalogram/criterion/attached-rattlers-sounding",
+      "label": "Attached rattling objects sound",
+      "criterion_type": "active-sound-source",
+      "assessed_property_uri": "https://example.org/omaro-scalogram/property/attached-rattlers-sounding",
+      "procedure_uri": "https://example.org/omaro-scalogram/procedure/performance-observation",
+      "value_encoding": "binary-detection"
+    },
+    {
+      "uri": "https://example.org/omaro-scalogram/criterion/indirect-shaking",
+      "label": "Indirect shaking is used",
+      "criterion_type": "actual-technique",
+      "assessed_property_uri": "https://example.org/omaro-scalogram/property/indirect-shaking",
+      "procedure_uri": "https://example.org/omaro-scalogram/procedure/performance-observation",
+      "value_encoding": "binary-detection"
+    },
+    {
+      "uri": "https://example.org/omaro-scalogram/criterion/cluster-noise-intention",
+      "label": "The observed act intends clusters or noise",
+      "criterion_type": "intended-function",
+      "assessed_property_uri": "https://example.org/omaro-scalogram/property/cluster-noise-intention",
+      "procedure_uri": "https://example.org/omaro-scalogram/procedure/performance-observation-and-context-note",
+      "value_encoding": "binary-detection"
+    }
+  ],
+  "assessments": [
+    {
+      "target_uri": "https://example.org/omaro-scalogram/target/frame-drum-configuration",
+      "values": {
+        "https://example.org/omaro-scalogram/criterion/membrane-present": "detected",
+        "https://example.org/omaro-scalogram/criterion/frame-membrane-construction": "detected",
+        "https://example.org/omaro-scalogram/criterion/single-tensioned-membrane": "detected",
+        "https://example.org/omaro-scalogram/criterion/attached-rattlers-sounding": "not-detected",
+        "https://example.org/omaro-scalogram/criterion/indirect-shaking": "not-detected",
+        "https://example.org/omaro-scalogram/criterion/cluster-noise-intention": "not-detected"
+      }
+    },
+    {
+      "target_uri": "https://example.org/omaro-scalogram/target/tambourine-configuration",
+      "values": {
+        "https://example.org/omaro-scalogram/criterion/membrane-present": "detected",
+        "https://example.org/omaro-scalogram/criterion/frame-membrane-construction": "detected",
+        "https://example.org/omaro-scalogram/criterion/single-tensioned-membrane": "detected",
+        "https://example.org/omaro-scalogram/criterion/attached-rattlers-sounding": "detected",
+        "https://example.org/omaro-scalogram/criterion/indirect-shaking": "detected",
+        "https://example.org/omaro-scalogram/criterion/cluster-noise-intention": "detected"
+      }
+    },
+    {
+      "target_uri": "https://example.org/omaro-scalogram/target/jingle-ring-configuration",
+      "values": {
+        "https://example.org/omaro-scalogram/criterion/membrane-present": "not-detected",
+        "https://example.org/omaro-scalogram/criterion/frame-membrane-construction": "not-detected",
+        "https://example.org/omaro-scalogram/criterion/single-tensioned-membrane": "not-detected",
+        "https://example.org/omaro-scalogram/criterion/attached-rattlers-sounding": "detected",
+        "https://example.org/omaro-scalogram/criterion/indirect-shaking": "detected",
+        "https://example.org/omaro-scalogram/criterion/cluster-noise-intention": "detected"
+      }
+    }
+  ],
+  "method": {
+    "uri": "https://example.org/omaro-scalogram/method/normalized-binary-hamming-v1",
+    "label": "Unweighted normalized Hamming distance over selected binary detection dimensions",
+    "status_to_value": {
+      "detected": 1,
+      "not-detected": 0,
+      "indeterminate": null,
+      "not-observed": null,
+      "not-applicable": null
+    },
+    "missing_value_policy": "exclude-pairwise-and-report",
+    "distance_formula": "disagreements / comparable_dimensions",
+    "minimum_comparable_dimensions": 3,
+    "tie_policy": "report-all-ties"
+  },
+  "profiles": [
+    {
+      "uri": "https://example.org/omaro-scalogram/profile/morphological-description",
+      "label": "Morphological description",
+      "perspective_uri": "https://example.org/omaro-scalogram/perspective/morphological-description",
+      "applicability_scope_uris": [
+        "https://example.org/omaro-scalogram/scope/synthetic-configurations"
+      ],
+      "dimension_uris": [
+        "https://example.org/omaro-scalogram/criterion/membrane-present",
+        "https://example.org/omaro-scalogram/criterion/frame-membrane-construction",
+        "https://example.org/omaro-scalogram/criterion/single-tensioned-membrane"
+      ]
+    },
+    {
+      "uri": "https://example.org/omaro-scalogram/profile/performed-sounding",
+      "label": "Performed sounding",
+      "perspective_uri": "https://example.org/omaro-scalogram/perspective/performed-sounding",
+      "applicability_scope_uris": [
+        "https://example.org/omaro-scalogram/scope/synthetic-observed-acts"
+      ],
+      "dimension_uris": [
+        "https://example.org/omaro-scalogram/criterion/attached-rattlers-sounding",
+        "https://example.org/omaro-scalogram/criterion/indirect-shaking",
+        "https://example.org/omaro-scalogram/criterion/cluster-noise-intention"
+      ]
+    }
+  ],
+  "focus_target_uri": "https://example.org/omaro-scalogram/target/tambourine-configuration",
+  "comparisons": [
+    {
+      "profile_uri": "https://example.org/omaro-scalogram/profile/morphological-description",
+      "left_target_uri": "https://example.org/omaro-scalogram/target/tambourine-configuration",
+      "right_target_uri": "https://example.org/omaro-scalogram/target/frame-drum-configuration",
+      "comparable_dimensions": 3,
+      "excluded_dimension_uris": [],
+      "disagreements": 0,
+      "normalized_distance": 0.0
+    },
+    {
+      "profile_uri": "https://example.org/omaro-scalogram/profile/morphological-description",
+      "left_target_uri": "https://example.org/omaro-scalogram/target/tambourine-configuration",
+      "right_target_uri": "https://example.org/omaro-scalogram/target/jingle-ring-configuration",
+      "comparable_dimensions": 3,
+      "excluded_dimension_uris": [],
+      "disagreements": 3,
+      "normalized_distance": 1.0
+    },
+    {
+      "profile_uri": "https://example.org/omaro-scalogram/profile/performed-sounding",
+      "left_target_uri": "https://example.org/omaro-scalogram/target/tambourine-configuration",
+      "right_target_uri": "https://example.org/omaro-scalogram/target/frame-drum-configuration",
+      "comparable_dimensions": 3,
+      "excluded_dimension_uris": [],
+      "disagreements": 3,
+      "normalized_distance": 1.0
+    },
+    {
+      "profile_uri": "https://example.org/omaro-scalogram/profile/performed-sounding",
+      "left_target_uri": "https://example.org/omaro-scalogram/target/tambourine-configuration",
+      "right_target_uri": "https://example.org/omaro-scalogram/target/jingle-ring-configuration",
+      "comparable_dimensions": 3,
+      "excluded_dimension_uris": [],
+      "disagreements": 0,
+      "normalized_distance": 0.0
+    }
+  ],
+  "nearest_by_profile": [
+    {
+      "profile_uri": "https://example.org/omaro-scalogram/profile/morphological-description",
+      "target_uri": "https://example.org/omaro-scalogram/target/frame-drum-configuration",
+      "normalized_distance": 0.0
+    },
+    {
+      "profile_uri": "https://example.org/omaro-scalogram/profile/performed-sounding",
+      "target_uri": "https://example.org/omaro-scalogram/target/jingle-ring-configuration",
+      "normalized_distance": 0.0
+    }
+  ],
+  "interpretation_limits": [
+    "Distance is conditional on the declared profile and method.",
+    "A zero distance is not identity, equivalence, or universal taxonomic sameness.",
+    "An unresolved assessment status is not absence and is never encoded as zero.",
+    "Analytical proximity does not authorize publication or reuse.",
+    "A resulting classification still requires an explicit, evidenced OMARO assignment."
+  ]
+}

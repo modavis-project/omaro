@@ -1,0 +1,102 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://w3id.org/modavis/omaro/schema/observation_assessment.schema.json",
+  "title": "Organological observation assessment",
+  "description": "A time- and perspective-qualified assessment of an organological property. Detected, not-detected, and indeterminate records describe observation attempts; not-observed and not-applicable records explicitly state that no observation activity is asserted.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "uri", "feature_of_interest_uri", "assessed_part_uri", "assessed_property_uri",
+    "assessment_status", "result", "assessment_procedure_uri", "assessment_agent_uri",
+    "assessment_sensor_uri", "phenomenon_start", "phenomenon_end", "assessment_time",
+    "perspective_uri", "applicability_scope_uris", "source_record_uri", "evidence",
+    "rights_uri", "protocol_application_uris", "authority_assignment_uris", "review_status",
+    "review_status_uri"
+  ],
+  "properties": {
+    "uri": {"type": "string", "format": "uri"},
+    "feature_of_interest_uri": {"type": "string", "format": "uri"},
+    "assessed_part_uri": {"type": ["string", "null"], "format": "uri"},
+    "assessed_property_uri": {"type": "string", "format": "uri"},
+    "assessment_status": {"enum": ["detected", "not-detected", "indeterminate", "not-observed", "not-applicable"]},
+    "result": {"oneOf": [
+      {"$ref": "#/$defs/resourceResult"},
+      {"$ref": "#/$defs/literalResult"},
+      {"$ref": "#/$defs/quantityResult"},
+      {"$ref": "#/$defs/rangeResult"},
+      {"type": "null"}
+    ]},
+    "assessment_procedure_uri": {"type": "string", "format": "uri"},
+    "assessment_agent_uri": {"type": "string", "format": "uri"},
+    "assessment_sensor_uri": {"type": ["string", "null"], "format": "uri"},
+    "phenomenon_start": {"type": ["string", "null"], "format": "date-time"},
+    "phenomenon_end": {"type": ["string", "null"], "format": "date-time"},
+    "assessment_time": {"type": "string", "format": "date-time"},
+    "perspective_uri": {"type": "string", "format": "uri"},
+    "applicability_scope_uris": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "format": "uri"}},
+    "source_record_uri": {"type": ["string", "null"], "format": "uri"},
+    "evidence": {"type": "array", "items": {"$ref": "#/$defs/evidence"}},
+    "rights_uri": {"type": "string", "format": "uri"},
+    "protocol_application_uris": {"$ref": "#/$defs/uriArray"},
+    "authority_assignment_uris": {"$ref": "#/$defs/uriArray"},
+    "review_status": {"enum": ["unreviewed", "accepted", "disputed", "rejected", "superseded"]},
+    "review_status_uri": {"type": "string", "format": "uri"}
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"assessment_status": {"enum": ["detected", "not-detected"]}}},
+      "then": {"properties": {"result": {"not": {"type": "null"}}}}
+    },
+    {
+      "if": {"properties": {"assessment_status": {"enum": ["not-observed", "not-applicable"]}}},
+      "then": {"properties": {"result": {"type": "null"}}}
+    }
+  ],
+  "$defs": {
+    "uriArray": {"type": "array", "uniqueItems": true, "items": {"type": "string", "format": "uri"}},
+    "evidence": {
+      "type": "object", "additionalProperties": false,
+      "required": ["citation", "evidence_type", "relation", "resource_uri", "note"],
+      "properties": {
+        "citation": {"type": "string", "minLength": 1},
+        "evidence_type": {"enum": ["source-record", "fieldwork", "community-decision", "linguistic-analysis", "scholarly-publication", "rights-protocol", "observation", "reasoning"]},
+        "relation": {"enum": ["supports", "opposes", "qualifies", "documents"]},
+        "resource_uri": {"type": ["string", "null"], "format": "uri"},
+        "note": {"type": ["string", "null"]}
+      }
+    },
+    "resourceResult": {
+      "type": "object", "additionalProperties": false,
+      "required": ["kind", "value_uri"],
+      "properties": {"kind": {"const": "resource"}, "value_uri": {"type": "string", "format": "uri"}}
+    },
+    "literalResult": {
+      "type": "object", "additionalProperties": false,
+      "required": ["kind", "value", "datatype_uri", "language_tag"],
+      "properties": {
+        "kind": {"const": "literal"}, "value": {"type": "string"},
+        "datatype_uri": {"type": ["string", "null"], "format": "uri"},
+        "language_tag": {"type": ["string", "null"]}
+      }
+    },
+    "quantityResult": {
+      "type": "object", "additionalProperties": false,
+      "required": ["kind", "numeric_value", "unit_uri", "uncertainty", "tolerance"],
+      "properties": {
+        "kind": {"const": "quantity"}, "numeric_value": {"type": "number"},
+        "unit_uri": {"type": "string", "format": "uri"},
+        "uncertainty": {"type": ["number", "null"], "minimum": 0},
+        "tolerance": {"type": ["number", "null"], "minimum": 0}
+      }
+    },
+    "rangeResult": {
+      "type": "object", "additionalProperties": false,
+      "required": ["kind", "minimum_value", "maximum_value", "unit_uri", "uncertainty"],
+      "properties": {
+        "kind": {"const": "range"}, "minimum_value": {"type": "number"},
+        "maximum_value": {"type": "number"}, "unit_uri": {"type": "string", "format": "uri"},
+        "uncertainty": {"type": ["number", "null"], "minimum": 0}
+      }
+    }
+  }
+}

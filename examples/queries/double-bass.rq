@@ -1,0 +1,17 @@
+PREFIX omaro: <https://w3id.org/modavis/omaro#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+SELECT ?assertion ?assignment ?notation ?perspective ?scope ?source
+WHERE {
+  ?assertion a omaro:ClassificationAssertion ;
+    rdf:subject <http://www.mimo-db.eu/InstrumentsKeywords/3111> ;
+    rdf:object ?classification ;
+    prov:wasGeneratedBy ?assignment ;
+    omaro:perspective ?perspective ;
+    omaro:hasApplicabilityScope ?scope ;
+    omaro:sourceRecord ?source .
+  ?classification skos:notation ?notation .
+}
+ORDER BY ?assertion ?scope

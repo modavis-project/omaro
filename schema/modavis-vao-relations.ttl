@@ -1,0 +1,17 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/modavis/omaro/alignment/1.0.0>
+    a owl:Ontology ;
+    dcterms:title "OMARO relations to VAO and MODAVIS"@en ;
+    dcterms:description "Versioned relation metadata. This artifact declares neither ontology imports nor semantic equivalence or conformance."@en ;
+    dcterms:issued "2026-08-30"^^xsd:date ;
+    owl:versionInfo "1.0.0" ;
+    dcterms:relation
+        <https://w3id.org/modavis/vao/0.4.0/>,
+        <https://w3id.org/modavis/ontology/0.1.0> .
+<https://w3id.org/modavis/omaro/ontology/0.1.0>
+    dcterms:relation
+        <https://w3id.org/modavis/vao/0.4.0/>,
+        <https://w3id.org/modavis/ontology/0.1.0> .

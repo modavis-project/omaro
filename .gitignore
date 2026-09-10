@@ -1,0 +1,26 @@
+.venv/
+build/
+.DS_Store
+__pycache__/
+.pytest_cache/
+*.egg-info/
+*.whl
+*.tar.gz
+dist/
+omaro-v*.zip
+omaro-v*.dcat.ttl
+omaro-expert-evaluation-*.zip
+SHA256SUMS
+
+# Maintainer-only working papers; never publish or package these files.
+.release-private/
+DATA_PAPER_OUTLINE.md
+IMPACT.md
+RELEASE_CHECKLIST.md
+review/
+zenodo/README.md
+
+.ci/
+test-results/
+
+.pages-site/

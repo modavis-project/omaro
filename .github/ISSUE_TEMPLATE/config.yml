@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Sensitive correction, withdrawal, or community protocol request
+    url: https://github.com/modavis-project/omaro/security
+    about: Use the private contact path when reviewer identity, community correspondence, cultural restrictions, or personal information should not be public.
+  - name: MIMO source vocabulary
+    url: https://vocabulary.mimo-international.com/
+    about: Check whether a data statement originates in MIMO before proposing a local correction.

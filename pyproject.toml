@@ -1,0 +1,69 @@
+[build-system]
+requires = ["setuptools==80.10.2"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "omaro"
+version = "0.1.0"
+description = "OMARO ontology, validation model, organological assessment, and multiperspective reference data"
+readme = "README.md"
+requires-python = ">=3.11"
+license = "CC0-1.0"
+keywords = [
+  "Hornbostel-Sachs",
+  "musical instruments",
+  "SKOS",
+  "PROV-O",
+  "SOSA/SSN",
+  "linked data",
+  "digital organology",
+  "multiperspectivity",
+  "cultural governance",
+  "ontology",
+]
+classifiers = [
+  "Operating System :: OS Independent",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Topic :: Scientific/Engineering :: Information Analysis",
+]
+authors = [
+  {name = "Dominik Ukolov"},
+]
+dependencies = [
+  "jsonschema==4.26.0",
+  "rfc3339-validator==0.1.4",
+  "rfc3986-validator==0.1.1",
+  "PyYAML==6.0.3",
+  "pyshacl==0.40.0",
+  "rdflib==7.6.0",
+  "requests==2.34.2",
+]
+
+[project.optional-dependencies]
+test = ["pytest==9.1.1"]
+
+[project.scripts]
+omaro = "omaro.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/modavis-project/omaro"
+Repository = "https://github.com/modavis-project/omaro"
+Issues = "https://github.com/modavis-project/omaro/issues"
+Changelog = "https://github.com/modavis-project/omaro/blob/main/CHANGELOG.md"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+addopts = "-ra"
+testpaths = ["tests"]
+filterwarnings = [
+  "ignore:Dataset.default_context is deprecated:DeprecationWarning:rdflib.*",
+  "ignore:ConjunctiveGraph is deprecated:DeprecationWarning:rdflib.*",
+]

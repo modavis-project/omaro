@@ -1,0 +1,135 @@
+{
+  "canonical_checksums": {
+    "agents.jsonl": "a2c056e7425acf383a7622590a2f8d6d9c4f9a0d6d9ae760274a1754f497d9d2",
+    "applicability_scopes.jsonl": "326e880fab7a5b4769a3544f240576ff6b1b6a75182cfc8e01f3884fe2266ce8",
+    "authority_assignments.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "classification_assertions.jsonl": "6ffe9fa0673f5d6197e99ff41d014776a4076ed3db547a94c1808e3c0a447712",
+    "classification_criteria.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "classification_expressions.jsonl": "e17cbafa178da2aaea38783a9e83332fc2dd3fa20db468f79f2c54981ef8d756",
+    "concept_relation_assertions.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "concept_schemes.jsonl": "6cd200e7c8887f9094678987ac483404018b665376099d9dca68031c85b2047f",
+    "concepts.jsonl": "f7572d5aeac151c8a618af55d128c11e47ac5be9c9706aeffccd5702d08ff956",
+    "label_assertions.jsonl": "7b52c703c3d2b44aabddc47078ded2d97644b3031aa10c891af0e544aa21cf6d",
+    "label_profiles.jsonl": "067efd4f95bafb6759592e3d6ce79bcaebe4cbb15199d0fe04b158420b86a5d5",
+    "label_resources.jsonl": "1a8a723de4fe6164ff9d2432f2aff5941232cc2a3355dd0f358913226fc6c7e6",
+    "labels.jsonl": "9b35126c7ec47abdf69219d31403317b4e628354039dc895ccea0d97fa41c3bd",
+    "language_registries.jsonl": "dbb5315f4b1851885f3399ba721f1b70a32ca63a436b0027e33867b6d1d4765b",
+    "note_assertions.jsonl": "f3e427b2a21ecda06653a50e7c8d8e15e79d7bc95c52425f0925aea174c62b3d",
+    "observation_assessments.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "organological_targets.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "perspectives.jsonl": "a51c55d702492814e16dc233a4f10967a6efa2c8b986a02fb0baab0a547923fc",
+    "projection_policies.jsonl": "ecb73464a2df322165fd6cfb09568b317080cea7ef4497bb9cfa37773a79140a",
+    "protocol_applications.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "quality_findings.jsonl": "f9517e13297d7f65e993abf0e923e698bb4cb40ea1e32d05cae76abb1e6b0d1e",
+    "quality_rules.jsonl": "546124d7f37b0238fd23cb5e1b60cbb1ca1ce1f53e34c7cb150eb0d8d78132f3",
+    "review_events.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "review_statuses.jsonl": "bb2046657a668da07baa85a2022d747fa6bfab03566385eaa86a484ddb1a8b92",
+    "script_registries.jsonl": "2cbb92ad5db0515c165fc0bee975ecef245a3004e35e92c4c6048ef7a9bad1f4",
+    "source_records.jsonl": "0aa38d9822f4855e90253d4b54673eb6ef7f04c780b1af2ff55324f84de3f847",
+    "source_relations.jsonl": "6798e0cb02babdbed73aede4b8fba63c2acdcff5d5f4dee6503f5dfad6c6e7de",
+    "use_decisions.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "contributors": [
+    {
+      "name": "MODAVIS Project",
+      "role": "DataCurator"
+    }
+  ],
+  "counts": {
+    "agents": 2,
+    "applicability_scopes": 1,
+    "authority_assignments": 0,
+    "classification_assertions": 1872,
+    "classification_criteria": 0,
+    "classification_expressions": 26,
+    "classifications": 643,
+    "concept_relation_assertions": 0,
+    "concept_schemes": 2,
+    "concepts": 3372,
+    "label_assertions": 42662,
+    "label_profiles": 42662,
+    "label_resources": 42662,
+    "labels": 42662,
+    "language_registries": 1,
+    "note_assertions": 643,
+    "observation_assessments": 0,
+    "organological_targets": 0,
+    "perspectives": 1,
+    "projection_policies": 3,
+    "protocol_applications": 0,
+    "quality_findings": 9445,
+    "quality_rules": 8,
+    "resolved_instruments": 2724,
+    "review_events": 0,
+    "review_statuses": 5,
+    "script_registries": 1,
+    "source_records": 2,
+    "source_relations": 5228,
+    "unresolved_stubs": 5,
+    "use_decisions": 0
+  },
+  "creators": [
+    {
+      "affiliations": [
+        "Research Group DIGITAL ORGANOLOGY, Leipzig University",
+        "Digital Humanities (Image/Object), Friedrich Schiller University Jena"
+      ],
+      "name": "Dominik Ukolov"
+    }
+  ],
+  "dataset_uri": "https://w3id.org/modavis/omaro/dataset/0.1.0",
+  "dataset_version": "0.1.0",
+  "doi": "10.5281/zenodo.21442777",
+  "generated_at": "2026-07-19T15:10:55Z",
+  "label_type_counts": {
+    "alternative": 6868,
+    "preferred": 35794
+  },
+  "language_coverage": {
+    "ca": 2714,
+    "da": 2477,
+    "de": 2724,
+    "en": 3367,
+    "es": 2720,
+    "eu": 2724,
+    "fr": 2724,
+    "it": 2724,
+    "ko": 2724,
+    "nl": 2724,
+    "pl": 2724,
+    "sv": 2724,
+    "zh": 2724
+  },
+  "license": "CC0-1.0",
+  "name": "OMARO",
+  "namespace_uri": "https://w3id.org/modavis/omaro#",
+  "ontology_title": "Ontology for Multiperspectivity, Assertions, and Review in Organology",
+  "ontology_uri": "https://w3id.org/modavis/omaro/ontology",
+  "ontology_version_iri": "https://w3id.org/modavis/omaro/ontology/0.1.0",
+  "preferred_namespace_prefix": "omaro",
+  "repository_uri": "https://github.com/modavis-project/omaro",
+  "schema_version": "0.1.0",
+  "schemes": [
+    {
+      "label": "Hornbostel-Sachs classification",
+      "uri": "http://www.mimo-db.eu/HornbostelAndSachs#"
+    },
+    {
+      "label": "Thesaurus of musical instrument names",
+      "uri": "http://www.mimo-db.eu/InstrumentsKeywords#"
+    }
+  ],
+  "source_retrieved_at": "2026-07-19T15:10:55Z",
+  "sources": [
+    "https://vocabulary.mimo-international.com/rest/v1/HornbostelAndSachs",
+    "https://vocabulary.mimo-international.com/rest/v1/InstrumentsKeywords"
+  ],
+  "title": "OMARO Reference Dataset: Hornbostel–Sachs Classifications and Multilingual Musical Instrument Names",
+  "unresolved_references": [
+    "http://www.mimo-db.eu/InstrumentsKeywords/2412",
+    "http://www.mimo-db.eu/InstrumentsKeywords/3135",
+    "http://www.mimo-db.eu/InstrumentsKeywords/3405",
+    "http://www.mimo-db.eu/InstrumentsKeywords/5990",
+    "http://www.mimo-db.eu/InstrumentsKeywords/6059"
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://w3id.org/modavis/omaro/schema/query_context.schema.json",
+  "title": "OMARO offline query context (not a canonical record)",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "community_uris": {"$ref": "#/$defs/dimension"},
+    "place_uris": {"$ref": "#/$defs/dimension"},
+    "period_uris": {"$ref": "#/$defs/dimension"},
+    "usage_domain_uris": {"$ref": "#/$defs/dimension"},
+    "playing_technique_uris": {"$ref": "#/$defs/dimension"},
+    "instrument_configuration_uris": {"$ref": "#/$defs/dimension"},
+    "language_variety_uris": {"$ref": "#/$defs/dimension"},
+    "at": {"type": "string", "format": "date-time"},
+    "as_of": {"type": "string", "format": "date-time"}
+  },
+  "$defs": {
+    "dimension": {
+      "oneOf": [
+        {"type": "string", "format": "uri"},
+        {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {"type": "string", "format": "uri"}
+        }
+      ]
+    }
+  }
+}

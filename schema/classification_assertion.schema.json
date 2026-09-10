@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://w3id.org/modavis/omaro/schema/classification_assertion.schema.json",
+  "title": "Perspective-bearing classification assertion and assignment envelope",
+  "description": "A compact record containing two identities: an occurrence-level assertion entity and the activity that generated it. The assertion is not a claim of universal truth; the assignment records actor, method, observation assessments, criteria, and inference logic. Only assessment statuses that document an actual attempt also represent observations.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "uri", "assignment_uri", "target_uri", "target_type", "predicate_uri", "classification_uri",
+    "classification_scheme_uri", "scheme_version_uri", "assigned_by_uri",
+    "generated_by_uri", "perspective_uri", "classification_method_uri", "criteria_uris",
+    "assessment_uris", "inference_logic_uri", "classification_expression_uri",
+    "stance", "applicability_scope_uris", "evidence", "authority_assignment_uris",
+    "valid_from", "valid_until", "projection_policy_uris", "source_predicate_uri",
+    "source_uri", "source_record_uri", "assertion_origin"
+  ],
+  "properties": {
+    "uri": {"type": "string", "format": "uri"},
+    "assignment_uri": {"type": "string", "format": "uri"},
+    "target_uri": {"type": "string", "format": "uri"},
+    "target_type": {"enum": ["instrument-concept", "physical-object", "instrument-component", "functional-module", "instrument-aggregate", "instrument-configuration", "condition-state", "sounding-realization", "performance-event", "ensemble-medium"]},
+    "predicate_uri": {"const": "https://w3id.org/modavis/omaro#classifiedAs"},
+    "classification_uri": {"type": "string", "format": "uri"},
+    "classification_scheme_uri": {"type": "string", "format": "uri"},
+    "scheme_version_uri": {"type": ["string", "null"], "format": "uri"},
+    "assigned_by_uri": {"type": "string", "format": "uri"},
+    "generated_by_uri": {"type": ["string", "null"], "format": "uri"},
+    "perspective_uri": {"type": "string", "format": "uri"},
+    "classification_method_uri": {"type": "string", "format": "uri"},
+    "criteria_uris": {"$ref": "#/$defs/uriArray"},
+    "assessment_uris": {"$ref": "#/$defs/uriArray"},
+    "inference_logic_uri": {"type": ["string", "null"], "format": "uri"},
+    "classification_expression_uri": {"type": ["string", "null"], "format": "uri"},
+    "stance": {"enum": ["source-asserted", "asserted", "proposed", "endorsed", "disputed", "rejected", "superseded"]},
+    "applicability_scope_uris": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "format": "uri"}},
+    "evidence": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/evidence"}},
+    "authority_assignment_uris": {"type": "array", "uniqueItems": true, "items": {"type": "string", "format": "uri"}},
+    "valid_from": {"type": ["string", "null"], "format": "date-time"},
+    "valid_until": {"type": ["string", "null"], "format": "date-time"},
+    "projection_policy_uris": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "format": "uri"}},
+    "source_predicate_uri": {"type": ["string", "null"], "format": "uri"},
+    "source_uri": {"type": "string", "format": "uri"},
+    "source_record_uri": {"type": "string", "format": "uri"},
+    "assertion_origin": {"enum": ["source-derived", "project-asserted", "scholarly-asserted", "community-asserted"]}
+  },
+  "$defs": {
+    "uriArray": {"type": "array", "uniqueItems": true, "items": {"type": "string", "format": "uri"}},
+    "evidence": {
+      "type": "object", "additionalProperties": false,
+      "required": ["citation", "evidence_type", "relation", "resource_uri", "note"],
+      "properties": {
+        "citation": {"type": "string", "minLength": 1},
+        "evidence_type": {"enum": ["source-record", "fieldwork", "community-decision", "linguistic-analysis", "scholarly-publication", "rights-protocol", "observation", "reasoning"]},
+        "relation": {"enum": ["supports", "opposes", "qualifies", "documents"]},
+        "resource_uri": {"type": ["string", "null"], "format": "uri"},
+        "note": {"type": ["string", "null"]}
+      }
+    }
+  }
+}

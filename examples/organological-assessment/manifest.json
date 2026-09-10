@@ -1,0 +1,54 @@
+{
+  "title": "OMARO 0.1 illustrative organological assessment records",
+  "canonical": false,
+  "empirical_data": false,
+  "community_authorization": false,
+  "foreign_key_complete_dataset": false,
+  "namespace": "https://example.org/omaro-evaluation/",
+  "files": [
+    {
+      "path": "authority_assignments.jsonl",
+      "schema": "../../schema/authority_assignment.schema.json"
+    },
+    {
+      "path": "organological_targets.jsonl",
+      "schema": "../../schema/organological_target.schema.json"
+    },
+    {
+      "path": "classification_criteria.jsonl",
+      "schema": "../../schema/classification_criterion.schema.json"
+    },
+    {
+      "path": "observation_assessments.jsonl",
+      "schema": "../../schema/observation_assessment.schema.json"
+    },
+    {
+      "path": "classification_expressions.jsonl",
+      "schema": "../../schema/classification_expression.schema.json"
+    },
+    {
+      "path": "classification_assertions.jsonl",
+      "schema": "../../schema/classification_assertion.schema.json"
+    },
+    {
+      "path": "concept_relation_assertions.jsonl",
+      "schema": "../../schema/concept_relation_assertion.schema.json"
+    },
+    {
+      "path": "protocol_applications.jsonl",
+      "schema": "../../schema/protocol_application.schema.json"
+    },
+    {
+      "path": "use_decisions.jsonl",
+      "schema": "../../schema/use_decision.schema.json"
+    }
+  ],
+  "supporting_resources": [
+    {
+      "path": "synthetic-community-protocol.json",
+      "role": "Synthetic protocol bytes covered by protocol_integrity_sha256",
+      "protocol_uri": "https://example.org/omaro-evaluation/protocol/synthetic-community-display-v1",
+      "sha256": "a12aa17ffe27c8c5d752b524191df6a861f3211f992d44186aa1ea3edfb10192"
+    }
+  ]
+}

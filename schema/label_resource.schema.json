@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://w3id.org/modavis/omaro/schema/label_resource.schema.json",
+  "title": "Assertion-scoped SKOS-XL label resource",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "uri",
+    "literal_form",
+    "normalized_form",
+    "language_tag",
+    "language_registry_uri"
+  ],
+  "properties": {
+    "uri": {
+      "type": "string",
+      "format": "uri",
+      "pattern": "^https://w3id\\.org/modavis/omaro#xl-label-[0-9a-f]{32}$"
+    },
+    "literal_form": {"type": "string", "minLength": 1},
+    "normalized_form": {"type": "string", "minLength": 1},
+    "language_tag": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9]+(-[A-Za-z0-9]+)*$"
+    },
+    "language_registry_uri": {"type": "string", "format": "uri"}
+  }
+}

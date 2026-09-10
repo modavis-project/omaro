@@ -1,0 +1,76 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://w3id.org/modavis/omaro/schema/protocol_application.schema.json",
+  "title": "Cultural protocol application",
+  "description": "A provenance-bearing application of an authoritative external or community protocol. It is distinct from copyright, classification validity, and a use decision.",
+  "type": "object", "additionalProperties": false,
+  "required": [
+    "uri", "target_resource_uris", "protocol_uri", "protocol_type_uri",
+    "issued_by_agent_uri", "applied_by_agent_uri", "represented_community_uris",
+    "authority_assignment_uris", "source_record_uri", "applicability_scope_uris",
+    "enforcement_mode", "status", "valid_from", "valid_until", "supersedes_uri",
+    "retrieved_at", "resolution_status", "integrity_verification_method",
+    "protocol_artifact_path", "integrity_attestation_uri",
+    "protocol_integrity_sha256"
+  ],
+  "properties": {
+    "uri": {"type": "string", "format": "uri"},
+    "target_resource_uris": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "format": "uri"}},
+    "protocol_uri": {"type": "string", "format": "uri"},
+    "protocol_type_uri": {"type": "string", "format": "uri"},
+    "issued_by_agent_uri": {"type": "string", "format": "uri"},
+    "applied_by_agent_uri": {"type": "string", "format": "uri"},
+    "represented_community_uris": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "format": "uri"}},
+    "authority_assignment_uris": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "format": "uri"}},
+    "source_record_uri": {"type": ["string", "null"], "format": "uri"},
+    "applicability_scope_uris": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "format": "uri"}},
+    "enforcement_mode": {"enum": ["advisory", "human-decision-required", "machine-enforceable"]},
+    "status": {"enum": ["active", "withdrawn", "superseded", "expired"]},
+    "valid_from": {"type": "string", "format": "date-time"},
+    "valid_until": {"type": ["string", "null"], "format": "date-time"},
+    "supersedes_uri": {"type": ["string", "null"], "format": "uri"},
+    "retrieved_at": {"type": "string", "format": "date-time"},
+    "resolution_status": {"enum": ["verified", "unverified", "unavailable"]},
+    "integrity_verification_method": {"enum": ["local-sha256", "external-attestation", "none"]},
+    "protocol_artifact_path": {
+      "type": ["string", "null"],
+      "minLength": 1,
+      "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$)).+"
+    },
+    "integrity_attestation_uri": {"type": ["string", "null"], "format": "uri"},
+    "protocol_integrity_sha256": {
+      "type": ["string", "null"],
+      "pattern": "^[0-9a-f]{64}$"
+    }
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"resolution_status": {"const": "verified"}}},
+      "then": {
+        "properties": {
+          "integrity_verification_method": {"enum": ["local-sha256", "external-attestation"]},
+          "protocol_integrity_sha256": {"type": "string"}
+        }
+      }
+    },
+    {
+      "if": {"properties": {"integrity_verification_method": {"const": "local-sha256"}}},
+      "then": {"properties": {"protocol_artifact_path": {"type": "string"}}}
+    },
+    {
+      "if": {"properties": {"integrity_verification_method": {"const": "external-attestation"}}},
+      "then": {"properties": {"integrity_attestation_uri": {"type": "string"}}}
+    },
+    {
+      "if": {"properties": {"enforcement_mode": {"const": "machine-enforceable"}}},
+      "then": {
+        "properties": {
+          "resolution_status": {"const": "verified"},
+          "integrity_verification_method": {"const": "local-sha256"},
+          "protocol_artifact_path": {"type": "string"},
+          "protocol_integrity_sha256": {"type": "string"}
+        }
+      }
+    }
+  ]
+}

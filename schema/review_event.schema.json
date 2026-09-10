@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://w3id.org/modavis/omaro/schema/review_event.schema.json",
+  "title": "Review activity and decision envelope",
+  "description": "A compact record containing a review activity and the durable decision entity it generated. Separate decision identities preserve provenance and lifecycle without conflating an activity with its outcome.",
+  "type": "object", "additionalProperties": false,
+  "required": ["uri", "decision_uri", "target_assertion_uri", "reviewer_agent_uri", "reviewer_authority", "authority_assignment_uris", "review_method", "validation_dimension", "outcome", "reviewed_at", "valid_until", "perspective_uri", "represented_community_uris", "applicability_scope_uris", "evidence", "rationale", "rights_uri", "supersedes_decision_uri", "suspends_decision_uri", "reinstates_decision_uri", "decision_status", "projection_policy_uris"],
+  "properties": {
+    "uri": {"type": "string", "format": "uri"},
+    "decision_uri": {"type": "string", "format": "uri"},
+    "target_assertion_uri": {"type": "string", "format": "uri"},
+    "reviewer_agent_uri": {"type": "string", "format": "uri"},
+    "reviewer_authority": {"enum": ["community", "language", "organology", "history", "rights", "technical", "ethical"]},
+    "authority_assignment_uris": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "format": "uri"}},
+    "review_method": {"enum": ["human", "community"]},
+    "validation_dimension": {"enum": ["referential", "linguistic", "community", "historical", "scholarly", "ethical", "rights"]},
+    "outcome": {"enum": ["accepted", "correction", "disputed", "rejected", "unverifiable", "withdrawn"]},
+    "reviewed_at": {"type": "string", "format": "date-time"},
+    "valid_until": {"type": ["string", "null"], "format": "date-time"},
+    "perspective_uri": {"type": "string", "format": "uri"},
+    "represented_community_uris": {"$ref": "#/$defs/uriArray"},
+    "applicability_scope_uris": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "format": "uri"}},
+    "evidence": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/evidence"}},
+    "rationale": {"type": "string", "minLength": 1},
+    "rights_uri": {"type": "string", "format": "uri"},
+    "supersedes_decision_uri": {"type": ["string", "null"], "format": "uri"},
+    "suspends_decision_uri": {"type": ["string", "null"], "format": "uri"},
+    "reinstates_decision_uri": {"type": ["string", "null"], "format": "uri"},
+    "decision_status": {"enum": ["active", "withdrawn", "superseded"]},
+    "projection_policy_uris": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "format": "uri"}}
+  },
+  "$defs": {
+    "uriArray": {"type": "array", "uniqueItems": true, "items": {"type": "string", "format": "uri"}},
+    "evidence": {
+      "type": "object", "additionalProperties": false,
+      "required": ["citation", "evidence_type", "relation", "resource_uri", "note"],
+      "properties": {
+        "citation": {"type": "string", "minLength": 1},
+        "evidence_type": {"enum": ["source-record", "fieldwork", "community-decision", "linguistic-analysis", "scholarly-publication", "rights-protocol", "observation", "reasoning"]},
+        "relation": {"enum": ["supports", "opposes", "qualifies", "documents"]},
+        "resource_uri": {"type": ["string", "null"], "format": "uri"},
+        "note": {"type": ["string", "null"]}
+      }
+    }
+  }
+}

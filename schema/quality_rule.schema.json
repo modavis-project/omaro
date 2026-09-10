@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://w3id.org/modavis/omaro/schema/quality_rule.schema.json",
+  "title": "Automated quality rule",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["uri", "code", "validation_dimension", "severity", "title", "description", "assessment_method", "review_effect"],
+  "properties": {
+    "uri": {"type": "string", "format": "uri"},
+    "code": {"type": "string", "pattern": "^[a-z][a-z0-9-]+$"},
+    "validation_dimension": {"enum": ["linguistic", "referential"]},
+    "severity": {"enum": ["warning"]},
+    "title": {"type": "string", "minLength": 1},
+    "description": {"type": "string", "minLength": 1},
+    "assessment_method": {"const": "automated-heuristic"},
+    "review_effect": {"const": "none"}
+  }
+}

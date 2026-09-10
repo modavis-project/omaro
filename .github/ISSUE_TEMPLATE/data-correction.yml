@@ -1,0 +1,48 @@
+name: Data correction or contextual review
+description: Propose an evidence-backed correction or qualified contextual assertion.
+title: "[Data]: "
+labels: [data, needs-review]
+body:
+  - type: input
+    id: uri
+    attributes:
+      label: Concept, assertion, or label-profile URI
+      placeholder: http://www.mimo-db.eu/InstrumentsKeywords/1234
+    validations:
+      required: true
+  - type: dropdown
+    id: category
+    attributes:
+      label: Correction category
+      options: [Upstream synchronization, Mechanical correction, Local annotation, Disputed assertion]
+    validations:
+      required: true
+  - type: textarea
+    id: change
+    attributes:
+      label: Current and proposed values
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Language and cultural context
+      description: Record the language tag or variety, community, place, period, usage domain, and perspective where relevant. Do not infer these from character script.
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence and citations
+    validations:
+      required: true
+  - type: textarea
+    id: authority
+    attributes:
+      label: Reviewer competence or community authority
+      description: Required for linguistic, cultural, community-preference, access, or protocol claims. Use a private channel if disclosure would be sensitive.
+  - type: input
+    id: version
+    attributes:
+      label: Affected dataset version
+      placeholder: 0.1.0
+    validations:
+      required: true

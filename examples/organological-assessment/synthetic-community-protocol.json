@@ -1,0 +1,12 @@
+{
+  "synthetic": true,
+  "version": "1.0",
+  "represented_community_uri": "https://example.org/omaro-evaluation/community/synthetic-community",
+  "allowed_action_uri": "https://w3id.org/modavis/omaro#use-action-display",
+  "allowed_purpose_uri": "https://example.org/omaro-evaluation/purpose/expert-evaluation",
+  "allowed_audience_uri": "https://example.org/omaro-evaluation/audience/appointed-expert-reviewers",
+  "requires_documented_legal_basis": true,
+  "requires_explicit_consent_status": true,
+  "valid_from": "2026-08-30T00:00:00Z",
+  "valid_until": "2027-08-30T00:00:00Z"
+}

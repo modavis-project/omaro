@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://w3id.org/modavis/omaro/schema/perspective.schema.json",
+  "title": "Named epistemic or cultural perspective",
+  "type": "object", "additionalProperties": false,
+  "required": ["uri", "label", "perspective_type", "holder_agent_uri", "represented_community_uris", "description", "status", "valid_from", "valid_until", "authority_assignment_uris"],
+  "properties": {
+    "uri": {"type": "string", "format": "uri"},
+    "label": {"type": "string", "minLength": 1},
+    "perspective_type": {"enum": ["source", "institutional", "scholarly", "community", "curatorial", "historical", "technical"]},
+    "holder_agent_uri": {"type": "string", "format": "uri"},
+    "represented_community_uris": {"type": "array", "uniqueItems": true, "items": {"type": "string", "format": "uri"}},
+    "description": {"type": "string", "minLength": 1},
+    "status": {"enum": ["active", "historical", "withdrawn"]},
+    "valid_from": {"type": ["string", "null"], "format": "date-time"},
+    "valid_until": {"type": ["string", "null"], "format": "date-time"},
+    "authority_assignment_uris": {"type": "array", "uniqueItems": true, "items": {"type": "string", "format": "uri"}}
+  }
+}

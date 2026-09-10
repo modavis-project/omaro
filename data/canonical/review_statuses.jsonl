@@ -1,0 +1,5 @@
+{"code":"accepted","description":"Accepted by a recorded domain, linguistic, or community review.","label":"Accepted","uri":"https://w3id.org/modavis/omaro#review-status-accepted"}
+{"code":"disputed","description":"One or more recorded perspectives dispute this assertion.","label":"Disputed","uri":"https://w3id.org/modavis/omaro#review-status-disputed"}
+{"code":"rejected","description":"Rejected for active project use but preserved for audit.","label":"Rejected","uri":"https://w3id.org/modavis/omaro#review-status-rejected"}
+{"code":"superseded","description":"Replaced by a later assertion or review decision.","label":"Superseded","uri":"https://w3id.org/modavis/omaro#review-status-superseded"}
+{"code":"unreviewed","description":"No human review has been recorded.","label":"Unreviewed","uri":"https://w3id.org/modavis/omaro#review-status-unreviewed"}

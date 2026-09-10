@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://w3id.org/modavis/omaro/schema/review_status.schema.json",
+  "title": "Assertion review status",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["uri", "code", "label", "description"],
+  "properties": {
+    "uri": {
+      "type": "string",
+      "format": "uri",
+      "pattern": "^https://w3id\\.org/modavis/omaro#review-status-(unreviewed|accepted|disputed|rejected|superseded)$"
+    },
+    "code": {
+      "enum": ["unreviewed", "accepted", "disputed", "rejected", "superseded"]
+    },
+    "label": {"type": "string", "minLength": 1},
+    "description": {"type": "string", "minLength": 1}
+  }
+}

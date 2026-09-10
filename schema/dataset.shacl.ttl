@@ -1,0 +1,1627 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix skosxl: <http://www.w3.org/2008/05/skos-xl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sosa: <http://www.w3.org/ns/sosa/> .
+@prefix crmsci: <http://www.cidoc-crm.org/extensions/crmsci/> .
+@prefix omaro: <https://w3id.org/modavis/omaro#> .
+
+<#ConceptShape>
+    a sh:NodeShape ;
+    sh:targetClass skos:Concept ;
+    sh:property [
+        sh:path skos:inScheme ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:nodeKind sh:IRI
+    ] .
+
+<#ResolvedLabelShape>
+    a sh:NodeShape ;
+    sh:targetSubjectsOf skos:prefLabel ;
+    sh:property [
+        sh:path skos:prefLabel ;
+        sh:uniqueLang true ;
+        sh:disjoint skos:altLabel ;
+        sh:disjoint skos:hiddenLabel ;
+        sh:nodeKind sh:Literal
+    ] .
+
+<#AlternateLabelDisjointnessShape>
+    a sh:NodeShape ;
+    sh:targetSubjectsOf skos:altLabel ;
+    sh:property [
+        sh:path skos:altLabel ;
+        sh:disjoint skos:hiddenLabel ;
+        sh:nodeKind sh:Literal
+    ] .
+
+<#SkosXlLabelShape>
+    a sh:NodeShape ;
+    sh:targetClass skosxl:Label ;
+    sh:property [
+        sh:path skosxl:literalForm ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:nodeKind sh:Literal
+    ] ;
+    sh:property [
+        sh:path omaro:labelProfile ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:class omaro:LabelProfile ;
+        sh:nodeKind sh:IRI
+    ] .
+
+<#LabelProfileShape>
+    a sh:NodeShape ;
+    sh:targetClass omaro:LabelProfile ;
+    sh:property [
+        sh:path omaro:labelResource ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:class skosxl:Label ;
+        sh:nodeKind sh:IRI
+    ] ;
+    sh:property [
+        sh:path omaro:sourceLabelAssertion ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:class omaro:LabelAssertion ;
+        sh:nodeKind sh:IRI
+    ] ;
+    sh:property [
+        sh:path dcterms:language ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:nodeKind sh:Literal
+    ] ;
+    sh:property [
+        sh:path omaro:primaryLanguageSubtag ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:nodeKind sh:Literal
+    ] ;
+    sh:property [
+        sh:path omaro:scriptRegistry ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:class prov:Entity ;
+        sh:nodeKind sh:IRI
+    ] ;
+    sh:property [
+        sh:path omaro:translationStatus ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:in ("unverified" "borrowed-translingual" "machine-translated" "human-translated" "native-speaker-reviewed" "community-reviewed" "contested" "not-applicable")
+    ] ;
+    sh:property [
+        sh:path omaro:assertionOrigin ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:hasValue "source-derived"
+    ] ;
+    sh:property [
+        sh:path prov:wasDerivedFrom ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:class omaro:LabelAssertion ;
+        sh:nodeKind sh:IRI
+    ] .
+
+<#SkosXlPreferredLabelShape>
+    a sh:NodeShape ;
+    sh:targetSubjectsOf skosxl:prefLabel ;
+    sh:property [
+        sh:path skosxl:prefLabel ;
+        sh:class skosxl:Label ;
+        sh:nodeKind sh:IRI
+    ] .
+
+<#BroaderShape>
+    a sh:NodeShape ;
+    sh:targetSubjectsOf skos:broader ;
+    sh:property [
+        sh:path skos:broader ;
+        sh:class skos:Concept ;
+        sh:nodeKind sh:IRI
+    ] .
+
+<#NoUnqualifiedExactMatchShape>
+    a sh:NodeShape ;
+    sh:targetSubjectsOf skos:exactMatch ;
+    sh:property [
+        sh:path skos:exactMatch ;
+        sh:maxCount 0
+    ] .
+
+<#ClassificationAssertionShape>
+    a sh:NodeShape ;
+    sh:targetClass omaro:ClassificationAssertion ;
+    sh:property [
+        sh:path rdf:subject ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:nodeKind sh:IRI
+    ] ;
+    sh:property [
+        sh:path rdf:predicate ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:hasValue omaro:classifiedAs
+    ] ;
+    sh:property [
+        sh:path rdf:object ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:class skos:Concept ;
+        sh:nodeKind sh:IRI
+    ] ;
+    sh:property [
+        sh:path dcterms:source ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:nodeKind sh:IRI
+    ] ;
+    sh:property [
+        sh:path prov:wasGeneratedBy ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:class omaro:ClassificationAssignment ;
+        sh:nodeKind sh:IRI
+    ] ;
+    sh:property [
+        sh:path omaro:classificationScheme ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:class skos:ConceptScheme ;
+        sh:nodeKind sh:IRI
+    ] ;
+    sh:property [
+        sh:path omaro:schemeVersion ;
+        sh:maxCount 1 ;
+        sh:nodeKind sh:IRI
+    ] ;
+    sh:property [
+        sh:path omaro:perspective ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:class omaro:Perspective ;
+        sh:nodeKind sh:IRI
+    ] ;
+    sh:property [
+        sh:path omaro:targetType ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:nodeKind sh:IRI
+    ] ;
+    sh:sparql [
+        sh:message "Classification assertion target type does not match the registered organological target kind." ;
+        sh:select """
+            PREFIX omaro: <https://w3id.org/modavis/omaro#>
+            PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+            SELECT $this WHERE {
+                $this rdf:subject ?target ; omaro:targetType ?targetType .
+                ?target a omaro:OrganologicalTarget ; omaro:targetKind ?targetKind .
+                FILTER (?targetType != ?targetKind)
+            }
+        """
+    ] ;
+    sh:property [
+        sh:path omaro:stance ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:nodeKind sh:IRI
+    ] ;
+    sh:property [
+        sh:path omaro:hasApplicabilityScope ;
+        sh:minCount 1 ;
+        sh:class omaro:ApplicabilityScope ;
+        sh:nodeKind sh:IRI
+    ] ;
+    sh:property [
+        sh:path omaro:underProjectionPolicy ;
+        sh:minCount 1 ;
+        sh:class omaro:ProjectionPolicy ;
+        sh:nodeKind sh:IRI
+    ] ;
+    sh:property [
+        sh:path omaro:hasEvidence ;
+        sh:minCount 1 ;
+        sh:class omaro:Evidence ;
+        sh:nodeKind sh:IRI
+    ] ;
+    sh:sparql [
+        sh:message "Classification validity ends before it begins." ;
+        sh:select """
+            PREFIX omaro: <https://w3id.org/modavis/omaro#>
+            SELECT $this WHERE {
+                $this omaro:validFrom ?start ; omaro:validUntil ?end .
+                FILTER (?end < ?start)
+            }
+        """
+    ] ;
+    sh:sparql [
+        sh:message "A classification assertion and its compound expression must use the same perspective." ;
+        sh:select """
+            PREFIX omaro: <https://w3id.org/modavis/omaro#>
+            PREFIX prov: <http://www.w3.org/ns/prov#>
+            SELECT $this WHERE {
+                $this prov:wasGeneratedBy/omaro:classificationExpression ?expression ;
+                      omaro:perspective ?assertionPerspective .
+                ?expression omaro:perspective ?expressionPerspective .
+                FILTER (?assertionPerspective != ?expressionPerspective)
+            }
+        """
+    ] ;
+    sh:sparql [
+        sh:message "A classification assertion and its compound expression must use exactly the same scheme version, including an omitted version." ;
+        sh:select """
+            PREFIX omaro: <https://w3id.org/modavis/omaro#>
+            PREFIX prov: <http://www.w3.org/ns/prov#>
+            SELECT $this WHERE {
+                $this prov:wasGeneratedBy/omaro:classificationExpression ?expression .
+                {
+                    $this omaro:schemeVersion ?version .
+                    FILTER NOT EXISTS { ?expression omaro:schemeVersion ?version }
+                }
+                UNION
+                {
+                    ?expression omaro:schemeVersion ?version .
+                    FILTER NOT EXISTS { $this omaro:schemeVersion ?version }
+                }
+            }
+        """
+    ] ;
+    sh:sparql [
+        sh:message "Every classification-assertion scope must be covered by its compound expression." ;
+        sh:select """
+            PREFIX omaro: <https://w3id.org/modavis/omaro#>
+            PREFIX prov: <http://www.w3.org/ns/prov#>
+            SELECT $this WHERE {
+                $this prov:wasGeneratedBy/omaro:classificationExpression ?expression ;
+                      omaro:hasApplicabilityScope ?scope .
+                FILTER NOT EXISTS { ?expression omaro:hasApplicabilityScope ?scope }
+            }
+        """
+    ] ;
+    sh:sparql [
+        sh:message "Every classified expression member must belong to the assertion's classification scheme." ;
+        sh:select """
+            PREFIX omaro: <https://w3id.org/modavis/omaro#>
+            PREFIX prov: <http://www.w3.org/ns/prov#>
+            PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+            SELECT $this WHERE {
+                $this prov:wasGeneratedBy/omaro:classificationExpression/
+                          omaro:hasExpressionMember/omaro:memberClassification ?memberClass ;
+                      omaro:classificationScheme ?scheme .
+                FILTER NOT EXISTS { ?memberClass skos:inScheme ?scheme }
+            }
+        """
+    ] ;
+    sh:sparql [
+        sh:message "When an expression preserves a source concept, a linked assertion must classify as that concept." ;
+        sh:select """
+            PREFIX omaro: <https://w3id.org/modavis/omaro#>
+            PREFIX prov: <http://www.w3.org/ns/prov#>
+            PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+            PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+            SELECT $this WHERE {
+                $this prov:wasGeneratedBy/omaro:classificationExpression ?expression ;
+                      rdf:object ?assertedClass .
+                ?sourceConcept a skos:Concept ;
+                               omaro:classificationExpression ?expression .
+                FILTER (?assertedClass != ?sourceConcept)
+            }
+        """
+    ] ;
+    sh:sparql [
+        sh:message "A registered expression-member target must be connected to the registered whole-assertion target." ;
+        sh:select """
+            PREFIX omaro: <https://w3id.org/modavis/omaro#>
+            PREFIX prov: <http://www.w3.org/ns/prov#>
+            PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+            SELECT $this WHERE {
+                $this rdf:subject ?wholeTarget ;
+                      prov:wasGeneratedBy/omaro:classificationExpression/
+                          omaro:hasExpressionMember/omaro:memberTarget ?memberTarget .
+                ?wholeTarget omaro:targetKind ?wholeTargetKind .
+                ?memberTarget omaro:targetKind ?memberTargetKind .
+                FILTER (
+                    ?wholeTarget != ?memberTarget &&
+                    NOT EXISTS {
+                        ?wholeTarget (
+                            omaro:configurationOf | ^omaro:configurationOf |
+                            omaro:componentOf | ^omaro:componentOf |
+                            omaro:conditionStateOf | ^omaro:conditionStateOf |
+                            omaro:performanceEvent | ^omaro:performanceEvent |
+                            omaro:hasComponent | ^omaro:hasComponent |
+                            omaro:hasFunctionalModule | ^omaro:hasFunctionalModule
+                        )+ ?memberTarget
+                    }
+                )
+            }
+        """
+    ] .
+
+<#ActivityEntitySeparationShape>
+    a sh:NodeShape ;
+    sh:targetClass omaro:ClassificationAssignment, omaro:ReviewEvent ;
+    sh:message "An assignment or review activity cannot also be an assertion or review-decision entity." ;
+    sh:not [
+        sh:or (
+            [ sh:class omaro:ClassificationAssertion ]
+            [ sh:class omaro:ConceptRelationAssertion ]
+            [ sh:class omaro:LabelAssertion ]
+            [ sh:class omaro:NoteAssertion ]
+            [ sh:class omaro:ReviewDecision ]
+        )
+    ] .
+
+<#ClassificationAssignmentShape>
+    a sh:NodeShape ;
+    sh:targetClass omaro:ClassificationAssignment ;
+    sh:property [
+        sh:path prov:generated ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:class omaro:ClassificationAssertion ;
+        sh:nodeKind sh:IRI
+    ] ;
+    sh:property [
+        sh:path prov:wasAssociatedWith ;
+        sh:minCount 1 ;
+        sh:class prov:Agent ;
+        sh:nodeKind sh:IRI
+    ] ;
+    sh:property [
+        sh:path omaro:classificationMethod ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:nodeKind sh:IRI
+    ] ;
+    sh:property [
+        sh:path omaro:usedAssessment ;
+        sh:class omaro:ObservationAssessment ;
+        sh:nodeKind sh:IRI
+    ] ;
+    sh:property [
+        sh:path omaro:usedObservation ;
+        sh:class omaro:OrganologicalObservation ;
+        sh:nodeKind sh:IRI
+    ] .
+
+<#LexicalAndNoteAssertionShape>
+    a sh:NodeShape ;
+    sh:targetClass omaro:LabelAssertion, omaro:NoteAssertion ;
+    sh:property [
+        sh:path rdf:subject ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:class skos:Concept ;
+        sh:nodeKind sh:IRI
+    ] ;
+    sh:property [
+        sh:path rdf:predicate ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:nodeKind sh:IRI
+    ] ;
+    sh:property [
+        sh:path rdf:object ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:nodeKind sh:Literal
+    ] ;
+    sh:property [
+        sh:path dcterms:source ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:nodeKind sh:IRI
+    ] ;
+    sh:property [
+        sh:path prov:wasAttributedTo ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:class prov:Agent ;
+        sh:nodeKind sh:IRI
+    ] ;
+    sh:property [
+        sh:path omaro:sourceRecord ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:class prov:Entity ;
+        sh:nodeKind sh:IRI
+    ] ;
+    sh:property [
+        sh:path omaro:assertionOrigin ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:hasValue "source-asserted"
+    ] ;
+    sh:property [
+        sh:path omaro:reviewStatus ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:in ("unreviewed" "accepted" "disputed" "rejected" "superseded")
+    ] ;
+    sh:property [
+        sh:path omaro:reviewStatusResource ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:class omaro:ReviewStatus ;
+        sh:nodeKind sh:IRI
+    ] .
+
+<#LabelAssertionPredicateShape>
+    a sh:NodeShape ;
+    sh:targetClass omaro:LabelAssertion ;
+    sh:property [
+        sh:path rdf:predicate ;
+        sh:in (skos:prefLabel skos:altLabel skos:hiddenLabel)
+    ] ;
+    sh:property [
+        sh:path omaro:labelResource ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:class skosxl:Label ;
+        sh:nodeKind sh:IRI
+    ] .
+
+<#NoteAssertionPredicateShape>
+    a sh:NodeShape ;
+    sh:targetClass omaro:NoteAssertion ;
+    sh:property [
+        sh:path rdf:predicate ;
+        sh:in (
+            skos:definition
+            skos:scopeNote
+            skos:historyNote
+            skos:editorialNote
+            skos:changeNote
+            skos:example
+        )
+    ] .
+
+<#ConceptSchemeShape>
+    a sh:NodeShape ;
+    # schemeType identifies registered classification or terminology schemes.
+    # OMARO's generated controlled-code schemes intentionally omit this property.
+    sh:targetSubjectsOf omaro:schemeType ;
+    sh:class skos:ConceptScheme ;
+    sh:property [
+        sh:path omaro:schemePerspective ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:class omaro:Perspective ;
+        sh:nodeKind sh:IRI
+    ] ;
+    sh:property [
+        sh:path prov:wasAttributedTo ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:class prov:Agent ;
+        sh:nodeKind sh:IRI
+    ] .
+
+<#PerspectiveShape>
+    a sh:NodeShape ;
+    sh:targetClass omaro:Perspective ;
+    sh:property [
+        sh:path omaro:heldBy ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:class prov:Agent ;
+        sh:nodeKind sh:IRI
+    ] ;
+    sh:property [
+        sh:path omaro:perspectiveType ;
+        sh:minCount 1 ;
+        sh:maxCount 1
+    ] ;
+    sh:property [
+        sh:path omaro:assignmentStatus ;
+        sh:minCount 1 ;
+        sh:maxCount 1
+    ] ;
+    sh:sparql [
+        sh:message "Perspective validity ends before it begins." ;
+        sh:select """
+            PREFIX omaro: <https://w3id.org/modavis/omaro#>
+            SELECT $this WHERE {
+                $this omaro:validFrom ?start ; omaro:validUntil ?end .
+                FILTER (?end < ?start)
+            }
+        """
+    ] .
+
+<#ApplicabilityScopeShape>
+    a sh:NodeShape ;
+    sh:targetClass omaro:ApplicabilityScope ;
+    sh:property [
+        sh:path omaro:scopeMode ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:class skos:Concept ;
+        sh:nodeKind sh:IRI ;
+        sh:in (
+            omaro:scope-mode-source-silent
+            omaro:scope-mode-not-yet-investigated
+            omaro:scope-mode-known-unknown
+            omaro:scope-mode-intentionally-unscoped
+            omaro:scope-mode-not-applicable
+            omaro:scope-mode-specified
+            omaro:scope-mode-context-independent
+        )
+    ] ;
+    sh:property [
+        sh:path prov:wasAttributedTo ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:class prov:Agent ;
+        sh:nodeKind sh:IRI
+    ] ;
+    sh:sparql [
+        sh:message "Applicability-scope interval ends before it begins." ;
+        sh:select """
+            PREFIX omaro: <https://w3id.org/modavis/omaro#>
+            SELECT $this WHERE {
+                $this omaro:temporalStart ?start ; omaro:temporalEnd ?end .
+                FILTER (?end < ?start)
+            }
+        """
+    ] .
+
+<#ProjectionPolicyShape>
+    a sh:NodeShape ;
+    sh:targetClass omaro:ProjectionPolicy ;
+    sh:property [
+        sh:path omaro:graphRole ;
+        sh:minCount 1 ;
+        sh:maxCount 1
+    ] ;
+    sh:property [
+        sh:path omaro:directAssertion ;
+        sh:minCount 1 ;
+        sh:maxCount 1
+    ] ;
+    sh:property [
+        sh:path omaro:unknownScopeBehavior ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:in ("include" "warn" "exclude")
+    ] ;
+    sh:property [
+        sh:path omaro:policyVersion ;
+        sh:minCount 1 ;
+        sh:maxCount 1
+    ] .
+
+<#EvidenceShape>
+    a sh:NodeShape ;
+    sh:targetClass omaro:Evidence ;
+    sh:property [
+        sh:path dcterms:bibliographicCitation ;
+        sh:minCount 1 ;
+        sh:maxCount 1
+    ] ;
+    sh:property [
+        sh:path omaro:evidenceType ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:nodeKind sh:IRI
+    ] ;
+    sh:property [
+        sh:path omaro:evidenceRelation ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:nodeKind sh:IRI
+    ] .
+
+<#AuthorityAssignmentShape>
+    a sh:NodeShape ;
+    sh:targetClass omaro:AuthorityAssignment ;
+    sh:property [
+        sh:path omaro:assignedBy ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:class prov:Agent ;
+        sh:nodeKind sh:IRI
+    ] ;
+    sh:property [
+        sh:path omaro:representsCommunity ;
+        sh:maxCount 1 ;
+        sh:nodeKind sh:IRI
+    ] ;
+    sh:property [
+        sh:path omaro:authorityRole ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:nodeKind sh:IRI
+    ] ;
+    sh:property [
+        sh:path omaro:authorityBasis ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:nodeKind sh:IRI
+    ] ;
+    sh:property [
+        sh:path omaro:conferredBy ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:class prov:Agent ;
+        sh:nodeKind sh:IRI
+    ] ;
+    sh:property [
+        sh:path omaro:subjectMatter ;
+        sh:minCount 1 ;
+        sh:nodeKind sh:IRI
+    ] ;
+    sh:property [
+        sh:path omaro:coveredValidationDimension ;
+        sh:minCount 1
+    ] ;
+    sh:property [
+        sh:path omaro:coveredAction ;
+        sh:class skos:Concept ;
+        sh:nodeKind sh:IRI
+    ] ;
+    sh:property [
+        sh:path omaro:hasApplicabilityScope ;
+        sh:minCount 1 ;
+        sh:class omaro:ApplicabilityScope ;
+        sh:nodeKind sh:IRI
+    ] ;
+    sh:property [
+        sh:path omaro:hasEvidence ;
+        sh:minCount 1 ;
+        sh:class omaro:Evidence ;
+        sh:nodeKind sh:IRI
+    ] ;
+    sh:sparql [
+        sh:message "Authority validity ends before it begins." ;
+        sh:select """
+            PREFIX omaro: <https://w3id.org/modavis/omaro#>
+            SELECT $this WHERE {
+                $this omaro:validFrom ?start ; omaro:validUntil ?end .
+                FILTER (?end < ?start)
+            }
+        """
+    ] ;
+    sh:sparql [
+        sh:message "Community authority roles and represented-community links must occur together." ;
+        sh:select """
+            PREFIX omaro: <https://w3id.org/modavis/omaro#>
+            SELECT $this WHERE {
+                {
+                    $this omaro:authorityRole ?role .
+                    FILTER (?role IN (
+                        omaro:authority-role-community-reviewer,
+                        omaro:authority-role-cultural-authority,
+                        omaro:authority-role-delegated-representative
+                    ))
+                    FILTER NOT EXISTS { $this omaro:representsCommunity ?community }
+                }
+                UNION
+                {
+                    $this omaro:authorityRole ?role ; omaro:representsCommunity ?community .
+                    FILTER (?role NOT IN (
+                        omaro:authority-role-community-reviewer,
+                        omaro:authority-role-cultural-authority,
+                        omaro:authority-role-delegated-representative
+                    ))
+                }
+            }
+        """
+    ] .
+
+<#ReviewEventShape>
+    a sh:NodeShape ;
+    sh:targetClass omaro:ReviewEvent ;
+    sh:property [
+        sh:path omaro:reviewDecision ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:class omaro:ReviewDecision ;
+        sh:nodeKind sh:IRI
+    ] ;
+    sh:property [
+        sh:path prov:wasAssociatedWith ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:class prov:Agent ;
+        sh:nodeKind sh:IRI
+    ] ;
+    sh:property [
+        sh:path omaro:authorityAssignment ;
+        sh:minCount 1 ;
+        sh:class omaro:AuthorityAssignment ;
+        sh:nodeKind sh:IRI
+    ] ;
+    sh:property [
+        sh:path omaro:reviewerAuthority ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:nodeKind sh:IRI
+    ] ;
+    sh:property [
+        sh:path omaro:reviewMethod ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:nodeKind sh:IRI
+    ] .
+
+<#ReviewDecisionShape>
+    a sh:NodeShape ;
+    sh:targetClass omaro:ReviewDecision ;
+    sh:property [
+        sh:path prov:wasGeneratedBy ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:class omaro:ReviewEvent ;
+        sh:nodeKind sh:IRI
+    ] ;
+    sh:property [
+        sh:path omaro:targetAssertion ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:nodeKind sh:IRI
+    ] ;
+    sh:property [
+        sh:path omaro:perspective ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:class omaro:Perspective ;
+        sh:nodeKind sh:IRI
+    ] ;
+    sh:property [
+        sh:path omaro:hasApplicabilityScope ;
+        sh:minCount 1 ;
+        sh:class omaro:ApplicabilityScope ;
+        sh:nodeKind sh:IRI
+    ] ;
+    sh:property [
+        sh:path omaro:reviewOutcome ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:nodeKind sh:IRI
+    ] ;
+    sh:property [
+        sh:path omaro:validationDimension ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:nodeKind sh:IRI
+    ] ;
+    sh:property [
+        sh:path omaro:decisionStatus ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:nodeKind sh:IRI
+    ] ;
+    sh:property [
+        sh:path omaro:underProjectionPolicy ;
+        sh:minCount 1 ;
+        sh:class omaro:ProjectionPolicy ;
+        sh:nodeKind sh:IRI
+    ] ;
+    sh:property [
+        sh:path omaro:hasEvidence ;
+        sh:minCount 1 ;
+        sh:class omaro:Evidence ;
+        sh:nodeKind sh:IRI
+    ] ;
+    sh:sparql [
+        sh:message "Review validity ends before the review decision." ;
+        sh:select """
+            PREFIX omaro: <https://w3id.org/modavis/omaro#>
+            PREFIX prov: <http://www.w3.org/ns/prov#>
+            SELECT $this WHERE {
+                $this prov:wasGeneratedBy/prov:endedAtTime ?start ;
+                    omaro:validUntil ?end .
+                FILTER (?end < ?start)
+            }
+        """
+    ] ;
+    sh:sparql [
+        sh:message "A review decision may perform at most one predecessor lifecycle action." ;
+        sh:select """
+            PREFIX omaro: <https://w3id.org/modavis/omaro#>
+            SELECT $this WHERE {
+                {
+                    SELECT $this (COUNT(?previous) AS ?count) WHERE {
+                        $this ?path ?previous .
+                        FILTER (?path IN (
+                            omaro:supersedesDecision,
+                            omaro:suspendsDecision,
+                            omaro:reinstatesDecision
+                        ))
+                    } GROUP BY $this
+                }
+                FILTER (?count > 1)
+            }
+        """
+    ] ;
+    sh:sparql [
+        sh:message "A review lifecycle action must target an older decision for the same assertion." ;
+        sh:select """
+            PREFIX omaro: <https://w3id.org/modavis/omaro#>
+            PREFIX prov: <http://www.w3.org/ns/prov#>
+            SELECT $this WHERE {
+                $this ?path ?previous ;
+                    omaro:targetAssertion ?target ;
+                    prov:wasGeneratedBy/prov:endedAtTime ?time .
+                FILTER (?path IN (
+                    omaro:supersedesDecision,
+                    omaro:suspendsDecision,
+                    omaro:reinstatesDecision
+                ))
+                OPTIONAL { ?previous omaro:targetAssertion ?previousTarget }
+                OPTIONAL { ?previous prov:wasGeneratedBy/prov:endedAtTime ?previousTime }
+                FILTER (
+                    !BOUND(?previousTarget) || !BOUND(?previousTime) ||
+                    ?previousTarget != ?target || ?previousTime >= ?time
+                )
+            }
+        """
+    ] ;
+    sh:sparql [
+        sh:message "A temporary review suspension must declare its end time." ;
+        sh:select """
+            PREFIX omaro: <https://w3id.org/modavis/omaro#>
+            SELECT $this WHERE {
+                $this omaro:suspendsDecision ?previous .
+                FILTER NOT EXISTS { $this omaro:validUntil ?end }
+            }
+        """
+    ] .
+
+<#ConceptRelationAssertionShape>
+    a sh:NodeShape ;
+    sh:targetClass omaro:ConceptRelationAssertion ;
+    sh:property [
+        sh:path rdf:subject ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:class skos:Concept ;
+        sh:nodeKind sh:IRI
+    ] ;
+    sh:property [
+        sh:path rdf:predicate ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:nodeKind sh:IRI
+    ] ;
+    sh:property [
+        sh:path rdf:object ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:class skos:Concept ;
+        sh:nodeKind sh:IRI
+    ] ;
+    sh:property [
+        sh:path omaro:perspective ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:class omaro:Perspective ;
+        sh:nodeKind sh:IRI
+    ] ;
+    sh:property [
+        sh:path omaro:hasApplicabilityScope ;
+        sh:minCount 1 ;
+        sh:class omaro:ApplicabilityScope ;
+        sh:nodeKind sh:IRI
+    ] ;
+    sh:property [
+        sh:path omaro:underProjectionPolicy ;
+        sh:minCount 1 ;
+        sh:class omaro:ProjectionPolicy ;
+        sh:nodeKind sh:IRI
+    ] ;
+    sh:property [
+        sh:path omaro:hasEvidence ;
+        sh:minCount 1 ;
+        sh:class omaro:Evidence ;
+        sh:nodeKind sh:IRI
+    ] ;
+    sh:property [
+        sh:path omaro:mappingPurpose ;
+        sh:nodeKind sh:IRI
+    ] ;
+    sh:sparql [
+        sh:message "A SKOS mapping assertion requires at least one mapping purpose." ;
+        sh:select """
+            PREFIX omaro: <https://w3id.org/modavis/omaro#>
+            PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+            PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+            SELECT $this WHERE {
+                $this rdf:predicate ?predicate .
+                FILTER (?predicate IN (
+                    skos:exactMatch, skos:closeMatch, skos:broadMatch,
+                    skos:narrowMatch, skos:relatedMatch
+                ))
+                FILTER NOT EXISTS { $this omaro:mappingPurpose ?purpose }
+            }
+        """
+    ] ;
+    sh:sparql [
+        sh:message "A structural SKOS relation must not declare a mapping purpose." ;
+        sh:select """
+            PREFIX omaro: <https://w3id.org/modavis/omaro#>
+            PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+            PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+            SELECT $this WHERE {
+                $this rdf:predicate ?predicate ; omaro:mappingPurpose ?purpose .
+                FILTER (?predicate IN (skos:broader, skos:narrower, skos:related))
+            }
+        """
+    ] ;
+    sh:sparql [
+        sh:message "Concept-relation validity ends before it begins." ;
+        sh:select """
+            PREFIX omaro: <https://w3id.org/modavis/omaro#>
+            SELECT $this WHERE {
+                $this omaro:validFrom ?start ; omaro:validUntil ?end .
+                FILTER (?end < ?start)
+            }
+        """
+    ] .
+
+<#OrganologicalTargetShape>
+    a sh:NodeShape ;
+    sh:targetClass omaro:OrganologicalTarget ;
+    sh:property [
+        sh:path rdfs:label ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:nodeKind sh:Literal
+    ] ;
+    sh:property [
+        sh:path omaro:targetKind ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:class skos:Concept ;
+        sh:nodeKind sh:IRI
+    ] ;
+    sh:property [
+        sh:path omaro:hasComponent ;
+        sh:class omaro:OrganologicalTarget ;
+        sh:nodeKind sh:IRI
+    ] ;
+    sh:property [
+        sh:path dcterms:rights ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:nodeKind sh:IRI
+    ] ;
+    sh:property [
+        sh:path omaro:authorityAssignment ;
+        sh:class omaro:AuthorityAssignment ;
+        sh:nodeKind sh:IRI
+    ] ;
+    sh:property [
+        sh:path omaro:protocolApplication ;
+        sh:class omaro:ProtocolApplication ;
+        sh:nodeKind sh:IRI
+    ] ;
+    sh:sparql [
+        sh:message "An organological target state ends before it begins." ;
+        sh:select """
+            PREFIX omaro: <https://w3id.org/modavis/omaro#>
+            SELECT $this WHERE {
+                $this omaro:validFrom ?start ; omaro:validUntil ?end .
+                FILTER (?end < ?start)
+            }
+        """
+    ] .
+
+<#ClassificationCriterionShape>
+    a sh:NodeShape ;
+    sh:targetClass omaro:ClassificationCriterion ;
+    sh:property [
+        sh:path rdfs:label ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:nodeKind sh:Literal
+    ] ;
+    sh:property [
+        sh:path dcterms:description ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:nodeKind sh:Literal
+    ] ;
+    sh:property [
+        sh:path omaro:criterionType ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:class skos:Concept ;
+        sh:nodeKind sh:IRI
+    ] ;
+    sh:property [
+        sh:path omaro:classificationScheme ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:class skos:ConceptScheme ;
+        sh:nodeKind sh:IRI
+    ] ;
+    sh:property [
+        sh:path omaro:perspective ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:class omaro:Perspective ;
+        sh:nodeKind sh:IRI
+    ] ;
+    sh:property [
+        sh:path prov:wasAttributedTo ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:class prov:Agent ;
+        sh:nodeKind sh:IRI
+    ] ;
+    sh:property [
+        sh:path omaro:criterionStatus ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:class skos:Concept ;
+        sh:nodeKind sh:IRI
+    ] ;
+    sh:property [
+        sh:path omaro:hasApplicabilityScope ;
+        sh:minCount 1 ;
+        sh:class omaro:ApplicabilityScope ;
+        sh:nodeKind sh:IRI
+    ] ;
+    sh:property [
+        sh:path dcterms:rights ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:nodeKind sh:IRI
+    ] ;
+    sh:property [
+        sh:path omaro:authorityAssignment ;
+        sh:class omaro:AuthorityAssignment ;
+        sh:nodeKind sh:IRI
+    ] ;
+    sh:property [
+        sh:path omaro:protocolApplication ;
+        sh:class omaro:ProtocolApplication ;
+        sh:nodeKind sh:IRI
+    ] .
+
+<#ObservationAssessmentShape>
+    a sh:NodeShape ;
+    sh:targetClass omaro:ObservationAssessment ;
+    sh:property [
+        sh:path omaro:assessmentFeatureOfInterest ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:nodeKind sh:IRI
+    ] ;
+    sh:property [
+        sh:path omaro:assessmentProperty ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:nodeKind sh:IRI
+    ] ;
+    sh:property [
+        sh:path omaro:assessmentProcedure ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:nodeKind sh:IRI
+    ] ;
+    sh:property [
+        sh:path omaro:assessmentResult ;
+        sh:maxCount 1 ;
+        sh:class omaro:ObservationResult ;
+        sh:nodeKind sh:IRI
+    ] ;
+    sh:property [
+        sh:path omaro:assessmentTime ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:datatype xsd:dateTime
+    ] ;
+    sh:property [
+        sh:path omaro:assessmentAgent ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:class prov:Agent ;
+        sh:nodeKind sh:IRI
+    ] ;
+    sh:property [
+        sh:path omaro:assessmentStatus ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:class skos:Concept ;
+        sh:nodeKind sh:IRI
+    ] ;
+    sh:property [
+        sh:path omaro:perspective ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:class omaro:Perspective ;
+        sh:nodeKind sh:IRI
+    ] ;
+    sh:property [
+        sh:path omaro:hasApplicabilityScope ;
+        sh:minCount 1 ;
+        sh:class omaro:ApplicabilityScope ;
+        sh:nodeKind sh:IRI
+    ] ;
+    sh:property [
+        sh:path omaro:reviewStatusResource ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:class omaro:ReviewStatus ;
+        sh:nodeKind sh:IRI
+    ] ;
+    sh:property [
+        sh:path dcterms:rights ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:nodeKind sh:IRI
+    ] ;
+    sh:property [
+        sh:path omaro:authorityAssignment ;
+        sh:class omaro:AuthorityAssignment ;
+        sh:nodeKind sh:IRI
+    ] ;
+    sh:property [
+        sh:path omaro:protocolApplication ;
+        sh:class omaro:ProtocolApplication ;
+        sh:nodeKind sh:IRI
+    ] ;
+    sh:sparql [
+        sh:message "A detected or not-detected observation must have exactly one result." ;
+        sh:select """
+            PREFIX omaro: <https://w3id.org/modavis/omaro#>
+            SELECT $this WHERE {
+                $this omaro:assessmentStatus ?status .
+                FILTER (?status IN (
+                    omaro:assessment-status-detected,
+                    omaro:assessment-status-not-detected
+                ))
+                FILTER NOT EXISTS { $this omaro:assessmentResult ?result }
+            }
+        """
+    ] ;
+    sh:sparql [
+        sh:message "An actual observation status must identify an organological observation activity." ;
+        sh:select """
+            PREFIX omaro: <https://w3id.org/modavis/omaro#>
+            PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+            SELECT $this WHERE {
+                $this omaro:assessmentStatus ?status .
+                FILTER (?status IN (
+                    omaro:assessment-status-detected,
+                    omaro:assessment-status-not-detected,
+                    omaro:assessment-status-indeterminate
+                ))
+                FILTER NOT EXISTS { $this rdf:type omaro:OrganologicalObservation }
+            }
+        """
+    ] ;
+    sh:sparql [
+        sh:message "A non-observation or non-applicability assessment must not have a result." ;
+        sh:select """
+            PREFIX omaro: <https://w3id.org/modavis/omaro#>
+            SELECT $this WHERE {
+                $this omaro:assessmentStatus ?status ;
+                    omaro:assessmentResult ?result .
+                FILTER (?status IN (
+                    omaro:assessment-status-not-observed,
+                    omaro:assessment-status-not-applicable
+                ))
+            }
+        """
+    ] ;
+    sh:sparql [
+        sh:message "A non-observation or non-applicability assessment must not be typed as an observation activity." ;
+        sh:select """
+            PREFIX omaro: <https://w3id.org/modavis/omaro#>
+            PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+            PREFIX sosa: <http://www.w3.org/ns/sosa/>
+            PREFIX crmsci: <http://www.cidoc-crm.org/extensions/crmsci/>
+            SELECT $this WHERE {
+                $this omaro:assessmentStatus ?status ; rdf:type ?observationType .
+                FILTER (?status IN (
+                    omaro:assessment-status-not-observed,
+                    omaro:assessment-status-not-applicable
+                ))
+                FILTER (?observationType IN (
+                    omaro:OrganologicalObservation,
+                    sosa:Observation,
+                    crmsci:S27_Observation
+                ))
+            }
+        """
+    ] ;
+    sh:sparql [
+        sh:message "A non-observation or non-applicability assessment must not use SOSA observation properties." ;
+        sh:select """
+            PREFIX omaro: <https://w3id.org/modavis/omaro#>
+            PREFIX sosa: <http://www.w3.org/ns/sosa/>
+            SELECT $this WHERE {
+                $this omaro:assessmentStatus ?status ;
+                    ?observationProperty ?value .
+                FILTER (?status IN (
+                    omaro:assessment-status-not-observed,
+                    omaro:assessment-status-not-applicable
+                ))
+                FILTER (?observationProperty IN (
+                    sosa:hasFeatureOfInterest,
+                    sosa:observedProperty,
+                    sosa:usedProcedure,
+                    sosa:madeBySensor,
+                    sosa:resultTime,
+                    sosa:hasResult
+                ))
+            }
+        """
+    ] .
+
+<#ActualOrganologicalObservationShape>
+    a sh:NodeShape ;
+    sh:targetClass omaro:OrganologicalObservation ;
+    sh:property [
+        sh:path sosa:hasFeatureOfInterest ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:nodeKind sh:IRI
+    ] ;
+    sh:property [
+        sh:path sosa:observedProperty ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:nodeKind sh:IRI
+    ] ;
+    sh:property [
+        sh:path sosa:usedProcedure ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:nodeKind sh:IRI
+    ] ;
+    sh:property [
+        sh:path sosa:resultTime ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:datatype xsd:dateTime
+    ] .
+
+<#ObservationResultShape>
+    a sh:NodeShape ;
+    sh:targetClass omaro:ObservationResult ;
+    sh:property [
+        sh:path omaro:resultKind ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:class skos:Concept ;
+        sh:nodeKind sh:IRI
+    ] ;
+    sh:sparql [
+        sh:message "An observation range has its maximum below its minimum." ;
+        sh:select """
+            PREFIX omaro: <https://w3id.org/modavis/omaro#>
+            SELECT $this WHERE {
+                $this omaro:minimumValue ?minimum ; omaro:maximumValue ?maximum .
+                FILTER (?maximum < ?minimum)
+            }
+        """
+    ] .
+
+<#ClassificationExpressionShape>
+    a sh:NodeShape ;
+    sh:targetClass omaro:ClassificationExpression ;
+    sh:property [
+        sh:path omaro:notationLiteral ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:nodeKind sh:Literal
+    ] ;
+    sh:property [
+        sh:path omaro:notationGrammar ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:nodeKind sh:IRI
+    ] ;
+    sh:property [
+        sh:path omaro:schemeVersion ;
+        sh:maxCount 1 ;
+        sh:nodeKind sh:IRI
+    ] ;
+    sh:property [
+        sh:path omaro:combinationOperator ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:class skos:Concept ;
+        sh:nodeKind sh:IRI
+    ] ;
+    sh:property [
+        sh:path omaro:parseStatus ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:class skos:Concept ;
+        sh:nodeKind sh:IRI
+    ] ;
+    sh:property [
+        sh:path omaro:hasExpressionMember ;
+        sh:minCount 2 ;
+        sh:class omaro:ClassificationExpressionMember ;
+        sh:nodeKind sh:IRI
+    ] ;
+    sh:property [
+        sh:path omaro:perspective ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:class omaro:Perspective ;
+        sh:nodeKind sh:IRI
+    ] ;
+    sh:property [
+        sh:path omaro:hasApplicabilityScope ;
+        sh:minCount 1 ;
+        sh:class omaro:ApplicabilityScope ;
+        sh:nodeKind sh:IRI
+    ] ;
+    sh:property [
+        sh:path omaro:hasEvidence ;
+        sh:minCount 1 ;
+        sh:class omaro:Evidence ;
+        sh:nodeKind sh:IRI
+    ] ;
+    sh:property [
+        sh:path dcterms:rights ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:nodeKind sh:IRI
+    ] ;
+    sh:property [
+        sh:path omaro:authorityAssignment ;
+        sh:class omaro:AuthorityAssignment ;
+        sh:nodeKind sh:IRI
+    ] ;
+    sh:property [
+        sh:path omaro:protocolApplication ;
+        sh:class omaro:ProtocolApplication ;
+        sh:nodeKind sh:IRI
+    ] ;
+    sh:sparql [
+        sh:message "An expression member that cites an assertion must also state its classification and target." ;
+        sh:select """
+            PREFIX omaro: <https://w3id.org/modavis/omaro#>
+            SELECT $this WHERE {
+                $this omaro:hasExpressionMember ?member .
+                ?member omaro:memberAssertion ?memberAssertion .
+                {
+                    FILTER NOT EXISTS {
+                        ?member omaro:memberClassification ?memberClass
+                    }
+                }
+                UNION
+                {
+                    FILTER NOT EXISTS { ?member omaro:memberTarget ?memberTarget }
+                }
+            }
+        """
+    ] ;
+    sh:sparql [
+        sh:message "An expression member's classification and target must equal those of its cited assertion." ;
+        sh:select """
+            PREFIX omaro: <https://w3id.org/modavis/omaro#>
+            PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+            SELECT $this WHERE {
+                $this omaro:hasExpressionMember ?member .
+                ?member omaro:memberAssertion ?memberAssertion ;
+                        omaro:memberClassification ?memberClass ;
+                        omaro:memberTarget ?memberTarget .
+                ?memberAssertion rdf:object ?assertedClass ;
+                                 rdf:subject ?assertedTarget .
+                FILTER (
+                    ?memberClass != ?assertedClass ||
+                    ?memberTarget != ?assertedTarget
+                )
+            }
+        """
+    ] ;
+    sh:sparql [
+        sh:message "An expression and its cited member assertions must use the same perspective." ;
+        sh:select """
+            PREFIX omaro: <https://w3id.org/modavis/omaro#>
+            SELECT $this WHERE {
+                $this omaro:perspective ?expressionPerspective ;
+                      omaro:hasExpressionMember/omaro:memberAssertion ?memberAssertion .
+                ?memberAssertion omaro:perspective ?assertionPerspective .
+                FILTER (?expressionPerspective != ?assertionPerspective)
+            }
+        """
+    ] ;
+    sh:sparql [
+        sh:message "An expression and its cited member assertions must use exactly the same scheme version, including an omitted version." ;
+        sh:select """
+            PREFIX omaro: <https://w3id.org/modavis/omaro#>
+            SELECT $this WHERE {
+                $this omaro:hasExpressionMember/omaro:memberAssertion ?memberAssertion .
+                {
+                    $this omaro:schemeVersion ?version .
+                    FILTER NOT EXISTS { ?memberAssertion omaro:schemeVersion ?version }
+                }
+                UNION
+                {
+                    ?memberAssertion omaro:schemeVersion ?version .
+                    FILTER NOT EXISTS { $this omaro:schemeVersion ?version }
+                }
+            }
+        """
+    ] ;
+    sh:sparql [
+        sh:message "Every expression scope must be covered by each cited member assertion." ;
+        sh:select """
+            PREFIX omaro: <https://w3id.org/modavis/omaro#>
+            SELECT $this WHERE {
+                $this omaro:hasApplicabilityScope ?scope ;
+                      omaro:hasExpressionMember/omaro:memberAssertion ?memberAssertion .
+                FILTER NOT EXISTS {
+                    ?memberAssertion omaro:hasApplicabilityScope ?scope
+                }
+            }
+        """
+    ] .
+
+<#ClassificationExpressionMemberShape>
+    a sh:NodeShape ;
+    sh:targetClass omaro:ClassificationExpressionMember ;
+    sh:property [
+        sh:path omaro:sequenceIndex ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:datatype xsd:integer ;
+        sh:minInclusive 1
+    ] ;
+    sh:property [
+        sh:path omaro:memberNotation ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:nodeKind sh:Literal
+    ] ;
+    sh:property [
+        sh:path omaro:memberClassification ;
+        sh:maxCount 1 ;
+        sh:class skos:Concept ;
+        sh:nodeKind sh:IRI
+    ] ;
+    sh:property [
+        sh:path omaro:memberAssertion ;
+        sh:maxCount 1 ;
+        sh:class omaro:ClassificationAssertion ;
+        sh:nodeKind sh:IRI
+    ] ;
+    sh:property [
+        sh:path omaro:memberTarget ;
+        sh:maxCount 1 ;
+        sh:nodeKind sh:IRI
+    ] ;
+    sh:property [
+        sh:path omaro:componentRole ;
+        sh:maxCount 1 ;
+        sh:nodeKind sh:IRI
+    ] ;
+    sh:property [
+        sh:path omaro:localSuffixNotation ;
+        sh:maxCount 1 ;
+        sh:nodeKind sh:Literal
+    ] ;
+    sh:sparql [
+        sh:message "A stated expression-member role must equal the role on its registered target." ;
+        sh:select """
+            PREFIX omaro: <https://w3id.org/modavis/omaro#>
+            SELECT $this WHERE {
+                $this omaro:memberTarget ?memberTarget ;
+                      omaro:componentRole ?memberRole .
+                ?memberTarget omaro:targetKind ?memberTargetKind .
+                FILTER NOT EXISTS { ?memberTarget omaro:componentRole ?memberRole }
+            }
+        """
+    ] ;
+    sh:sparql [
+        sh:message "Under the MIMO Hornbostel-Sachs plus grammar, a member token must equal its class notation or extend it with a hyphen suffix." ;
+        sh:select """
+            PREFIX omaro: <https://w3id.org/modavis/omaro#>
+            PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+            SELECT $this WHERE {
+                ?expression omaro:notationGrammar omaro:notation-grammar-mimo-hs-plus ;
+                            omaro:hasExpressionMember $this .
+                $this omaro:memberNotation ?memberNotation ;
+                      omaro:memberClassification ?memberClass .
+                ?memberClass skos:notation ?classNotation .
+                FILTER (
+                    STR(?memberNotation) != STR(?classNotation) &&
+                    !STRSTARTS(
+                        STR(?memberNotation),
+                        CONCAT(STR(?classNotation), "-")
+                    )
+                )
+            }
+        """
+    ] .
+
+<#ProtocolApplicationShape>
+    a sh:NodeShape ;
+    sh:targetClass omaro:ProtocolApplication ;
+    sh:property [ sh:path omaro:targetResource ; sh:minCount 1 ; sh:nodeKind sh:IRI ] ;
+    sh:property [ sh:path omaro:protocol ; sh:minCount 1 ; sh:maxCount 1 ; sh:nodeKind sh:IRI ] ;
+    sh:property [ sh:path omaro:protocolType ; sh:minCount 1 ; sh:maxCount 1 ; sh:nodeKind sh:IRI ] ;
+    sh:property [ sh:path omaro:issuedBy ; sh:minCount 1 ; sh:maxCount 1 ; sh:class prov:Agent ; sh:nodeKind sh:IRI ] ;
+    sh:property [ sh:path omaro:appliedBy ; sh:minCount 1 ; sh:maxCount 1 ; sh:class prov:Agent ; sh:nodeKind sh:IRI ] ;
+    sh:property [ sh:path omaro:representsCommunity ; sh:minCount 1 ; sh:nodeKind sh:IRI ] ;
+    sh:property [ sh:path omaro:authorityAssignment ; sh:minCount 1 ; sh:class omaro:AuthorityAssignment ; sh:nodeKind sh:IRI ] ;
+    sh:property [ sh:path omaro:hasApplicabilityScope ; sh:minCount 1 ; sh:class omaro:ApplicabilityScope ; sh:nodeKind sh:IRI ] ;
+    sh:property [ sh:path omaro:enforcementMode ; sh:minCount 1 ; sh:maxCount 1 ; sh:class skos:Concept ; sh:nodeKind sh:IRI ] ;
+    sh:property [ sh:path omaro:protocolStatus ; sh:minCount 1 ; sh:maxCount 1 ; sh:class skos:Concept ; sh:nodeKind sh:IRI ] ;
+    sh:property [ sh:path omaro:protocolResolutionStatus ; sh:minCount 1 ; sh:maxCount 1 ; sh:class skos:Concept ; sh:nodeKind sh:IRI ] ;
+    sh:property [ sh:path omaro:integrityVerificationMethod ; sh:minCount 1 ; sh:maxCount 1 ; sh:class skos:Concept ; sh:nodeKind sh:IRI ] ;
+    sh:property [ sh:path omaro:validFrom ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:dateTime ] ;
+    sh:sparql [
+        sh:message "A machine-enforceable protocol must use a locally verified artifact and digest." ;
+        sh:select """
+            PREFIX omaro: <https://w3id.org/modavis/omaro#>
+            SELECT $this WHERE {
+                $this omaro:enforcementMode omaro:protocol-enforcement-machine-enforceable .
+                FILTER (
+                    NOT EXISTS { $this omaro:protocolResolutionStatus omaro:protocol-resolution-verified } ||
+                    NOT EXISTS { $this omaro:protocolIntegritySha256 ?digest } ||
+                    NOT EXISTS { $this omaro:integrityVerificationMethod omaro:protocol-integrity-method-local-sha256 } ||
+                    NOT EXISTS { $this omaro:protocolArtifactPath ?path }
+                )
+            }
+        """
+    ] .
+
+<#UseDecisionShape>
+    a sh:NodeShape ;
+    sh:targetClass omaro:UseDecision ;
+    sh:property [ sh:path omaro:targetResource ; sh:minCount 1 ; sh:nodeKind sh:IRI ] ;
+    sh:property [ sh:path omaro:useAction ; sh:minCount 1 ; sh:class skos:Concept ; sh:nodeKind sh:IRI ] ;
+    sh:property [ sh:path omaro:useDecision ; sh:minCount 1 ; sh:maxCount 1 ; sh:class skos:Concept ; sh:nodeKind sh:IRI ] ;
+    sh:property [ sh:path omaro:useDecisionStatus ; sh:minCount 1 ; sh:maxCount 1 ; sh:class skos:Concept ; sh:nodeKind sh:IRI ] ;
+    sh:property [ sh:path omaro:legalBasisStatus ; sh:minCount 1 ; sh:maxCount 1 ; sh:class skos:Concept ; sh:nodeKind sh:IRI ] ;
+    sh:property [ sh:path omaro:consentStatus ; sh:minCount 1 ; sh:maxCount 1 ; sh:class skos:Concept ; sh:nodeKind sh:IRI ] ;
+    sh:property [ sh:path omaro:legalBasisAssessedBy ; sh:maxCount 1 ; sh:class prov:Agent ; sh:nodeKind sh:IRI ] ;
+    sh:property [ sh:path omaro:consentAssessedBy ; sh:maxCount 1 ; sh:class prov:Agent ; sh:nodeKind sh:IRI ] ;
+    sh:property [ sh:path omaro:decidedBy ; sh:minCount 1 ; sh:maxCount 1 ; sh:class prov:Agent ; sh:nodeKind sh:IRI ] ;
+    sh:property [ sh:path omaro:decisionMethod ; sh:minCount 1 ; sh:maxCount 1 ; sh:nodeKind sh:IRI ] ;
+    sh:property [ sh:path omaro:authorityAssignment ; sh:minCount 1 ; sh:class omaro:AuthorityAssignment ; sh:nodeKind sh:IRI ] ;
+    sh:property [ sh:path omaro:hasApplicabilityScope ; sh:minCount 1 ; sh:class omaro:ApplicabilityScope ; sh:nodeKind sh:IRI ] ;
+    sh:property [ sh:path prov:generatedAtTime ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:dateTime ] ;
+    sh:sparql [
+        sh:message "A ready legal-basis or consent status must have a public-safe reference and responsible assessor." ;
+        sh:select """
+            PREFIX omaro: <https://w3id.org/modavis/omaro#>
+            SELECT $this WHERE {
+                {
+                    $this omaro:legalBasisStatus ?legalStatus .
+                    FILTER (?legalStatus IN (
+                        omaro:legal-basis-status-documented,
+                        omaro:legal-basis-status-not-required
+                    ))
+                    FILTER (
+                        NOT EXISTS { $this omaro:legalBasis ?basis } ||
+                        NOT EXISTS { $this omaro:legalBasisAssessedBy ?assessor }
+                    )
+                }
+                UNION
+                {
+                    $this omaro:consentStatus ?consentStatus .
+                    FILTER (?consentStatus IN (
+                        omaro:consent-status-documented,
+                        omaro:consent-status-not-required
+                    ))
+                    FILTER (
+                        NOT EXISTS { $this omaro:consentRecord ?consent } ||
+                        NOT EXISTS { $this omaro:consentAssessedBy ?assessor }
+                    )
+                }
+            }
+        """
+    ] .

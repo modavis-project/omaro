@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://w3id.org/modavis/omaro/schema/agent.schema.json",
+  "title": "Assertion agent",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["uri", "agent_type", "name", "resource_uri"],
+  "properties": {
+    "uri": {
+      "type": "string",
+      "format": "uri",
+      "pattern": "^https://w3id\\.org/modavis/omaro#agent-[a-z0-9-]+$"
+    },
+    "agent_type": {
+      "enum": ["person", "organization", "software", "community"]
+    },
+    "name": {"type": "string", "minLength": 1},
+    "resource_uri": {"type": "string", "format": "uri"}
+  }
+}

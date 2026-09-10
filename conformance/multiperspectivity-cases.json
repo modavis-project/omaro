@@ -1,0 +1,51 @@
+{
+  "schema_version": "0.1.0",
+  "projection_policy_uri": "https://w3id.org/modavis/omaro#projection-policy-project-endorsed",
+  "cases": [
+    {
+      "id": "local-dispute-blocks-unqualified-endorsement",
+      "description": "A valid scoped dispute blocks a static direct claim even when independent context-independent acceptances satisfy every positive requirement.",
+      "expected_direct_assertion": false
+    },
+    {
+      "id": "endorsed-two-independent-dimensions",
+      "description": "A context-independent claim opts into the endorsed policy and has independent accepted referential and scholarly reviews.",
+      "expected_direct_assertion": true
+    },
+    {
+      "id": "claim-does-not-opt-in",
+      "description": "Eligible reviews cannot flatten a claim that does not name the endorsed policy.",
+      "expected_direct_assertion": false
+    },
+    {
+      "id": "required-dimension-missing",
+      "description": "One accepted dimension is insufficient when the policy requires both referential and scholarly acceptance.",
+      "expected_direct_assertion": false
+    },
+    {
+      "id": "active-veto-level-dispute",
+      "description": "An otherwise sufficient review set is blocked by an active dispute covered by the policy veto rule.",
+      "expected_direct_assertion": false
+    },
+    {
+      "id": "source-silent-is-not-context-independent",
+      "description": "Source silence can remain in the research-claims view but cannot produce a context-free endorsed triple.",
+      "expected_direct_assertion": false
+    },
+    {
+      "id": "expired-successor-does-not-resurrect-predecessor",
+      "description": "Permanent supersession remains effective after the successor expires unless an explicit reinstatement event occurs.",
+      "expected_predecessor_active": false
+    },
+    {
+      "id": "temporary-suspension-expires",
+      "description": "A suspension hides only the named predecessor during the suspension interval and then releases it.",
+      "expected_predecessor_active_after_expiry": true
+    },
+    {
+      "id": "all-represented-communities-require-mandates",
+      "description": "A community review representing several communities is unauthorized unless referenced mandates cover every one of them.",
+      "expected_authorized": false
+    }
+  ]
+}

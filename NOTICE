@@ -1,0 +1,13 @@
+OMARO Ontology 2.2.0 and OMARO Reference Dataset 0.1.0
+
+This release is derived from the Hornbostel–Sachs and Instruments Keywords
+vocabularies published by Musical Instrument Museums Online (MIMO). MIMO URI
+identifiers and source statements are retained for attribution and audit.
+
+The repository is an independent derived data product. It is not an official
+MIMO release, and contributor affiliations do not imply institutional review,
+publication, or endorsement.
+
+The dataset, ontology, documentation, tooling, tests, and generated artifacts
+are dedicated to the public domain under CC0 1.0 Universal. See LICENSE and
+PROVENANCE.md for the complete rights and source record.

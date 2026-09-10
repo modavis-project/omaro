@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://w3id.org/modavis/omaro/schema/organological_target.schema.json",
+  "title": "Organological target",
+  "description": "A resolvable target, state, configuration, component, aggregate, sounding realization, or performance occurrence that can be observed and classified without conflating physical identity with use.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "uri", "label", "target_kind", "realizes_instrument_concept_uris",
+    "configuration_of_uri", "component_of_uri", "component_role_uri",
+    "has_component_uris", "has_functional_module_uris", "condition_state_of_uri",
+    "valid_from", "valid_until", "generated_by_event_uri", "ended_by_event_uri",
+    "performance_event_uri", "actual_playing_technique_uris",
+    "intended_playing_technique_uris", "source_record_uri", "perspective_uri",
+    "applicability_scope_uris", "rights_uri", "protocol_application_uris",
+    "authority_assignment_uris"
+  ],
+  "properties": {
+    "uri": {"type": "string", "format": "uri"},
+    "label": {"type": "string", "minLength": 1},
+    "target_kind": {
+      "enum": [
+        "instrument-concept", "physical-object", "instrument-component",
+        "functional-module", "instrument-aggregate", "instrument-configuration",
+        "condition-state", "sounding-realization", "performance-event",
+        "ensemble-medium"
+      ]
+    },
+    "realizes_instrument_concept_uris": {"$ref": "#/$defs/uriArray"},
+    "configuration_of_uri": {"type": ["string", "null"], "format": "uri"},
+    "component_of_uri": {"type": ["string", "null"], "format": "uri"},
+    "component_role_uri": {"type": ["string", "null"], "format": "uri"},
+    "has_component_uris": {"$ref": "#/$defs/uriArray"},
+    "has_functional_module_uris": {"$ref": "#/$defs/uriArray"},
+    "condition_state_of_uri": {"type": ["string", "null"], "format": "uri"},
+    "valid_from": {"type": ["string", "null"], "format": "date-time"},
+    "valid_until": {"type": ["string", "null"], "format": "date-time"},
+    "generated_by_event_uri": {"type": ["string", "null"], "format": "uri"},
+    "ended_by_event_uri": {"type": ["string", "null"], "format": "uri"},
+    "performance_event_uri": {"type": ["string", "null"], "format": "uri"},
+    "actual_playing_technique_uris": {"$ref": "#/$defs/uriArray"},
+    "intended_playing_technique_uris": {"$ref": "#/$defs/uriArray"},
+    "source_record_uri": {"type": ["string", "null"], "format": "uri"},
+    "perspective_uri": {"type": ["string", "null"], "format": "uri"},
+    "applicability_scope_uris": {"$ref": "#/$defs/uriArray"},
+    "rights_uri": {"type": "string", "format": "uri"},
+    "protocol_application_uris": {"$ref": "#/$defs/uriArray"},
+    "authority_assignment_uris": {"$ref": "#/$defs/uriArray"}
+  },
+  "$defs": {
+    "uriArray": {
+      "type": "array", "uniqueItems": true,
+      "items": {"type": "string", "format": "uri"}
+    }
+  }
+}

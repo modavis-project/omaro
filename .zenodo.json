@@ -1,0 +1,64 @@
+{
+  "title": "OMARO Reference Dataset: Hornbostel–Sachs Classifications and Multilingual Musical Instrument Names",
+  "description": "OMARO records organological assertions with their sources, applicability and review status. This release includes ontology and validation schema 0.1.0, the MIMO-derived reference dataset 0.1.0 (643 Hornbostel–Sachs classifications, 2,724 resolved instrument concepts and five unresolved references), multilingual labels, an offline browser, worked examples, and JSONL, CSV, RDF and SQLite distributions. Source statements are preserved separately from qualified assertions. The reference data do not contain empirical assessment results or community review decisions. Files include checksums, provenance, licensing and machine-readable metadata.",
+  "upload_type": "dataset",
+  "access_right": "open",
+  "license": "cc-zero",
+  "version": "0.1.0",
+  "creators": [
+    {
+      "name": "Ukolov, Dominik",
+      "affiliation": "Digital Humanities (Image/Object), Friedrich Schiller University Jena; Research Group DIGITAL ORGANOLOGY, Leipzig University",
+      "orcid": "0000-0002-7904-3892"
+    }
+  ],
+  "contributors": [
+    {
+      "name": "MODAVIS Project",
+      "type": "DataCurator"
+    }
+  ],
+  "keywords": [
+    "Hornbostel-Sachs",
+    "musical instruments",
+    "multilingual vocabulary",
+    "SKOS",
+    "SKOS-XL",
+    "PROV-O",
+    "SOSA/SSN",
+    "linked data",
+    "digital organology",
+    "multiperspectivity",
+    "cultural governance",
+    "ontology",
+    "Virtual Acoustic Object",
+    "MODAVIS ontology"
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "https://w3id.org/modavis/omaro/ontology/0.1.0",
+      "relation": "isDocumentedBy"
+    },
+    {
+      "identifier": "https://w3id.org/modavis/omaro/dataset/0.1.0",
+      "relation": "isIdenticalTo"
+    },
+    {
+      "identifier": "https://github.com/modavis-project/omaro",
+      "relation": "isSupplementedBy"
+    },
+    {
+      "identifier": "https://vocabulary.mimo-international.com/",
+      "relation": "isDerivedFrom"
+    },
+    {
+      "identifier": "10.5281/zenodo.22122774",
+      "relation": "references"
+    },
+    {
+      "identifier": "10.5281/zenodo.22126086",
+      "relation": "references"
+    }
+  ],
+  "publication_date": "2026-09-11"
+}

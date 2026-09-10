@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://w3id.org/modavis/omaro/schema/quality_finding.schema.json",
+  "title": "Automated quality finding",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["uri", "rule_uri", "rule_code", "target_assertion_uri", "concept_uri", "detected_by_uri", "detected_at", "assessment_method", "validation_dimension", "severity", "review_effect", "human_review_required", "applies_to", "evidence"],
+  "properties": {
+    "uri": {"type": "string", "format": "uri", "pattern": "^https://w3id\\.org/modavis/omaro#finding-[0-9a-f]{32}$"},
+    "rule_uri": {"type": "string", "format": "uri"},
+    "rule_code": {"type": "string"},
+    "target_assertion_uri": {"type": "string", "format": "uri"},
+    "concept_uri": {"type": "string", "format": "uri"},
+    "detected_by_uri": {"type": "string", "format": "uri"},
+    "detected_at": {"type": "string", "format": "date-time"},
+    "assessment_method": {"const": "automated-heuristic"},
+    "validation_dimension": {"enum": ["linguistic", "referential"]},
+    "severity": {"const": "warning"},
+    "review_effect": {"const": "none"},
+    "human_review_required": {"const": true},
+    "applies_to": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["language_tag"],
+      "properties": {
+        "language_tag": {"type": "string"},
+        "label_role": {"enum": ["preferred", "alternative", "hidden"]}
+      }
+    },
+    "evidence": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {"type": "string"}
+    }
+  }
+}
