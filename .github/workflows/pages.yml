@@ -36,7 +36,7 @@ jobs:
           unzip -q omaro-v0.1.0.zip 'omaro-v0.1.0/dist/*' -d .release
       - run: python scripts/test_pages.py
       - name: Verify and stage the release files
-        run: python scripts/stage_pages.py --source .release/omaro-v0.1.0/dist
+        run: python scripts/stage_pages.py --source .release/omaro-v0.1.0/dist --browser-source site
       - uses: actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b # v5
       - uses: actions/upload-pages-artifact@56afc609e74202658d3ffba0e8f6dda462b719fa # v3
         with:

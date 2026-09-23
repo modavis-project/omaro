@@ -106,6 +106,48 @@ class PagesTests(unittest.TestCase):
             stage(self.source, self.output)
         self.assertFalse(self.output.exists())
 
+    def browser_source(self) -> Path:
+        browser = self.root / "browser"
+        browser.mkdir()
+        for name in ("index.html", "app.js", "styles.css"):
+            (browser / name).write_text(self.files[name] + "\n")
+        return browser
+
+    def test_browser_update_preserves_data_and_records_both_hashes(self) -> None:
+        browser = self.browser_source()
+        (browser / "data.json").write_text("must not replace released data")
+        stage(self.source, self.output, browser_source=browser)
+        manifest = json.loads((self.output / "site-manifest.json").read_text())
+        self.assertEqual(len(manifest["browser_updates"]), 3)
+        for row in manifest["browser_updates"]:
+            self.assertEqual(row["sha256"], hashlib.sha256(
+                (self.output / row["path"]).read_bytes()).hexdigest())
+            self.assertEqual(row["release_sha256"], hashlib.sha256(
+                (self.source / row["path"]).read_bytes()).hexdigest())
+            self.assertNotEqual(row["sha256"], row["release_sha256"])
+        for name in ("data.json", "sqlite/omaro.sqlite", "ontology/0.1.0/omaro.ttl"):
+            self.assertEqual((self.output / name).read_bytes(), (self.source / name).read_bytes())
+
+    def test_browser_update_cannot_mask_a_modified_release(self) -> None:
+        browser = self.browser_source()
+        (self.source / "app.js").write_text("unexpected")
+        with self.assertRaisesRegex(ValueError, "differs from the verified release"):
+            stage(self.source, self.output, browser_source=browser)
+
+    def test_browser_links_are_checked(self) -> None:
+        browser = self.browser_source()
+        (browser / "index.html").write_text('<a href="missing.csv">Missing</a>')
+        with self.assertRaisesRegex(ValueError, "Broken local page link"):
+            stage(self.source, self.output, browser_source=browser)
+        self.assertFalse(self.output.exists())
+
+    def test_browser_symlink_is_rejected(self) -> None:
+        browser = self.browser_source()
+        (browser / "app.js").unlink()
+        (browser / "app.js").symlink_to(self.source / "app.js")
+        with self.assertRaisesRegex(ValueError, "Symlink"):
+            stage(self.source, self.output, browser_source=browser)
+
     def test_existing_site_is_preserved(self) -> None:
         self.output.mkdir()
         sentinel = self.output / "sentinel"

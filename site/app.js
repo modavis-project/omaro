@@ -41,7 +41,12 @@ function buttonFor(item, className = "item") {
   button.innerHTML = item.kind === "classification"
     ? `<span class="notation">${text(item.notation)}</span>${text(label(item))}`
     : text(label(item));
-  button.addEventListener("click", () => showDetail(item.uri));
+  button.addEventListener("click", () => {
+    showDetail(item.uri);
+    if (window.matchMedia("(max-width: 760px)").matches) {
+      $("#detail").scrollIntoView({ block: "start" });
+    }
+  });
   return button;
 }
 
@@ -117,6 +122,7 @@ function showDetail(uri, { historyMode = "push" } = {}) {
     <h3>Stable identifier</h3>
     <p class="uri"><a href="${text(item.uri)}">${text(item.uri)}</a></p>
     <p><a href="${text(window.location.href)}">Share this record and language</a></p>`;
+  $("#detail").scrollTop = 0;
   const list = $("#related");
   relatedItems.sort((a, b) => label(a).localeCompare(label(b), state.language));
   relatedItems.forEach((relatedItem) => {
@@ -147,24 +153,33 @@ function applyUrlState() {
 }
 
 function search() {
+  if (!state.data) return;
   const query = $("#search").value.trim().toLocaleLowerCase();
+  $("#hierarchy").hidden = Boolean(query);
+  $("#clear-search").hidden = !query;
   if (!query) {
     $("#results").hidden = true;
+    $("#search-status").textContent = "";
     return;
   }
-  const matches = state.data.items.filter((item) => item.search.includes(query)).slice(0, 100);
+  const matches = state.data.items.filter((item) => item.search.includes(query));
   const list = $("#result-list");
-  list.replaceChildren(...matches.map((item) => {
+  list.replaceChildren(...matches.slice(0, 100).map((item) => {
     const button = buttonFor(item, "result");
     button.innerHTML = `<span class="kind">${text(item.kind)}</span><br>${item.notation ? `<span class="notation">${text(item.notation)}</span>` : ""}${text(label(item))}`;
     return button;
   }));
   $("#results").hidden = false;
-  $("#results h2").textContent = `Search results (${matches.length}${matches.length === 100 ? "+" : ""})`;
+  $("#results h2").textContent = `Search results (${matches.length})`;
+  $("#search-status").textContent = matches.length
+    ? `${matches.length} results${matches.length > 100 ? "; showing the first 100. Refine your search to narrow the list" : ""}. Select a result to see its details.`
+    : "No matching labels. Try another spelling or language, or clear the search to browse classifications.";
+  $("#results").scrollTop = 0;
 }
 
 async function init() {
   const response = await fetch("data.json");
+  if (!response.ok) throw new Error(`HTTP ${response.status}`);
   const payload = await response.json();
   payload.byUri = Object.fromEntries(payload.items.map((item) => [item.uri, item]));
   state.data = payload;
@@ -174,7 +189,14 @@ async function init() {
   state.languages = [...new Set(payload.items.flatMap((item) => Object.keys(item.labels)))].sort();
   $("#language").replaceChildren(...state.languages.map((language) => new Option(`${languageName(language)} (${language})`, language)));
   $("#summary").textContent = `${payload.classificationCount.toLocaleString()} classifications · ${payload.instrumentCount.toLocaleString()} instruments · ${state.languages.length} languages`;
+  $("#search").disabled = false;
+  $("#language").disabled = false;
   $("#search").addEventListener("input", search);
+  $("#clear-search").addEventListener("click", () => {
+    $("#search").value = "";
+    search();
+    $("#search").focus();
+  });
   $("#language").addEventListener("change", (event) => {
     state.language = event.target.value;
     renderTree(); search();
@@ -183,6 +205,7 @@ async function init() {
   });
   renderTree();
   applyUrlState();
+  search();
   window.addEventListener("popstate", applyUrlState);
 }
 

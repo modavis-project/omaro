@@ -6,15 +6,19 @@
 | Ontology and canonical schema | 0.1.0 |
 | SQLite schema | 20200 |
 
-The 0.1.0 distribution is available in the GitHub release. Zenodo publication
-is pending. DOI
-`10.5281/zenodo.21442777` is reserved; it is not a published record.
-The source snapshot date is distinct from the eventual publication date.
+The 0.1.0 distribution is published on [Zenodo](https://zenodo.org/records/21442777)
+with DOI [10.5281/zenodo.21442777](https://doi.org/10.5281/zenodo.21442777).
+The files match the [GitHub release](https://github.com/modavis-project/omaro/releases/tag/v0.1.0).
+The release date is 11 September 2026; Zenodo publication followed on 23 September 2026.
 
-Publication requires verified release files, final deposition metadata and an
-explicit publication decision. GitHub Pages is opt-in. The W3ID configuration
-is prepared separately and is not yet registered. These external states must
-be checked before describing the persistent links as available.
+[W3ID registration](https://github.com/perma-id/w3id.org/pull/6739) was merged on
+23 September 2026. The ontology and dataset identifiers resolve to their HTML,
+Turtle, JSON-LD and RDF/XML representations.
+
+The live browser receives interface fixes independently of the archived dataset.
+Its site manifest records those changes; release files and versioned RDF remain
+unchanged. Documents in the frozen release describe the preparation state at
+the time of packaging. This page records subsequent publication milestones.
 
 See [IMPLEMENTATION_VERIFICATION.md](IMPLEMENTATION_VERIFICATION.md) for the
 verification procedure, [PROVENANCE.md](PROVENANCE.md) for source attribution,

@@ -17,9 +17,10 @@ examples. [ONTOLOGY_REFERENCE.md](ONTOLOGY_REFERENCE.md) documents the model;
 [ORGANOLOGICAL_FOUNDATIONS.md](ORGANOLOGICAL_FOUNDATIONS.md) explains its
 relationship to organological methods.
 
-Dataset and tooling version **0.1.0** use ontology/schema **0.1.0**. Publication
-on Zenodo is in preparation: DOI `10.5281/zenodo.21442777` is reserved.
-W3ID registration is pending. See [RELEASE_STATUS.md](RELEASE_STATUS.md).
+Dataset and tooling version **0.1.0** use ontology/schema **0.1.0**. The release
+is published on [Zenodo](https://zenodo.org/records/21442777).
+W3ID identifiers are registered and resolve to the versioned representations.
+See [RELEASE_STATUS.md](RELEASE_STATUS.md).
 
 ## Identity
 
@@ -174,6 +175,12 @@ without removing browser downloads.
 manifest, checks local HTML links, and rejects sites larger than 900 MB. Its
 output is `.pages-site/`, with a separate `site-manifest.json`. The complete
 release manifest remains in the distribution archive.
+
+Pages uses `--browser-source site` to apply maintained browser HTML, JavaScript
+and CSS after verifying the distribution. The site manifest records both the
+released and deployed hashes for these three files. All data, RDF, schemas and
+versioned documentation remain byte-identical to the release. This permits
+search and accessibility fixes without replacing an archived dataset version.
 
 ## Install and build
 
@@ -431,8 +438,8 @@ unchanged; the internal SQLite format and recorded projection-policy versions
 are independent of the public ontology version.
 
 Citation metadata is in `CITATION.cff`. The version DOI
-`10.5281/zenodo.21442777` is reserved in a Zenodo draft but has not been
-published. Release changes are summarized in [RELEASE_NOTES.md](RELEASE_NOTES.md).
+[10.5281/zenodo.21442777](https://doi.org/10.5281/zenodo.21442777) identifies
+the published 0.1.0 reference dataset. Release changes are summarized in [RELEASE_NOTES.md](RELEASE_NOTES.md).
 
 Creator: Dominik Ukolov, affiliated with Research Group DIGITAL ORGANOLOGY,
 Leipzig University, and Digital Humanities (Image/Object),

@@ -17,6 +17,7 @@ from urllib.parse import unquote, urljoin, urlsplit
 
 MAX_SITE_BYTES = 900_000_000
 DIRECTORIES = {"csv", "dataset", "legacy", "metadata", "ontology", "schema", "sqlite"}
+BROWSER_FILES = {"index.html", "app.js", "styles.css"}
 ROOT_FILES = {
     "index.html",
     "app.js",
@@ -47,7 +48,10 @@ def digest(path: Path) -> str:
     return result.hexdigest()
 
 
-def stage(source: Path, output: Path, max_bytes: int = MAX_SITE_BYTES) -> dict:
+def stage(
+    source: Path, output: Path, max_bytes: int = MAX_SITE_BYTES,
+    browser_source: Path | None = None,
+) -> dict:
     source = source.resolve()
     if output.exists():
         raise FileExistsError(f"Refusing to replace an existing directory: {output}")
@@ -81,11 +85,23 @@ def stage(source: Path, output: Path, max_bytes: int = MAX_SITE_BYTES) -> dict:
         )
     if missing := required - selected.keys():
         raise ValueError(f"Missing browser or W3ID targets: {sorted(missing)}")
+    paths = {name: source / name for name in selected}
+    browser_updates = []
+    if browser_source is not None:
+        browser_source = browser_source.resolve()
+        for name in sorted(BROWSER_FILES):
+            path = browser_source / name
+            if path.is_symlink() or not path.resolve().is_relative_to(browser_source):
+                raise ValueError(f"Symlink outside the browser source: {name}")
+            row = {"path": name, "bytes": path.stat().st_size, "sha256": digest(path)}
+            browser_updates.append({**row, "release_sha256": selected[name]["sha256"]})
+            selected[name] = row
+            paths[name] = path
     for name in selected:
         if not name.endswith(".html"):
             continue
         parser = Links()
-        parser.feed((source / name).read_text())
+        parser.feed(paths[name].read_text())
         for target in parser.targets:
             resolved = urlsplit(urljoin("https://pages.invalid/" + name, target))
             if resolved.netloc != "pages.invalid":
@@ -103,6 +119,8 @@ def stage(source: Path, output: Path, max_bytes: int = MAX_SITE_BYTES) -> dict:
         "complete_release": f"https://github.com/modavis-project/omaro/releases/tag/v{manifest['dataset_version']}",
         "files": [selected[name] for name in sorted(selected)],
     }
+    if browser_source is not None:
+        site["browser_updates"] = browser_updates
     encoded = (json.dumps(site, ensure_ascii=False, indent=2) + "\n").encode()
     total = sum(row["bytes"] for row in selected.values()) + len(encoded)
     if total > max_bytes:
@@ -114,7 +132,7 @@ def stage(source: Path, output: Path, max_bytes: int = MAX_SITE_BYTES) -> dict:
         for name, row in selected.items():
             target = staging / name
             target.parent.mkdir(parents=True, exist_ok=True)
-            shutil.copyfile(source / name, target)
+            shutil.copyfile(paths[name], target)
             if digest(target) != row["sha256"]:
                 raise ValueError(f"Copied page file failed verification: {name}")
         (staging / "site-manifest.json").write_bytes(encoded)
@@ -131,5 +149,9 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--source", type=Path, default=Path("dist"))
     parser.add_argument("--output", type=Path, default=Path(".pages-site"))
+    parser.add_argument(
+        "--browser-source", type=Path,
+        help="Use maintained index.html, app.js and styles.css; keep all released data unchanged",
+    )
     args = parser.parse_args()
-    print(json.dumps(stage(args.source, args.output)))
+    print(json.dumps(stage(args.source, args.output, browser_source=args.browser_source)))

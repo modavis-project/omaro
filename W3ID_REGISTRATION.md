@@ -2,9 +2,10 @@
 
 ## Status
 
-The OMARO identifiers and resolver rules are prepared but are not considered
-active until a pull request to the `perma-id/w3id.org` repository is accepted
-and every target below is publicly reachable. W3ID provides persistent HTTP
+The OMARO identifiers are active following the merge of
+[pull request 6739](https://github.com/perma-id/w3id.org/pull/6739) on
+23 September 2026. HTML, Turtle, JSON-LD, RDF/XML and schema targets were
+verified after the merge. W3ID provides persistent HTTP
 identifiers; registration is not W3C standardization or endorsement.
 
 The files in `w3id/modavis/omaro/` mirror the directory that must be added at
@@ -30,7 +31,7 @@ The stable dataset IRI identifies the maintained dataset across releases; it
 is not merely an alias for the version resource. Metadata relates it to the
 current immutable version with DCAT lifecycle properties, while content
 negotiation may serve the current representation. Every version IRI continues
-to identify exactly one immutable snapshot. The reserved DOI is an identifier
+to identify exactly one immutable snapshot. The version DOI is an identifier
 and landing page for the versioned dataset, not another dataset identity.
 
 ## Publication order
