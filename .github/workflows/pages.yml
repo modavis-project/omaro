@@ -15,7 +15,8 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  build-and-deploy:
+  deploy-release:
+    timeout-minutes: 15
     if: ${{ !github.event.repository.private && vars.OMARO_ENABLE_PUBLIC_PAGES == 'true' }}
     environment:
       name: github-pages
@@ -27,18 +28,15 @@ jobs:
         with:
           python-version: "3.13.13"
           cache: pip
-      - run: pip install -r requirements-lock.txt
-      - run: pip install --no-deps -e .
-      - run: omaro build
-      - run: omaro validate
-      - name: Test in bounded processes
+      - name: Download the published distribution
         run: |
-          for group in formats package replay semantics; do
-            python scripts/run_tests.py --group "$group"
-          done
-          python scripts/run_tests.py --verify-reports
+          curl --fail --location --retry 3 --output omaro-v0.1.0.zip \
+            https://github.com/modavis-project/omaro/releases/download/v0.1.0/omaro-v0.1.0.zip
+          echo "d55118d7dae2925962fdf1100549356cc2d26a4cd1467c47e8ba171e1be4ca4d  omaro-v0.1.0.zip" | sha256sum --check
+          unzip -q omaro-v0.1.0.zip 'omaro-v0.1.0/dist/*' -d .release
       - run: python scripts/test_pages.py
-      - run: python scripts/stage_pages.py
+      - name: Verify and stage the release files
+        run: python scripts/stage_pages.py --source .release/omaro-v0.1.0/dist
       - uses: actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b # v5
       - uses: actions/upload-pages-artifact@56afc609e74202658d3ffba0e8f6dda462b719fa # v3
         with:

@@ -12,15 +12,14 @@ Original identifiers and statements remain available alongside qualified
 assertions. Five unresolved source references are retained explicitly.
 
 Use the [browser](https://modavis-project.github.io/omaro/) to explore the
-reference data when the site is published, or build it locally as described
-below. [USE_CASES.md](USE_CASES.md) provides lookup, SQL and contextual review
+reference data, or build it locally as described below. [USE_CASES.md](USE_CASES.md) provides lookup, SQL and contextual review
 examples. [ONTOLOGY_REFERENCE.md](ONTOLOGY_REFERENCE.md) documents the model;
 [ORGANOLOGICAL_FOUNDATIONS.md](ORGANOLOGICAL_FOUNDATIONS.md) explains its
 relationship to organological methods.
 
 Dataset and tooling version **0.1.0** use ontology/schema **0.1.0**. Publication
-is in preparation: DOI `10.5281/zenodo.21442777` is reserved, and the Pages and
-W3ID routes are not yet active. See [RELEASE_STATUS.md](RELEASE_STATUS.md).
+on Zenodo is in preparation: DOI `10.5281/zenodo.21442777` is reserved.
+W3ID registration is pending. See [RELEASE_STATUS.md](RELEASE_STATUS.md).
 
 ## Identity
 
@@ -164,8 +163,9 @@ dataset archive.
 
 ## GitHub Pages
 
-The Pages workflow publishes the browser, versioned RDF, schemas, metadata,
-CSV and SQLite downloads. It omits duplicate RDF files and bulk JSONL and OKF
+The Pages workflow downloads the published 0.1.0 distribution and checks its
+pinned SHA-256 before staging the browser, versioned RDF, schemas, metadata,
+CSV and SQLite downloads. Deployment does not rebuild the dataset. It omits duplicate RDF files and bulk JSONL and OKF
 exports, which remain in the complete release archive. This keeps the website
 within [GitHub Pages' 1 GB limit](https://docs.github.com/en/pages/getting-started-with-github-pages/github-pages-limits)
 without removing browser downloads.

@@ -6,7 +6,8 @@
 | Ontology and canonical schema | 0.1.0 |
 | SQLite schema | 20200 |
 
-This distribution is being prepared for publication. DOI
+The 0.1.0 distribution is available in the GitHub release. Zenodo publication
+is pending. DOI
 `10.5281/zenodo.21442777` is reserved; it is not a published record.
 The source snapshot date is distinct from the eventual publication date.
 
