@@ -120,13 +120,19 @@ class PagesTests(unittest.TestCase):
         manifest = json.loads((self.output / "site-manifest.json").read_text())
         self.assertEqual(len(manifest["browser_updates"]), 3)
         for row in manifest["browser_updates"]:
-            self.assertEqual(row["sha256"], hashlib.sha256(
-                (self.output / row["path"]).read_bytes()).hexdigest())
-            self.assertEqual(row["release_sha256"], hashlib.sha256(
-                (self.source / row["path"]).read_bytes()).hexdigest())
+            self.assertEqual(
+                row["sha256"],
+                hashlib.sha256((self.output / row["path"]).read_bytes()).hexdigest(),
+            )
+            self.assertEqual(
+                row["release_sha256"],
+                hashlib.sha256((self.source / row["path"]).read_bytes()).hexdigest(),
+            )
             self.assertNotEqual(row["sha256"], row["release_sha256"])
         for name in ("data.json", "sqlite/omaro.sqlite", "ontology/0.1.0/omaro.ttl"):
-            self.assertEqual((self.output / name).read_bytes(), (self.source / name).read_bytes())
+            self.assertEqual(
+                (self.output / name).read_bytes(), (self.source / name).read_bytes()
+            )
 
     def test_browser_update_cannot_mask_a_modified_release(self) -> None:
         browser = self.browser_source()

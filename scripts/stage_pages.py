@@ -49,7 +49,9 @@ def digest(path: Path) -> str:
 
 
 def stage(
-    source: Path, output: Path, max_bytes: int = MAX_SITE_BYTES,
+    source: Path,
+    output: Path,
+    max_bytes: int = MAX_SITE_BYTES,
     browser_source: Path | None = None,
 ) -> dict:
     source = source.resolve()
@@ -150,8 +152,11 @@ if __name__ == "__main__":
     parser.add_argument("--source", type=Path, default=Path("dist"))
     parser.add_argument("--output", type=Path, default=Path(".pages-site"))
     parser.add_argument(
-        "--browser-source", type=Path,
+        "--browser-source",
+        type=Path,
         help="Use maintained index.html, app.js and styles.css; keep all released data unchanged",
     )
     args = parser.parse_args()
-    print(json.dumps(stage(args.source, args.output, browser_source=args.browser_source)))
+    print(
+        json.dumps(stage(args.source, args.output, browser_source=args.browser_source))
+    )
