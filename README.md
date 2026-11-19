@@ -412,10 +412,10 @@ retaining the corresponding BCP 47 codes.
 
 ## VAO and MODAVIS interoperability
 
-VAO 0.4.0 can carry this release's Hornbostel–Sachs scheme IRI, notation,
-localized label, and exact scheme-snapshot version in its standard
-`classifications` object. The generated example is
-`dist/metadata/vao-classification-example.json`.
+VAO carries the Hornbostel–Sachs scheme IRI, notation, localized label, and
+scheme-snapshot version in the entity’s `classifications` array. The example
+in `dist/metadata/vao-classification-example.json` passes the VAO 0.6.0
+classification schema. OMARO 0.1.0 cites VAO 0.4.0 in its release metadata.
 
 MODAVIS 0.1.0 is connected conservatively with `dcterms:relation`. The release
 does not import MODAVIS or claim that its local assertion classes conform to

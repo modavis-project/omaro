@@ -2,14 +2,16 @@
 
 ## Status and scope
 
-This document defines the supported connection between OMARO Reference Dataset
-0.1.0, OMARO Ontology 0.1.0, the Virtual Acoustic Object (VAO) Standard, and the
-MODAVIS Ontology Network. It targets the finalized VAO 0.4.0 contract and MODAVIS
-0.1.0. The VAO 0.5.0 candidate available on 2026-08-28 retains the same
-classification object used here, but a candidate specification is not a stable
-release dependency.
+The classification example from OMARO Reference Dataset 0.1.0 fits the
+[VAO 0.6.0 classification schema](https://w3id.org/modavis/vao/0.6.0/schema/manifest.json).
+The check covers the four fields of the example. A complete VAO manifest and
+carrier need their own validation.
 
-The connection is deliberately asymmetric:
+The published OMARO 0.1.0 RDF and DCAT records cite VAO 0.4.0 and the MODAVIS
+Ontology Network 0.1.0. The 0.6.0 schema check applies to reuse of the example
+in a new VAO release.
+
+Each standard has a different role:
 
 - VAO can carry a compact Hornbostel–Sachs classification value in an entity
   description.
@@ -20,11 +22,12 @@ The connection is deliberately asymmetric:
 - MODAVIS is recorded as a related semantic standard. No OWL import,
   equivalence, subclass relationship, or MODAVIS conformance claim is made.
 
-The versioned references are:
+The release records and this guide use these versioned references:
 
 | Standard | Release used | Persistent reference |
 |---|---:|---|
-| VAO | 0.4.0, finalized | `https://w3id.org/modavis/vao/0.4.0/` |
+| Published OMARO relation | VAO 0.4.0 | [VAO 0.4.0](https://w3id.org/modavis/vao/0.4.0/) |
+| Classification schema checked for this guide | VAO 0.6.0 | [VAO 0.6.0 manifest schema](https://w3id.org/modavis/vao/0.6.0/schema/manifest.json) |
 | MODAVIS Ontology Network | 0.1.0, released | `https://w3id.org/modavis/ontology/0.1.0` |
 
 The generated RDF and DCAT metadata connect these resources with
@@ -59,8 +62,7 @@ The generated example at
 }
 ```
 
-This object can be inserted unchanged into a VAO entity's `classifications`
-array. A consumer resolves it by matching `scheme` and `code` to a canonical
+In VAO 0.6.0, place this object in the entity’s `classifications` array. A consumer resolves it by matching `scheme` and `code` to a canonical
 classification concept. It must not join on `label`.
 
 ### What the compact VAO value does not carry
